@@ -1,0 +1,136 @@
+ext {
+    android = [
+            compileSdkVersion: 26,
+            buildToolsVersion: '27.0.3',
+
+            minSdkVersion    : 19,
+            targetSdkVersion : 26,
+
+            versionCode      : 1,
+            versionName      : '1.0',
+
+            supportLibVersion: '27.1.1'
+    ]
+
+    kotlin = [
+            kotlin_version: '1.2.10',
+            anko_version  : '0.8.2'
+    ]
+
+    dependencies = [
+            //工具类
+            "multidex"                  : "com.android.support:multidex:1.0.2",
+            "kotlin"                    : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
+            //android support
+            "annotations"               : "com.android.support:support-annotations:${android["supportLibVersion"]}",
+            "appcompat-v7"              : "com.android.support:appcompat-v7:${android["supportLibVersion"]}",
+            "constraint_layout"         : "com.android.support.constraint:constraint-layout:+",
+            "recyclerview"              : "com.android.support:recyclerview-v7:${android["supportLibVersion"]}",
+            "design"                    : "com.android.support:design:${android.get('supportLibVersion')}",
+            "cardview"                  : "com.android.support:cardview-v7:${android.supportLibVersion}",
+            "junit"                     : 'junit:junit:4.12',
+
+            "module_support"            : project(':module_support'),
+//            "module_api"                : project(':module_api'),
+//            "module_picbrowser"         : project(':picbrowserlib'),
+
+            //magicIndicator
+            "magic_indicator"           : "com.github.hackware1993:MagicIndicator:1.5.0",
+            //深度自定义的 calendarview
+            "calendarview"              : 'com.haibin:calendarview:3.4.0',
+            //时间区间选择器
+            "range_time_picker"         : 'com.borax12.materialdaterangepicker:library:1.9',
+            //banner轮播图控件
+            "banner"                    : 'com.youth.banner:banner:1.4.10',
+
+            //今日头条屏幕适配方案
+            "headline_autosize"         : 'me.jessyan:autosize:1.0.0',
+            //仿微信图片选择库
+            "pictureSelector"           : 'com.github.LuckSiege.PictureSelector:picture_library:v2.2.2',
+            //图片加载glide
+            "glide"                     : 'com.github.bumptech.glide:glide:4.8.0',
+            "glide_compiler"            : 'com.github.bumptech.glide:compiler:4.8.0',
+            "glide_okhttp_integration"  : 'com.github.bumptech.glide:okhttp3-integration:4.8.0',
+            "glide_transformations"     : "jp.wasabeef:glide-transformations:3.3.0",
+
+            //图片加载Picasso
+            "picasso"                   : 'com.squareup.picasso:picasso:2.5.2',
+
+            //baseAdapter ForRecyclerView
+            "base_rvadapter"            : 'com.zhy:base-rvadapter:3.0.3',
+            "brvah"                     : 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.42',
+            //上下刷新
+            "smart_refresh"             : 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.5-alpha-3',
+            //immersionbar
+            "barlibrary"                : 'com.gyf.immersionbar:immersionbar:2.3.2-beta01',
+            //logger
+            "logger"                    : 'com.orhanobut:logger:2.1.1',
+
+            // 界面绑定框架 butter-knife
+            "butterknife"               : 'com.jakewharton:butterknife:8.8.1',
+            "butterknife_compiler"      : 'com.jakewharton:butterknife-compiler:8.8.1',
+            "rxbinding2"                : 'com.jakewharton.rxbinding2:rxbinding:2.1.1',
+            //okhttp
+            "okhttp"                    : 'com.squareup.okhttp3:okhttp:3.11.0',
+            "okio"                      : 'com.squareup.okio:okio:2.0.0',
+            "okhttp_interceptor"        : 'com.squareup.okhttp3:logging-interceptor:3.11.0',
+
+            //OSS
+            "ali_OSS"                   : 'com.aliyun.dpa:oss-android-sdk:+',
+
+            // 此处一定要注意使用RxJava2的版本
+            "rxjava2"                   : 'io.reactivex.rxjava2:rxjava:2.1.9',
+            "rxandroid2"                : 'io.reactivex.rxjava2:rxandroid:2.0.2',
+            // Android 支持 Retrofit
+            "retrofit"                  : 'com.squareup.retrofit2:retrofit:2.3.0',
+            "retrofit_converter_scalars": 'com.squareup.retrofit2:converter-scalars:2.3.0',
+            "retrofit_rxjava2_adapter"  : 'com.squareup.retrofit2:adapter-rxjava2:2.3.0',
+            //rxlifecycle2
+            "rxlifecycle2"              : 'com.trello.rxlifecycle2:rxlifecycle:2.2.2',
+            "rxlifecycle2_android"      : 'com.trello.rxlifecycle2:rxlifecycle-android:2.2.2',
+            "rxlifecycle_components"    : 'com.trello.rxlifecycle2:rxlifecycle-components:2.2.2',
+
+            //阿里出品,fastjson
+            "fastjson"                  : 'com.alibaba:fastjson:1.2.44',
+            //gson
+            "gson"                      : 'com.google.code.gson:gson:2.8.5',
+
+            //glide加载进度监听
+            "progressmanager"           : 'me.jessyan:progressmanager:1.5.0',
+            "material-dialogs"          : "com.afollestad.material-dialogs:commons:0.9.4.5",
+
+            //fragmentation
+            // 如果想使用SwipeBack 滑动边缘退出Fragment/Activity功能，完整的添加规则如下：
+            "fragmentation"             : 'me.yokeyword:fragmentation:1.3.6',
+            // swipeback基于fragmentation, 如果是自定制SupportActivity/Fragment，则参照SwipeBackActivity/Fragment实现即可
+            "fragment_swipeback"        : 'me.yokeyword:fragmentation-swipeback:1.3.6',
+            // Activity作用域的EventBus，更安全，可有效避免after onSavenInstanceState()异常
+            "eventbus_activity_scope"   : 'me.yokeyword:eventbus-activity-scope:1.1.0',
+            // Your EventBus's version
+            "eventbus"                  : 'org.greenrobot:eventbus:3.1.1',
+
+            "photoview-smooth"          : "com.bm.photoview:library:1.4.1",
+            "pickerview"                : "com.contrarywind:Android-PickerView:4.1.6",
+            //结合rxjava2使用
+            "rxpermissions"             : "com.github.tbruyelle:rxpermissions:0.10.2",
+            //bugly升级
+            "bugly_upgrade"             : 'com.tencent.bugly:crashreport_upgrade:latest.release',
+            "bugly_native"              : 'com.tencent.bugly:nativecrashreport:latest.release',
+
+            //dagger2
+            "dagger2"                   : 'com.google.dagger:dagger:2.16',
+            "dagger2_compiler"          : 'com.google.dagger:dagger-compiler:2.16',
+
+            "greendao"                  : "org.greenrobot:greendao:3.2.2",
+            "greendao-generator"        : "org.greenrobot:greendao-generator:3.2.2",
+            "greendao-sqlcipher"        : "net.zetetic:android-database-sqlcipher:3.5.6",
+            //mpchart
+            "mpchart"                   : 'com.github.PhilJay:MPAndroidChart:v3.0.3',
+
+            "amap-3dmap"                : "com.amap.api:3dmap:latest.integration", //3D地图
+            "amap-2dmap"                : "com.amap.api:map2d:latest.integration",//  2D地图
+            "amap-navi"                 : "com.amap.api:navi-3dmap:latest.integration",//  导航
+            "amap-search"               : "com.amap.api:search:latest.integration",// 搜索
+            "amap-location"             : "com.amap.api:location:latest.integration",// 定位
+    ]
+}

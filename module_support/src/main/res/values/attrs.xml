@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="TitleBar">
+        <attr name="title_bar_left_icon" format="reference"/>
+        <attr name="title_bar_center_text" format="string"/>
+        <attr name="title_bar_center_text_color" format="color"/>
+        <attr name="title_bar_center_text_size" format="dimension"/>
+        <attr name="title_bar_left_text_color" format="color"/>
+        <attr name="title_bar_left_text_size" format="dimension"/>
+        <attr name="title_bar_right_text" format="string"/>
+        <attr name="title_bar_right_text_color" format="color"/>
+        <attr name="title_bar_right_text_size" format="dimension"/>
+        <attr name="title_bar_left_click_padding" format="dimension"/>
+        <attr name="title_bar_right_click_padding" format="dimension"/>
+        <attr name="title_bar_top_and_bottom_margin" format="dimension"/>
+        <attr name="title_bar_separate_color" format="color"/>
+        <attr name="title_bar_separate_height" format="dimension"/>
+        <attr name="title_bar_default" format="boolean"/>
+        <attr name="title_bar_default_bg_color" format="color"/>
+    </declare-styleable>
+
+
+    <declare-styleable name="CircleTextImageView">
+        <attr name="citv_border_width" format="dimension"/>
+        <attr name="citv_border_color" format="color"/>
+        <attr name="citv_border_overlay" format="boolean"/>
+        <attr name="citv_fill_color" format="color"/>
+        <attr name="citv_text_text" format="string"/>
+        <attr name="citv_text_color" format="color"/>
+        <attr name="citv_text_size" format="dimension"/>
+        <attr name="citv_text_padding" format="dimension"/>
+    </declare-styleable>
+
+    <declare-styleable name="SettingButton">
+        <attr name="setting_bg_color" format="color"/>
+        <attr name="setting_left_text" format="string"/>
+        <attr name="setting_left_text_color" format="color"/>
+        <attr name="setting_left_text_size" format="dimension"/>
+        <attr name="setting_right_text" format="string"/>
+        <attr name="setting_right_text_color" format="color"/>
+        <attr name="setting_right_text_size" format="dimension"/>
+        <attr name="setting_right_text_drawable_padding" format="dimension"/>
+        <attr name="setting_right_text_drawable_margin" format="dimension"/>
+        <attr name="setting_next_icon" format="reference"/>
+        <attr name="setting_has_next_icon" format="boolean"/>
+        <attr name="setting_right_padding" format="dimension"/>
+        <attr name="setting_left_padding" format="dimension"/>
+        <attr name="setting_top_padding" format="dimension"/>
+        <attr name="setting_bottom_padding" format="dimension"/>
+        <attr name="setting_default" format="boolean"/>
+    </declare-styleable>
+
+    <declare-styleable name="EnteringLayout">
+        <attr name="item_name" format="string"/>
+        <attr name="item_text_color" format="color"/>
+        <attr name="item_text_size" format="dimension"/>
+        <attr name="asterisk_left_padding" format="dimension"/>
+        <attr name="asterisk_right_padding" format="dimension"/>
+        <attr name="is_must_item" format="boolean"/>
+        <attr name="asterisk_style" format="string"/>
+        <attr name="asterisk_color" format="color"/>
+        <attr name="asterisk_size" format="dimension"/>
+        <attr name="custom_layout" format="reference"/>
+        <attr name="has_next_icon" format="boolean"/>
+        <attr name="next_icon_left_padding" format="dimension"/>
+        <attr name="type" format="enum">
+            <enum name="input" value="0"/>
+            <enum name="option" value="1"/>
+        </attr>
+    </declare-styleable>
+
+
+    <declare-styleable name="BottomBarItem">
+        <!--默认状态下的图标-->
+        <attr name="iconNormal" format="reference"/>
+        <!--选中状态下的图标-->
+        <attr name="iconSelected" format="reference"/>
+
+        <!--底部文字-->
+        <attr name="itemText" format="string"/>
+        <!--文字大小-->
+        <attr name="itemTextSize" format="dimension"/>
+        <!--默认状态下的文字颜色-->
+        <attr name="textColorNormal" format="color"/>
+        <!--选中状态下的文字颜色-->
+        <attr name="textColorSelected" format="color"/>
+
+        <!--文字和图标的顶部距离-->
+        <attr name="itemMarginTop" format="dimension"/>
+
+        <!--是否开启触摸背景效果-->
+        <attr name="openTouchBg" format="boolean"/>
+        <!--设置触摸背景-->
+        <attr name="touchDrawable" format="reference"/>
+
+        <!--设置图标的宽度-->
+        <attr name="iconWidth" format="dimension"/>
+        <!--设置图标的高度-->
+        <attr name="iconHeight" format="dimension"/>
+
+        <!--设置BottomBarItem的padding-->
+        <attr name="itemPadding" format="dimension"/>
+
+        <!--设置未读数字体大小-->
+        <attr name="unreadTextSize" format="dimension"/>
+        <!--设置未读数字体颜色-->
+        <attr name="unreadTextColor" format="reference"/>
+        <!--设置未读数背景色-->
+        <attr name="unreadTextBg" format="reference"/>
+
+        <!--设置提示消息字体大小-->
+        <attr name="msgTextSize" format="dimension"/>
+        <!--设置提示消息字体颜色-->
+        <attr name="msgTextColor" format="reference"/>
+        <!--设置提示消息背景-->
+        <attr name="msgTextBg" format="reference"/>
+
+        <!--设置提示点背景-->
+        <attr name="notifyPointBg" format="reference"/>
+
+        <!--设置未读数组阈值 大于阈值的数字将显示为 n+ n为设置的阈值-->
+        <attr name="unreadThreshold" format="integer"/>
+    </declare-styleable>
+
+    <declare-styleable name="BottomBarLayout">
+        <attr name="smoothScroll" format="boolean"/>
+    </declare-styleable>
+
+
+    <declare-styleable name="DropDownMenu">
+
+        <attr name="ddunderlineColor" format="color"/>
+        <attr name="dddividerColor" format="color"/>
+        <attr name="ddtextSelectedColor" format="color"/>
+        <attr name="ddtextUnselectedColor" format="color"/>
+        <attr name="ddmenuBackgroundColor" format="color"/>
+        <attr name="ddmaskColor" format="color"/>
+        <attr name="ddmenuTextSize" format="dimension"/>
+        <attr name="ddmenuIconPadding" format="dimension"/>
+        <attr name="ddmenuSelectedIcon" format="reference"/>
+        <attr name="ddmenuUnselectedIcon" format="reference"/>
+        <attr name="ddmenuMenuHeightPercent" format="float"/>
+    </declare-styleable>
+
+    <declare-styleable name="IconTextView">
+        <attr name="iconPadding" format="dimension"/>
+    </declare-styleable>
+
+    <!--环形进度条-->
+    <declare-styleable name="RingProgressBar">
+        <attr name="ringColor" format="color"/>
+        <attr name="ringProgressColor" format="color"/>
+        <attr name="ringWidth" format="dimension"/>
+        <attr name="ringTextColor" format="color"/>
+        <attr name="ringTextSize" format="dimension"/>
+        <attr name="ringMax" format="integer"/>
+        <attr name="ringTextIsShow" format="boolean"/>
+        <attr name="ringProgress" format="integer"/>
+        <attr name="ringPadding" format="dimension"/>
+        <attr name="style">
+            <enum name="STROKE" value="0"/>
+            <enum name="FILL" value="1"/>
+        </attr>
+    </declare-styleable>
+
+</resources>

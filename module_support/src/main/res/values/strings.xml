@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">baseSupportLib</string>
+    <string name="common_library_error_local">请稍后，数据处理异常~</string>
+    <string name="common_library_error_network">网络异常，请检查网络~</string>
+    <string name="common_library_loading">正在加载数据&#8230;</string>
+    <string name="common_library_toast_title">消息提示</string>
+
+    <!-- 自定义dialog -->
+    <string name="material_dialog_common_title">温馨提示</string>
+    <string name="material_dialog_common_alert">重要提醒</string>
+    <string name="material_dialog_common_positive">确定</string>
+    <string name="material_dialog_common_negative">取消</string>
+    <string name="material_dialog_common_delete">删除</string>
+    <string name="material_dialog_positive_next_time">下次再说</string>
+    <string name="material_dialog_positive_emperor">我知道了</string>
+
+    <string name="common_dialog_submit_success">保存成功</string>
+    <string name="material_dialog_function_will_coming_soon">该功能即将开启，敬请期待~</string>
+    <string name="material_dialog_no_operate_authority">抱歉，您当前没有权限\n（如有需要，请联系系统管理员）</string>
+    <string name="material_dialog_ask_call_format">您呼叫的号码是：%1$s，确认拨号？</string>
+    <string name="material_dialog_ask_call">通话将产生资费，确认拨号？</string>
+    <string name="material_dialog_positive_call">呼叫</string>
+
+    <string name="material_dialog_bind_clear_cache_title">清理缓存</string>
+    <string name="material_dialog_bind_clear_cache_content_format">执行清理可为您节省%1$s存储空间</string>
+    <string name="material_dialog_bind_clear_cache_positive">清理一下</string>
+
+    <string name="material_dialog_user_head_title">选择你的操作</string>
+
+</resources>

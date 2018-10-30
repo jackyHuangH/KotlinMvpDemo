@@ -1,0 +1,62 @@
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:${rootProject.ext.kotlin.kotlin_version}"
+    implementation "org.jetbrains.anko:anko-common:${rootProject.ext.kotlin.anko_version}"
+
+    implementation rootProject.ext.dependencies["constraint_layout"]
+    implementation rootProject.ext.dependencies["recyclerview"]
+    implementation rootProject.ext.dependencies["design"]
+    implementation rootProject.ext.dependencies["cardview"]
+    testImplementation rootProject.ext.dependencies["junit"]
+
+    implementation rootProject.ext.dependencies["rxjava2"]
+    implementation rootProject.ext.dependencies["rxandroid2"]
+
+
+    //工具类
+    implementation rootProject.ext.dependencies["module_support"]
+//    implementation rootProject.ext.dependencies["module_api"]
+//    implementation rootProject.ext.dependencies["module_picbrowser"]
+
+    implementation rootProject.ext.dependencies["multidex"]
+
+    implementation rootProject.ext.dependencies["magic_indicator"]
+    implementation rootProject.ext.dependencies["calendarview"]
+//    implementation rootProject.ext.dependencies["headline_autosize"]
+
+    implementation rootProject.ext.dependencies["pictureSelector"]
+    implementation rootProject.ext.dependencies["range_time_picker"]
+
+    implementation rootProject.ext.dependencies["banner"]
+    implementation rootProject.ext.dependencies["glide"]
+    implementation rootProject.ext.dependencies["glide_okhttp_integration"]
+    annotationProcessor rootProject.ext.dependencies["glide_compiler"]
+
+    implementation rootProject.ext.dependencies["picasso"]
+    implementation rootProject.ext.dependencies["base_rvadapter"]
+    implementation rootProject.ext.dependencies["brvah"]
+    implementation rootProject.ext.dependencies["smart_refresh"]
+
+    implementation rootProject.ext.dependencies["barlibrary"]
+
+    implementation rootProject.ext.dependencies["logger"]
+
+    implementation rootProject.ext.dependencies["butterknife"]
+    annotationProcessor rootProject.ext.dependencies["butterknife_compiler"]
+
+    implementation rootProject.ext.dependencies["progressmanager"]
+
+    implementation rootProject.ext.dependencies["gson"]
+
+    implementation rootProject.ext.dependencies["dagger2"]
+    annotationProcessor rootProject.ext.dependencies["dagger2_compiler"]
+
+    //use greendao
+//    implementation rootProject.ext.dependencies["greendao"]
+//    implementation rootProject.ext.dependencies["greendao-generator"]
+//    implementation rootProject.ext.dependencies["greendao-sqlcipher"]
+}

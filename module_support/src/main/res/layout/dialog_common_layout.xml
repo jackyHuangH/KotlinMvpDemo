@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="220dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_common_dialog_bg"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/mMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:layout_marginTop="35dp"
+        android:drawablePadding="20dp"
+        android:drawableTop="@drawable/success"
+        android:gravity="center_horizontal"
+        android:textColor="@android:color/darker_gray"
+        tools:text="恭喜您中了500万"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@android:color/darker_gray"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+
+        <Button
+            android:id="@+id/mNegativeButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@null"
+            android:textColor="#7D7D7D"
+            android:textSize="15sp"
+            tools:text="我知道了"/>
+
+        <View
+            android:id="@+id/separate"
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:background="@android:color/darker_gray"/>
+
+        <Button
+            android:id="@+id/mPositiveButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@null"
+            android:textColor="#38ADFF"
+            android:textSize="15sp"
+            tools:text="确定"/>
+
+    </LinearLayout>
+
+</LinearLayout>

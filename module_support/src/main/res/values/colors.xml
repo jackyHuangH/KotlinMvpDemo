@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="toast_background">#30000000</color>
+    <!--<color name="toast_background">#3FFFFFFF</color>-->
+    <color name="ios_blue">#38ADFF</color>
+    <color name="ios_black">#18181A</color>
+    <color name="ios_white">#ffffff</color>
+    <color name="ios_stroke_tint">#E4E4E4</color>
+    <color name="ios_darker_gray">#AAAAAA</color>
+
+    <color name="color_282828">#282828</color>
+    <color name="color_cfcfcf">#cfcfcf</color>
+    <color name="color_999999">#999999</color>
+    <color name="color_fb5656">#fb5656</color>
+    <color name="entering_layout_default_bg">#ffffff</color>
+
+    <color name="white">#ffffff</color>
+    <color name="red">#ff0000</color>
+    <color name="selector_grey">#DDDDDD</color>
+</resources>
