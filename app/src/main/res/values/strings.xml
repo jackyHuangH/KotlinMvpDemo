@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">KotlinDemo</string>
+
+    <string name="common_click_double_to_exit_app">再按一次退出应用~</string>
+    <string name="common_error_network">网络异常，请检查网络~</string>
+    <string name="common_error_service">请稍后，服务异常~</string>
+    <string name="login_error_grant_refused">当前账号在别处设备登录，请注意账号使用安全</string>
 </resources>

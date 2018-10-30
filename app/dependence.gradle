@@ -19,7 +19,7 @@ dependencies {
 
     //工具类
     implementation rootProject.ext.dependencies["module_support"]
-//    implementation rootProject.ext.dependencies["module_api"]
+    implementation rootProject.ext.dependencies["module_api"]
 //    implementation rootProject.ext.dependencies["module_picbrowser"]
 
     implementation rootProject.ext.dependencies["multidex"]

@@ -1,4 +1,4 @@
-package com.huangzj.kotlindemo
+package com.huangzj.kotlindemo.app
 
 import android.app.Application
 import android.content.Context
