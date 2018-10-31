@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android-extensions'//扩展插件，无需findviewbyid
+apply plugin: 'kotlin-kapt'  //kapt3插件
 apply from: 'dependence.gradle'
 
 android {
@@ -47,4 +48,3 @@ android {
         }
     }
 }
-

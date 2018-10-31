@@ -5,7 +5,7 @@ import android.app.NotificationManager
 import android.content.Intent
 import com.huangzj.kotlindemo.R
 import com.huangzj.kotlindemo.common.Constant
-import com.huangzj.kotlindemo.ui.MainActivity
+import com.huangzj.kotlindemo.ui.activity.MainActivity
 import com.zenchn.apilib.base.ApiManager
 import com.zenchn.apilib.util.LoggerKit
 import com.zenchn.support.base.AbstractApplicationKit
@@ -20,7 +20,7 @@ import com.zenchn.support.widget.tips.SuperToast
  * desc  ：
  * record：
  */
-class ApplicationKit : AbstractApplicationKit(), ActivityLifecycleCallback {
+class ApplicationKit private constructor() : AbstractApplicationKit(), ActivityLifecycleCallback {
 
     private val mLazyActivityLifecycle: DefaultActivityLifecycle by lazy {
         DefaultActivityLifecycle.getInstance()
@@ -100,5 +100,15 @@ class ApplicationKit : AbstractApplicationKit(), ActivityLifecycleCallback {
 
     }
 
+
+    private object SingletonInstance {
+        internal val INSTANCE = ApplicationKit()
+    }
+
+    //伴生类，对象为静态单例
+    companion object {
+        val instance: ApplicationKit
+            get() = SingletonInstance.INSTANCE
+    }
 
 }

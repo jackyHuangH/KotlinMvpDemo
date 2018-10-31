@@ -1,4 +1,4 @@
-package com.huangzj.kotlindemo.ui
+package com.huangzj.kotlindemo.ui.base
 
 import android.content.Context
 import android.view.View

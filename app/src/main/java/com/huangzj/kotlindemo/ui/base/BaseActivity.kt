@@ -8,9 +8,11 @@ import android.view.WindowManager
 import com.gyf.barlibrary.ImmersionBar
 import com.gyf.barlibrary.OnKeyboardListener
 import com.huangzj.kotlindemo.R
-import com.huangzj.kotlindemo.ui.CustomUiController
+import com.huangzj.kotlindemo.app.ApplicationKit
 import com.zenchn.support.base.AbstractAppCompatActivity
+import com.zenchn.support.base.IActivityLifecycle
 import com.zenchn.support.base.IUiController
+import com.zenchn.support.dafault.DefaultActivityLifecycle
 import com.zenchn.support.kit.Android
 import com.zenchn.support.utils.StringUtils
 
@@ -76,12 +78,16 @@ abstract class BaseActivity : AbstractAppCompatActivity(), BaseView {
         return android.R.id.content
     }
 
+    override fun getDefaultActivityLifecycle(): IActivityLifecycle? {
+        return DefaultActivityLifecycle.getInstance()
+    }
+
     override fun onApiFailure() {
         showResMessage(if (Android.NetWork.isNetworkAvailable(this)) R.string.common_error_service else R.string.common_error_network)
     }
 
     override fun onApiGrantRefuse() {
-//        ApplicationKit.getInstance().navigateToLogin(true)
+        ApplicationKit.instance.navigateToLogin(true)
     }
 
     override fun showMessage(@NonNull msg: CharSequence) {

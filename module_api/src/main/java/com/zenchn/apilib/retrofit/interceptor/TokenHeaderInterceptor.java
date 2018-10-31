@@ -23,7 +23,7 @@ public class TokenHeaderInterceptor implements Interceptor {
         Request originRequest = chain.request();
         //get new request,add header
         Request newRequest = originRequest.newBuilder()
-                .addHeader("token", token)
+                .addHeader("access-token", token)
                 .build();
         return chain.proceed(newRequest);
     }

@@ -46,7 +46,7 @@ dependencies {
     implementation rootProject.ext.dependencies["logger"]
 
     implementation rootProject.ext.dependencies["butterknife"]
-    annotationProcessor rootProject.ext.dependencies["butterknife_compiler"]
+    kapt rootProject.ext.dependencies["butterknife_compiler"]
 
     implementation rootProject.ext.dependencies["progressmanager"]
 

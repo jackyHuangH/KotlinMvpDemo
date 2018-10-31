@@ -4,9 +4,10 @@ package com.huangzj.kotlindemo.common
  * @author:Hzj
  * @date  :2018/10/30/030
  * desc  ：常量
+ *          object修饰的单例类
  * record：
  */
 object Constant {
-    val LOGGERKIT_TAG = "HZJ_DEBUG"//loggerkit tag
-    val BASE_REQUEST_HTTP_HOST = ""
+    const val LOGGERKIT_TAG = "HZJ_DEBUG"//loggerkit tag
+    const val BASE_REQUEST_HTTP_HOST = "http://192.168.1.121:5566/test/"
 }

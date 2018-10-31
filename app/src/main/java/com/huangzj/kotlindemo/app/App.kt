@@ -16,4 +16,10 @@ class App : Application() {
         super.attachBaseContext(base)
         MultiDex.install(this)
     }
+
+    override fun onCreate() {
+        super.onCreate()
+        //其他初始化
+        ApplicationKit.instance.initKit(this)
+    }
 }
