@@ -8,6 +8,9 @@ import com.huangzj.kotlindemo.entity.Man
 import com.huangzj.kotlindemo.entity.Person
 import com.huangzj.kotlindemo.ui.activity.SplashActivity.Constans.NUM_B
 import com.huangzj.kotlindemo.ui.base.BaseActivity
+import com.zenchn.apilib.callback.rx.RxSchedulerController
+import com.zenchn.apilib.retrofit.RetrofitManager
+import com.zenchn.apilib.service.LoginService
 import kotlinx.android.synthetic.main.activity_splash.*
 import org.jetbrains.anko.find
 import java.util.*
@@ -56,15 +59,18 @@ class SplashActivity : BaseActivity() {
         }
 
         bt.setOnClickListener {
+            RetrofitManager
+                    .getInstance()
+                    .create(LoginService::class.java)
+                    .test()
+                    .compose(RxSchedulerController.applySchedulers())
+                    .subscribe({ string ->
+                        bt.text = string
+                    }, { throwable -> bt.text = throwable.message })
+        }
+
+        bt_main.setOnClickListener {
             MainActivity.launch(this)
-//            RetrofitManager
-//                    .getInstance()
-//                    .create(LoginService::class.java)
-//                    .test()
-//                    .compose(RxSchedulerController.applySchedulers())
-//                    .subscribe({ string ->
-//                        bt.text = string
-//                    }, { throwable -> bt.text = throwable.message })
         }
 
         //对象实例化

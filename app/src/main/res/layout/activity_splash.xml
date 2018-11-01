@@ -18,6 +18,17 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:text="点我开始倒计时"/>
 
+    <Button
+        android:id="@+id/bt_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bt"
+        android:text="跳转主页"/>
+
     <Switch
         android:id="@+id/sw_btn"
         android:layout_width="wrap_content"
@@ -38,6 +49,6 @@
         android:layout_height="0dp"
         android:layout_marginTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bt"/>
+        app:layout_constraintTop_toBottomOf="@+id/bt_main"/>
 
 </android.support.constraint.ConstraintLayout>

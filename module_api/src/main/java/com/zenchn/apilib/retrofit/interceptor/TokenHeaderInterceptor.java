@@ -19,7 +19,7 @@ public class TokenHeaderInterceptor implements Interceptor {
     @Override
     public Response intercept(Chain chain) throws IOException {
         //TODO get token
-        String token = "";
+        String token = "ff243a62a9984e79ba90641982f0dbc2";
         Request originRequest = chain.request();
         //get new request,add header
         Request newRequest = originRequest.newBuilder()
