@@ -7,7 +7,7 @@ import com.huangzj.kotlindemo.ui.fragment.DiscoveryFragment
 import com.huangzj.kotlindemo.ui.fragment.HomeFragment
 import com.huangzj.kotlindemo.ui.fragment.HotFragment
 import com.huangzj.kotlindemo.ui.fragment.MineFragment
-import com.zenchn.support.managers.FragmentManagerHelper
+import com.zenchn.support.managers.HFragmentManager
 import com.zenchn.support.router.Router
 import com.zenchn.support.widget.bottomnavigationbar.BottomBarItem
 import com.zenchn.support.widget.bottomnavigationbar.BottomBarLayout
@@ -16,8 +16,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : BaseActivity() {
     private lateinit var mTitles: Array<String>
 
-    private val mFragmentManagerHelper: FragmentManagerHelper by lazy {
-        FragmentManagerHelper(supportFragmentManager, R.id.fl_container)
+    private val mFragmentManagerHelper: HFragmentManager by lazy {
+        HFragmentManager(supportFragmentManager, R.id.fl_container)
     }
 
 

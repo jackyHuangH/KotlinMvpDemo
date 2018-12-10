@@ -95,6 +95,8 @@ ext {
             //gson
             "gson"                      : 'com.google.code.gson:gson:2.8.5',
 
+            "Android_Pickerview"        : 'com.contrarywind:Android-PickerView:4.1.6',
+
             //glide加载进度监听
             "progressmanager"           : 'me.jessyan:progressmanager:1.5.0',
             "material-dialogs"          : "com.afollestad.material-dialogs:commons:0.9.4.5",

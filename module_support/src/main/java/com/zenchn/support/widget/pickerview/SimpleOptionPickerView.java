@@ -59,10 +59,11 @@ public class SimpleOptionPickerView extends BasePickerView implements View.OnCli
     private int Size_Title;//标题文字大小
     private int Size_Content;//内容文字大小
 
-    private int textColorOut; //分割线以外的文字颜色
-    private int textColorCenter; //分割线之间的文字颜色
-    private int dividerColor; //分割线的颜色
-    private int backgroundId; //显示时的外部背景色颜色,默认是灰色
+    private int textColorOut = 0xFFa8a8a8; //分割线以外的文字颜色
+    private int textColorCenter = 0xFF2a2a2a; //分割线之间的文字颜色
+    private int dividerColor = 0xFFd5d5d5; //分割线的颜色
+    private int backgroundId = -1; //显示时的外部背景色颜色,默认是灰色
+
     // 条目间距倍数 默认1.6
     private float lineSpacingMultiplier = 1.6F;
     private boolean isDialog;//是否是对话框模式
@@ -174,9 +175,9 @@ public class SimpleOptionPickerView extends BasePickerView implements View.OnCli
         private boolean linkage = true;//是否联动
         private boolean isCenterLabel = true;//是否只显示中间的label
 
-        private int textColorOut; //分割线以外的文字颜色
-        private int textColorCenter; //分割线之间的文字颜色
-        private int dividerColor; //分割线的颜色
+        private int textColorOut = 0xFFa8a8a8; //分割线以外的文字颜色
+        private int textColorCenter = 0xFF2a2a2a; //分割线之间的文字颜色
+        private int dividerColor = 0xFFd5d5d5; //分割线的颜色
         private int backgroundId = -1; //显示时的外部背景色颜色,默认是灰色
         private ViewGroup decorView;//显示pickerview的根View,默认是activity的根view
         // 条目间距倍数 默认1.6
@@ -510,6 +511,7 @@ public class SimpleOptionPickerView extends BasePickerView implements View.OnCli
 
     /**
      * 自定义解析数据
+     *
      * @param source
      * @param converter
      */

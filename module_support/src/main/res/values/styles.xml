@@ -13,4 +13,32 @@
         <item name="android:gravity">center</item>
         <item name="android:windowIsFloating">true</item>
     </style>
+
+    <!--enteringlayout 自定义内容 单行-->
+    <style name="EnteringLayoutEditTextSingleLineStyle" parent="EnteringLayoutEditTextBaseStyle">
+        <item name="android:singleLine">true</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+    <!--enteringlayout 自定义内容 默认gravity end-->
+    <style name="EnteringLayoutEditTextBaseStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@null</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:gravity">end|center_vertical</item>
+        <item name="android:textColor">@color/color_282828</item>
+        <item name="android:textColorHint">@color/color_d5d5d5</item>
+    </style>
+
+    <!--enteringlayout textview 展示风格，gravity start-->
+    <style name="EnteringLayoutTextGravityStartStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@null</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:gravity">start|center_vertical</item>
+        <item name="android:textColor">@color/color_282828</item>
+        <item name="android:textColorHint">@color/color_d5d5d5</item>
+    </style>
 </resources>

@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 
 /**
  * 作    者：wangr on 2017/9/17 11:12
- * 描    述：默认可以点击
+ * 描    述：非编辑状态默认可以点击
  * 修订记录：
  */
 public class FocusEnteringLayout extends EnteringLayout implements EditLinearLayout.EditEnableLayout {

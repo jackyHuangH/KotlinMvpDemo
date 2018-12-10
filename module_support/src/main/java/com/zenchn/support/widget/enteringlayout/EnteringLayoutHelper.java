@@ -1,8 +1,10 @@
 package com.zenchn.support.widget.enteringlayout;
 
+import android.support.annotation.ColorInt;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -88,6 +90,22 @@ public class EnteringLayoutHelper {
             layout.setOptionKey("");
             layout.setRightText("");
         }
+    }
+
+    /**
+     * 设置右边文字字体颜色
+     * 注意：CustomView 必须是TextView及其子类
+     *
+     * @param layout
+     * @param color
+     */
+    public void setRightTextColor(@NonNull EnteringLayout layout, @ColorInt int color) {
+        View customView = layout.getCustomView();
+        if (!(customView instanceof TextView)) {
+            throw new IllegalStateException("EnteringLayout's CustomView must be TextView or extends TextView!");
+        }
+        TextView tv = (TextView) customView;
+        tv.setTextColor(color);
     }
 
 

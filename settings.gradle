@@ -1,1 +1,1 @@
-include ':app', ':module_support', ':module_api'
+include ':app', ':module_api', ':module_support'

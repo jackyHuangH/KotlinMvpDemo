@@ -40,7 +40,7 @@ public class DefaultCrashConfig implements ICrashConfig {
 
     @Override
     public void uploadExceptionToServer(File logFile) {
-        //TODO Upload Exception Message To Your Web Server.
+        // Upload Exception Message To Your Web Server.
     }
 
 }

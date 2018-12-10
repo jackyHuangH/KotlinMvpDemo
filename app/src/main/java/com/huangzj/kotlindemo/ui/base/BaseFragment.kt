@@ -8,7 +8,7 @@ import com.gyf.barlibrary.OnKeyboardListener
 import com.huangzj.kotlindemo.R
 import com.huangzj.kotlindemo.app.ApplicationKit
 import com.zenchn.support.base.AbstractFragment
-import com.zenchn.support.kit.Android
+import com.zenchn.support.kit.AndroidKit
 import com.zenchn.support.utils.StringUtils
 
 abstract class BaseFragment : AbstractFragment(), BaseView {
@@ -83,7 +83,7 @@ abstract class BaseFragment : AbstractFragment(), BaseView {
     }
 
     override fun onApiFailure() {
-        showResMessage(if (Android.NetWork.isNetworkAvailable(activity!!)) R.string.common_error_service else R.string.common_error_network)
+        showResMessage(if (AndroidKit.NetWork.isNetworkAvailable(activity!!)) R.string.common_error_service else R.string.common_error_network)
     }
 
     override fun onDestroyView() {

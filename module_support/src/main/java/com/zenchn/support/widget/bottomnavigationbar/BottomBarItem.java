@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -15,7 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.zenchn.support.R;
-import com.zenchn.support.kit.Android;
+import com.zenchn.support.kit.AndroidKit;
 
 import java.util.Locale;
 
@@ -88,12 +89,12 @@ public class BottomBarItem extends LinearLayout {
         mIconSelectedResourceId = ta.getResourceId(R.styleable.BottomBarItem_iconSelected, -1);
 
         mText = ta.getString(R.styleable.BottomBarItem_itemText);
-        mTextSize = ta.getDimensionPixelSize(R.styleable.BottomBarItem_itemTextSize, Android.Dimens.sp2px(mTextSize));
+        mTextSize = ta.getDimensionPixelSize(R.styleable.BottomBarItem_itemTextSize, AndroidKit.Dimens.sp2px(mTextSize));
 
         mTextColorNormal = ta.getColor(R.styleable.BottomBarItem_textColorNormal, mTextColorNormal);
         mTextColorSelected = ta.getColor(R.styleable.BottomBarItem_textColorSelected, mTextColorSelected);
 
-        mMarginTop = ta.getDimensionPixelSize(R.styleable.BottomBarItem_itemMarginTop, Android.Dimens.dp2px(mMarginTop));
+        mMarginTop = ta.getDimensionPixelSize(R.styleable.BottomBarItem_itemMarginTop, AndroidKit.Dimens.dp2px(mMarginTop));
 
         mOpenTouchBg = ta.getBoolean(R.styleable.BottomBarItem_openTouchBg, mOpenTouchBg);
         mTouchDrawable = ta.getDrawable(R.styleable.BottomBarItem_touchDrawable);
@@ -102,11 +103,11 @@ public class BottomBarItem extends LinearLayout {
         mIconHeight = ta.getDimensionPixelSize(R.styleable.BottomBarItem_iconHeight, 0);
         mItemPadding = ta.getDimensionPixelSize(R.styleable.BottomBarItem_itemPadding, 0);
 
-        mUnreadTextSize = ta.getDimensionPixelSize(R.styleable.BottomBarItem_unreadTextSize, Android.Dimens.sp2px(mUnreadTextSize));
+        mUnreadTextSize = ta.getDimensionPixelSize(R.styleable.BottomBarItem_unreadTextSize, AndroidKit.Dimens.sp2px(mUnreadTextSize));
         mUnreadTextColor = ta.getColor(R.styleable.BottomBarItem_unreadTextColor, 0xFFFFFFFF);
         mUnreadTextBg = ta.getDrawable(R.styleable.BottomBarItem_unreadTextBg);
 
-        mMsgTextSize = ta.getDimensionPixelSize(R.styleable.BottomBarItem_msgTextSize, Android.Dimens.sp2px(mMsgTextSize));
+        mMsgTextSize = ta.getDimensionPixelSize(R.styleable.BottomBarItem_msgTextSize, AndroidKit.Dimens.sp2px(mMsgTextSize));
         mMsgTextColor = ta.getColor(R.styleable.BottomBarItem_msgTextColor, 0xFFFFFFFF);
         mMsgTextBg = ta.getDrawable(R.styleable.BottomBarItem_msgTextBg);
 
@@ -133,15 +134,15 @@ public class BottomBarItem extends LinearLayout {
         }
 
         if (mUnreadTextBg == null) {
-            mUnreadTextBg = getResources().getDrawable(R.drawable.shape_unread);
+            mUnreadTextBg = ContextCompat.getDrawable(mContext,R.drawable.shape_unread);
         }
 
         if (mMsgTextBg == null) {
-            mMsgTextBg = getResources().getDrawable(R.drawable.shape_msg);
+            mMsgTextBg = ContextCompat.getDrawable(mContext,R.drawable.shape_msg);
         }
 
         if (mNotifyPointBg == null) {
-            mNotifyPointBg = getResources().getDrawable(R.drawable.shape_notify_point);
+            mNotifyPointBg = ContextCompat.getDrawable(mContext,R.drawable.shape_notify_point);
         }
     }
 
@@ -220,7 +221,7 @@ public class BottomBarItem extends LinearLayout {
     }
 
     public void setStatus(boolean isSelected) {
-        mImageView.setImageDrawable(getResources().getDrawable(isSelected ? mIconSelectedResourceId : mIconNormalResourceId));
+        mImageView.setImageDrawable(ContextCompat.getDrawable(mContext,isSelected ? mIconSelectedResourceId : mIconNormalResourceId));
         mTextView.setTextColor(isSelected ? mTextColorSelected : mTextColorNormal);
     }
 

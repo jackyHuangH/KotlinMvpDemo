@@ -12,10 +12,11 @@
     <color name="color_282828">#282828</color>
     <color name="color_cfcfcf">#cfcfcf</color>
     <color name="color_999999">#999999</color>
+    <color name="color_d5d5d5">#d5d5d5</color>
     <color name="color_fb5656">#fb5656</color>
     <color name="entering_layout_default_bg">#ffffff</color>
 
     <color name="white">#ffffff</color>
     <color name="red">#ff0000</color>
-    <color name="selector_grey">#DDDDDD</color>
+    <color name="selector_grey">#11000000</color>
 </resources>

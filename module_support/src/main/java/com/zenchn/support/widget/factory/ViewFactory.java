@@ -32,12 +32,14 @@ public class ViewFactory {
     public static TextView getTextView(@NonNull Context context, @Nullable String text, @NonNull ColorStateList color, int textSize, @Nullable Drawable backgroundDrawable) {
         TextView tv = new TextView(context);
         tv.setGravity(Gravity.CENTER);
-        if (!TextUtils.isEmpty(text))
+        if (!TextUtils.isEmpty(text)) {
             tv.setText(text);
+        }
         tv.setTextColor(color);
         tv.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
-        if (backgroundDrawable != null)
+        if (backgroundDrawable != null) {
             tv.setBackgroundDrawable(backgroundDrawable);
+        }
         return tv;
     }
 
@@ -70,7 +72,15 @@ public class ViewFactory {
     public static ImageButton getImageButton(@NonNull Context context, @NonNull Drawable nextIcon) {
         ImageButton ib = new ImageButton(context);
         ib.setImageDrawable(nextIcon);
-        ib.setBackgroundDrawable(null);
+        ib.setBackground(null);
+        ib.setScaleType(ImageView.ScaleType.FIT_CENTER);
+        return ib;
+    }
+
+    public static ImageButton getImageButton(@NonNull Context context, @NonNull Drawable nextIcon, @NonNull Drawable background) {
+        ImageButton ib = new ImageButton(context);
+        ib.setBackground(background);
+        ib.setImageDrawable(nextIcon);
         ib.setScaleType(ImageView.ScaleType.FIT_CENTER);
         return ib;
     }

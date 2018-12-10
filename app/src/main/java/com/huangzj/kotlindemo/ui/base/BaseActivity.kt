@@ -13,7 +13,7 @@ import com.zenchn.support.base.AbstractAppCompatActivity
 import com.zenchn.support.base.IActivityLifecycle
 import com.zenchn.support.base.IUiController
 import com.zenchn.support.dafault.DefaultActivityLifecycle
-import com.zenchn.support.kit.Android
+import com.zenchn.support.kit.AndroidKit
 import com.zenchn.support.utils.StringUtils
 
 /**
@@ -83,7 +83,7 @@ abstract class BaseActivity : AbstractAppCompatActivity(), BaseView {
     }
 
     override fun onApiFailure() {
-        showResMessage(if (Android.NetWork.isNetworkAvailable(this)) R.string.common_error_service else R.string.common_error_network)
+        showResMessage(if (AndroidKit.NetWork.isNetworkAvailable(this)) R.string.common_error_service else R.string.common_error_network)
     }
 
     override fun onApiGrantRefuse() {
@@ -97,7 +97,7 @@ abstract class BaseActivity : AbstractAppCompatActivity(), BaseView {
     }
 
     override fun onPause() {
-        Android.Keyboard.hideSoftInput(this)
+        AndroidKit.Keyboard.hideSoftInput(this)
         super.onPause()
     }
 

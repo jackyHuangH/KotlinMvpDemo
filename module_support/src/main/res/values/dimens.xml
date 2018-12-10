@@ -2,12 +2,12 @@
 <resources>
 
     <dimen name="setting_button_default_height">45dp</dimen>
-    <dimen name="entering_layout_default_height">43dp</dimen>
+    <dimen name="entering_layout_default_height">45dp</dimen>
     <dimen name="entering_layout_default_item_text_size">15sp</dimen>
-    <dimen name="entering_layout_default_left_padding">15dp</dimen>
+    <dimen name="entering_layout_default_left_padding">10dp</dimen>
     <dimen name="entering_layout_default_right_padding">10dp</dimen>
-    <dimen name="entering_layout_default_asterisk_left_padding">3dp</dimen>
-    <dimen name="entering_layout_default_asterisk_right_padding">10dp</dimen>
+    <dimen name="entering_layout_default_asterisk_left_padding">1dp</dimen>
+    <dimen name="entering_layout_default_asterisk_right_padding">1dp</dimen>
     <dimen name="entering_layout_default_next_icon_left_padding">10dp</dimen>
 
 

@@ -17,7 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.zenchn.support.R;
-import com.zenchn.support.kit.Android;
+import com.zenchn.support.kit.AndroidKit;
 
 import java.util.List;
 
@@ -144,7 +144,7 @@ public class DropDownMenu extends LinearLayout {
         }
 
         popupMenuViews = new FrameLayout(getContext());
-        popupMenuViews.setLayoutParams(new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int) (Android.Dimens.getScreenHeight() * menuHeighPercent)));
+        popupMenuViews.setLayoutParams(new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int) (AndroidKit.Dimens.getScreenHeight() * menuHeighPercent)));
         popupMenuViews.setVisibility(GONE);
         containerView.addView(popupMenuViews, 2);
 

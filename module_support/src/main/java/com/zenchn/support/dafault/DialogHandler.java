@@ -38,7 +38,6 @@ public class DialogHandler {
             Log.d("Dialog shown failed:%s", "The Dialog bind's Activity was recycled or finished!");
             return;
         }
-
         dialog.show();
     }
 

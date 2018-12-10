@@ -21,7 +21,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.zenchn.support.R;
-import com.zenchn.support.kit.Android;
+import com.zenchn.support.kit.AndroidKit;
 import com.zenchn.support.widget.factory.ViewFactory;
 
 /**
@@ -71,7 +71,7 @@ public class SettingButton extends ViewGroup {
         String leftText = typedArray.getString(R.styleable.SettingButton_setting_left_text);
         String rightText = typedArray.getString(R.styleable.SettingButton_setting_right_text);
 
-        int defTextSize = Android.Dimens.sp2px(16);
+        int defTextSize = AndroidKit.Dimens.sp2px(16);
         mLeftTextSize = typedArray.getDimensionPixelOffset(R.styleable.SettingButton_setting_left_text_size, defTextSize);
         mRightTextSize = typedArray.getDimensionPixelOffset(R.styleable.SettingButton_setting_right_text_size, defTextSize);
 
@@ -81,10 +81,10 @@ public class SettingButton extends ViewGroup {
         Drawable nextIconDrawable = typedArray.getDrawable(R.styleable.SettingButton_setting_next_icon);
 
         mRightDrawablePadding = typedArray.getDimensionPixelOffset(R.styleable.SettingButton_setting_right_text_drawable_padding, 0);
-        mRightDrawableMargin = typedArray.getDimensionPixelOffset(R.styleable.SettingButton_setting_right_text_drawable_margin, Android.Dimens.dp2px(10));
+        mRightDrawableMargin = typedArray.getDimensionPixelOffset(R.styleable.SettingButton_setting_right_text_drawable_margin, AndroidKit.Dimens.dp2px(10));
 
-        int leftPadding = typedArray.getDimensionPixelOffset(R.styleable.SettingButton_setting_left_padding, Android.Dimens.dp2px(15));
-        int rightPadding = typedArray.getDimensionPixelOffset(R.styleable.SettingButton_setting_right_padding, Android.Dimens.dp2px(15));
+        int leftPadding = typedArray.getDimensionPixelOffset(R.styleable.SettingButton_setting_left_padding, AndroidKit.Dimens.dp2px(15));
+        int rightPadding = typedArray.getDimensionPixelOffset(R.styleable.SettingButton_setting_right_padding, AndroidKit.Dimens.dp2px(15));
         int topPadding = typedArray.getDimensionPixelOffset(R.styleable.SettingButton_setting_top_padding, 0);
         int bottomPadding = typedArray.getDimensionPixelOffset(R.styleable.SettingButton_setting_bottom_padding, 0);
 
@@ -152,12 +152,12 @@ public class SettingButton extends ViewGroup {
         switch (specMode) {
 
             case MeasureSpec.EXACTLY:
-                result = Math.min(specSize, Android.Dimens.getScreenWidth());
+                result = Math.min(specSize, AndroidKit.Dimens.getScreenWidth());
                 break;
 
             case MeasureSpec.AT_MOST:
             case MeasureSpec.UNSPECIFIED:
-                result = Android.Dimens.getScreenWidth();
+                result = AndroidKit.Dimens.getScreenWidth();
                 break;
         }
         return result;

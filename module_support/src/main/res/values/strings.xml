@@ -2,7 +2,7 @@
     <string name="app_name">baseSupportLib</string>
     <string name="common_library_error_local">请稍后，数据处理异常~</string>
     <string name="common_library_error_network">网络异常，请检查网络~</string>
-    <string name="common_library_loading">正在加载数据&#8230;</string>
+    <string name="common_library_loading">玩命加载中&#8230;</string>
     <string name="common_library_toast_title">消息提示</string>
 
     <!-- 自定义dialog -->

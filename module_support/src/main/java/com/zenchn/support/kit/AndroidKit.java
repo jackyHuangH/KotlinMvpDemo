@@ -31,9 +31,9 @@ import java.util.List;
  * 描    述：android系统常用方法的封装
  * 修订记录：
  */
-public class Android {
+public class AndroidKit {
 
-    private static final String TAG = "Android";
+    private static final String TAG = "AndroidKit";
 
     /**
      * 作    者：wangr on 2017/5/24 17:15

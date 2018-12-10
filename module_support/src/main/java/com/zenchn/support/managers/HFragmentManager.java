@@ -9,12 +9,9 @@ import android.support.v4.app.FragmentTransaction;
 import java.util.List;
 
 /**
- * @author:Hzj
- * @date :2018/10/22/022
- * desc  ：
- * record：
+ * 管理fragment切换的manager
  */
-public class FragmentManagerHelper {
+public class HFragmentManager {
     // 管理类FragmentManager
     private FragmentManager mFragmentManager;
     // 容器布局id containerViewId
@@ -26,7 +23,7 @@ public class FragmentManagerHelper {
      * @param fragmentManager 管理类FragmentManager
      * @param containerViewId 容器布局id containerViewId
      */
-    public FragmentManagerHelper(@Nullable FragmentManager fragmentManager, @IdRes int containerViewId) {
+    public HFragmentManager(@Nullable FragmentManager fragmentManager, @IdRes int containerViewId) {
         this.mFragmentManager = fragmentManager;
         this.mContainerViewId = containerViewId;
     }

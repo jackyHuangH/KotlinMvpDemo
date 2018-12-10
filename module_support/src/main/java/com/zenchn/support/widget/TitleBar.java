@@ -21,7 +21,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.zenchn.support.R;
-import com.zenchn.support.kit.Android;
+import com.zenchn.support.kit.AndroidKit;
 import com.zenchn.support.widget.factory.ViewFactory;
 
 /**
@@ -31,7 +31,7 @@ import com.zenchn.support.widget.factory.ViewFactory;
  */
 public class TitleBar extends ViewGroup {
 
-    private static final int DEFAULT_HEIGHT = Android.Dimens.dp2px(45);
+    private static final int DEFAULT_HEIGHT = AndroidKit.Dimens.dp2px(45);
 
     private OnLeftClickListener mLeftClickListener;
     private OnRightClickListener mRightClickListener;
@@ -78,26 +78,26 @@ public class TitleBar extends ViewGroup {
         Drawable titleBarLeftIconDrawable = typedArray.getDrawable(R.styleable.TitleBar_title_bar_left_icon);
 
         String titleBarCenterText = typedArray.getString(R.styleable.TitleBar_title_bar_center_text);
-        mTitleBarCenterTextColor = typedArray.getColor(R.styleable.TitleBar_title_bar_center_text_color, ContextCompat.getColor(context, R.color.color_282828));
-        mTitleBarCenterTextSize = typedArray.getDimensionPixelOffset(R.styleable.TitleBar_title_bar_center_text_size, Android.Dimens.sp2px(19));
+        mTitleBarCenterTextColor = typedArray.getColor(R.styleable.TitleBar_title_bar_center_text_color, ContextCompat.getColor(context, R.color.white));
+        mTitleBarCenterTextSize = typedArray.getDimensionPixelOffset(R.styleable.TitleBar_title_bar_center_text_size, AndroidKit.Dimens.sp2px(19));
 
-        mTitleBarLeftTextColor = typedArray.getColor(R.styleable.TitleBar_title_bar_left_text_color, ContextCompat.getColor(context, R.color.color_282828));
-        mTitleBarLeftTextSize = typedArray.getDimensionPixelOffset(R.styleable.TitleBar_title_bar_left_text_size, Android.Dimens.sp2px(16));
+        mTitleBarLeftTextColor = typedArray.getColor(R.styleable.TitleBar_title_bar_left_text_color, ContextCompat.getColor(context, R.color.white));
+        mTitleBarLeftTextSize = typedArray.getDimensionPixelOffset(R.styleable.TitleBar_title_bar_left_text_size, AndroidKit.Dimens.sp2px(16));
 
-        mTitleBarRightTextColor = typedArray.getColor(R.styleable.TitleBar_title_bar_right_text_color, ContextCompat.getColor(context, R.color.color_282828));
-        mTitleBarRightTextSize = typedArray.getDimensionPixelOffset(R.styleable.TitleBar_title_bar_right_text_size, Android.Dimens.sp2px(16));
+        mTitleBarRightTextColor = typedArray.getColor(R.styleable.TitleBar_title_bar_right_text_color, ContextCompat.getColor(context, R.color.white));
+        mTitleBarRightTextSize = typedArray.getDimensionPixelOffset(R.styleable.TitleBar_title_bar_right_text_size, AndroidKit.Dimens.sp2px(16));
         String titleBarRightText = typedArray.getString(R.styleable.TitleBar_title_bar_right_text);
 
-        mTitleBarTopAndBottomMargin = typedArray.getDimensionPixelOffset(R.styleable.TitleBar_title_bar_top_and_bottom_margin, Android.Dimens.dp2px(10));
-        mTitleBarLeftClickPadding = typedArray.getDimensionPixelOffset(R.styleable.TitleBar_title_bar_left_click_padding, Android.Dimens.dp2px(20));
-        mTitleBarRightClickPadding = typedArray.getDimensionPixelOffset(R.styleable.TitleBar_title_bar_right_click_padding, Android.Dimens.dp2px(15));
+        mTitleBarTopAndBottomMargin = typedArray.getDimensionPixelOffset(R.styleable.TitleBar_title_bar_top_and_bottom_margin, AndroidKit.Dimens.dp2px(10));
+        mTitleBarLeftClickPadding = typedArray.getDimensionPixelOffset(R.styleable.TitleBar_title_bar_left_click_padding, AndroidKit.Dimens.dp2px(20));
+        mTitleBarRightClickPadding = typedArray.getDimensionPixelOffset(R.styleable.TitleBar_title_bar_right_click_padding, AndroidKit.Dimens.dp2px(15));
 
-        int titleBarDefaultBgColor = typedArray.getColor(R.styleable.TitleBar_title_bar_default_bg_color, ContextCompat.getColor(context, android.R.color.white));
+        int titleBarDefaultBgColor = typedArray.getColor(R.styleable.TitleBar_title_bar_default_bg_color, ContextCompat.getColor(context, R.color.ios_blue));
 
         boolean titleBarDefault = typedArray.getBoolean(R.styleable.TitleBar_title_bar_default, true);
 
         mTitleBarSeparateColor = typedArray.getColor(R.styleable.TitleBar_title_bar_separate_color, ContextCompat.getColor(context, R.color.color_cfcfcf));
-        mTitleBarSeparateHeight = typedArray.getDimensionPixelOffset(R.styleable.TitleBar_title_bar_separate_height, Android.Dimens.dp2px(1));
+        mTitleBarSeparateHeight = typedArray.getDimensionPixelOffset(R.styleable.TitleBar_title_bar_separate_height, AndroidKit.Dimens.dp2px(1));
 
         typedArray.recycle();
 
@@ -107,37 +107,43 @@ public class TitleBar extends ViewGroup {
 
         if (titleBarDefault) {
             if (titleBarLeftIconDrawable == null) {
-                titleBarLeftIconDrawable = ContextCompat.getDrawable(context, R.drawable.widget_ic_back);
+                titleBarLeftIconDrawable = ContextCompat.getDrawable(context, R.drawable.ic_back_white);
             }
-            leftView(ViewFactory.getImageButton(context, titleBarLeftIconDrawable));
+            Drawable backBackground = ContextCompat.getDrawable(context, R.drawable.selector_titlebar_back);
+            leftView(ViewFactory.getImageButton(context, titleBarLeftIconDrawable, backBackground));
             titleText(titleBarCenterText);
-            if (!TextUtils.isEmpty(titleBarRightText))
+            if (!TextUtils.isEmpty(titleBarRightText)) {
                 rightText(titleBarRightText);
+            }
         }
 
         setBackgroundColor(titleBarDefaultBgColor);
     }
 
     private void addLeftClickListener() {
-        if (mLeftView != null)
+        if (mLeftView != null) {
             mLeftView.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (mLeftClickListener != null)
+                    if (mLeftClickListener != null) {
                         mLeftClickListener.onLeftViewClick(v);
+                    }
                 }
             });
+        }
     }
 
     private void addRightClickListener() {
-        if (mRightView != null)
+        if (mRightView != null) {
             mRightView.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (mRightClickListener != null)
+                    if (mRightClickListener != null) {
                         mRightClickListener.onRightViewClick(v);
+                    }
                 }
             });
+        }
     }
 
     private View getSeparateView(@NonNull Context context, @ColorInt int titleBarSeparateColor, int mTitleBarSeparateHeight) {
@@ -154,8 +160,9 @@ public class TitleBar extends ViewGroup {
         int measuredHeight = measuredHeight(heightMeasureSpec);
         int measuredWidth = measuredWidth(widthMeasureSpec);
         remeasureChildren(measuredHeight);
-        if (mSeparateView != null)
+        if (mSeparateView != null) {
             measuredHeight += mSeparateView.getMeasuredHeight();
+        }
         measuredHeight += (getPaddingTop() + getPaddingBottom());
         setMeasuredDimension(measuredWidth, measuredHeight);
     }
@@ -166,14 +173,16 @@ public class TitleBar extends ViewGroup {
      * @param measuredHeight
      */
     private void remeasureChildren(int measuredHeight) {
-        if (mLeftView != null)
+        if (mLeftView != null) {
             mLeftView.measure(
                     MeasureSpec.makeMeasureSpec(mLeftView.getMeasuredWidth(), MeasureSpec.EXACTLY),
                     MeasureSpec.makeMeasureSpec(measuredHeight, MeasureSpec.EXACTLY));
-        if (mRightView != null)
+        }
+        if (mRightView != null) {
             mRightView.measure(
                     MeasureSpec.makeMeasureSpec(mRightView.getMeasuredWidth(), MeasureSpec.EXACTLY),
                     MeasureSpec.makeMeasureSpec(measuredHeight, MeasureSpec.EXACTLY));
+        }
     }
 
     private int measuredWidth(int measureSpec) {
@@ -184,12 +193,12 @@ public class TitleBar extends ViewGroup {
         switch (specMode) {
 
             case MeasureSpec.EXACTLY:
-                result = Math.min(specSize, Android.Dimens.getScreenWidth());
+                result = Math.min(specSize, AndroidKit.Dimens.getScreenWidth());
                 break;
 
             case MeasureSpec.AT_MOST:
             case MeasureSpec.UNSPECIFIED:
-                result = Android.Dimens.getScreenWidth();
+                result = AndroidKit.Dimens.getScreenWidth();
                 break;
         }
         return result;
@@ -216,12 +225,15 @@ public class TitleBar extends ViewGroup {
 
     private int getViewMaxHeight() {
         int viewMaxHeight = DEFAULT_HEIGHT;
-        if (mCenterView != null)
+        if (mCenterView != null) {
             viewMaxHeight = Math.max(mCenterView.getMeasuredHeight() + mTitleBarTopAndBottomMargin * 2, viewMaxHeight);
-        if (mLeftView != null)
+        }
+        if (mLeftView != null) {
             viewMaxHeight = Math.max(mLeftView.getMeasuredHeight(), viewMaxHeight);
-        if (mRightView != null)
+        }
+        if (mRightView != null) {
             viewMaxHeight = Math.max(mRightView.getMeasuredHeight(), viewMaxHeight);
+        }
         return viewMaxHeight;
     }
 
@@ -261,39 +273,42 @@ public class TitleBar extends ViewGroup {
     }
 
     /**
-     * 设置view可见性
+     * 设置leftView可见性
      *
      * @param isLeftVisible
      * @return
      */
 
     public TitleBar leftVisible(boolean isLeftVisible) {
-        if (mLeftView != null)
+        if (mLeftView != null) {
             mLeftView.setVisibility(isLeftVisible ? View.VISIBLE : View.GONE);
+        }
         return this;
     }
 
     /**
-     * 设置view可见性
+     * 设置rightView可见性
      *
      * @param isRightVisible
      * @return
      */
     public TitleBar rightVisible(boolean isRightVisible) {
-        if (mRightView != null)
+        if (mRightView != null) {
             mRightView.setVisibility(isRightVisible ? View.VISIBLE : View.GONE);
+        }
         return this;
     }
 
     /**
-     * 设置view可见性
+     * 设置centerView可见性
      *
      * @param isCenterVisible
      * @return
      */
     public TitleBar centerVisible(boolean isCenterVisible) {
-        if (mCenterView != null)
+        if (mCenterView != null) {
             mCenterView.setVisibility(isCenterVisible ? View.VISIBLE : View.GONE);
+        }
         return this;
     }
 
@@ -304,8 +319,9 @@ public class TitleBar extends ViewGroup {
      * @return
      */
     public TitleBar titleView(@NonNull View customTitleView) {
-        if (mCenterView != null)
+        if (mCenterView != null) {
             removeView(mCenterView);
+        }
         addView(customTitleView);
         mCenterView = customTitleView;
         return this;
@@ -383,8 +399,9 @@ public class TitleBar extends ViewGroup {
      */
     public TitleBar leftTextColor(@ColorInt int textColor) {
         mTitleBarLeftTextColor = textColor;
-        if (mLeftView != null && mLeftView instanceof TextView)
+        if (mLeftView != null && mLeftView instanceof TextView) {
             ((TextView) mLeftView).setTextColor(textColor);
+        }
         return this;
     }
 
@@ -396,8 +413,9 @@ public class TitleBar extends ViewGroup {
      */
     public TitleBar leftTextSize(int textSize) {
         mTitleBarLeftTextSize = textSize;
-        if (mLeftView != null && mLeftView instanceof TextView)
+        if (mLeftView != null && mLeftView instanceof TextView) {
             ((TextView) mLeftView).setTextSize(TypedValue.COMPLEX_UNIT_SP, textSize);
+        }
         return this;
     }
 
@@ -435,8 +453,9 @@ public class TitleBar extends ViewGroup {
      * @return
      */
     public TitleBar rightView(@NonNull View customRightView) {
-        if (mRightView != null)
+        if (mRightView != null) {
             removeView(mRightView);
+        }
         customRightView.setPadding(mTitleBarRightClickPadding, 0, mTitleBarRightClickPadding, 0);
         addView(customRightView);
         mRightView = customRightView;
@@ -452,8 +471,9 @@ public class TitleBar extends ViewGroup {
      */
     public TitleBar rightTextColor(@ColorInt int textColor) {
         mTitleBarRightTextColor = textColor;
-        if (mRightView != null && mRightView instanceof TextView)
+        if (mRightView != null && mRightView instanceof TextView) {
             ((TextView) mRightView).setTextColor(textColor);
+        }
         return this;
     }
 
@@ -465,8 +485,9 @@ public class TitleBar extends ViewGroup {
      */
     public TitleBar rightTextSize(int textSize) {
         mTitleBarRightTextSize = textSize;
-        if (mRightView != null && mRightView instanceof TextView)
+        if (mRightView != null && mRightView instanceof TextView) {
             ((TextView) mRightView).setTextSize(TypedValue.COMPLEX_UNIT_SP, textSize);
+        }
         return this;
     }
 
@@ -586,7 +607,7 @@ public class TitleBar extends ViewGroup {
      * @return
      */
     public TitleBar setBackgroundDrawable(@DrawableRes int drawableRes) {
-        setBackgroundDrawable(getResources().getDrawable(drawableRes));
+        setBackground(getResources().getDrawable(drawableRes));
         return this;
     }
 
@@ -609,8 +630,9 @@ public class TitleBar extends ViewGroup {
      */
     public TitleBar setSeparateColor(@ColorRes int colorRes) {
         this.mTitleBarSeparateColor = getResources().getColor(colorRes);
-        if (mSeparateView != null)
+        if (mSeparateView != null) {
             mSeparateView.setBackgroundColor(mTitleBarSeparateColor);
+        }
         return this;
     }
 
@@ -623,7 +645,7 @@ public class TitleBar extends ViewGroup {
     public TitleBar setSeparateHeight(int separateHeight) {
         this.mTitleBarSeparateHeight = separateHeight;
         if (mSeparateView != null) {
-            mSeparateView.getLayoutParams().height = Android.Dimens.dp2px(separateHeight);
+            mSeparateView.getLayoutParams().height = AndroidKit.Dimens.dp2px(separateHeight);
             requestLayout();
         }
         return this;
@@ -636,8 +658,9 @@ public class TitleBar extends ViewGroup {
      * @return
      */
     public TitleBar setSeparateDrawable(@DrawableRes int drawableRes) {
-        if (mSeparateView != null)
+        if (mSeparateView != null) {
             mSeparateView.setBackgroundResource(drawableRes);
+        }
         return this;
     }
 

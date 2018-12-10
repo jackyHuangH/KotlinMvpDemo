@@ -18,7 +18,7 @@ import java.util.List;
 /**
  * @author:Hzj
  * @date :2018/9/14/014
- * desc  ：底部导航栏封装，支持显示未读消息，小红点，new提示
+ * desc  ：底部导航栏封装，支持显示未读消息，小红点，"new"提示
  * record：
  */
 public class BottomBarLayout extends LinearLayout implements ViewPager.OnPageChangeListener {
@@ -87,7 +87,7 @@ public class BottomBarLayout extends LinearLayout implements ViewPager.OnPageCha
         mItemViews.get(mCurrentItem).setStatus(true);//设置选中项
 
         if (mViewPager != null) {
-            mViewPager.setOnPageChangeListener(this);
+            mViewPager.addOnPageChangeListener(this);
         }
     }
 

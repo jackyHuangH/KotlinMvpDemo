@@ -1,4 +1,4 @@
-package cn.hzjdemo.support;
+package jacky.hzjdemo.support;
 
 import org.junit.Test;
 
