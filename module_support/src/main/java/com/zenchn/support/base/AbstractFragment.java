@@ -29,7 +29,7 @@ public abstract class AbstractFragment extends Fragment implements IActivity {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        mUiController=getDefaultUiController(context);
+        mUiController = getDefaultUiController(context);
     }
 
     @Nullable
@@ -37,11 +37,16 @@ public abstract class AbstractFragment extends Fragment implements IActivity {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if (rootView == null) {
             rootView = inflater.inflate(getLayoutRes(), null);
-           mUnbinder= ButterKnife.bind(this, rootView);
-            initWidget();
+            mUnbinder = ButterKnife.bind(this, rootView);
         }
-        initInstanceState(savedInstanceState);
         return rootView;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        initWidget();
+        initInstanceState(savedInstanceState);
     }
 
     //界面布局的初始化操作
@@ -50,7 +55,7 @@ public abstract class AbstractFragment extends Fragment implements IActivity {
     }
 
     protected IUiController getDefaultUiController(Context context) {
-       return new DefaultUiController(context);
+        return new DefaultUiController(context);
     }
 
     @Override
@@ -98,7 +103,7 @@ public abstract class AbstractFragment extends Fragment implements IActivity {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        if (mUnbinder!=null) {
+        if (mUnbinder != null) {
             mUnbinder.unbind();
         }
     }

@@ -24,10 +24,10 @@ class MsgListAdapter(val datas: List<String>) : RecyclerView.Adapter<MsgListAdap
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.recycle_item_msg, parent, false))
+        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.recycle_item_home_content, parent, false))
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val tv: TextView = itemView.find(R.id.tv) as TextView
+        val tv: TextView = itemView.find(R.id.tv_title) as TextView
     }
 }

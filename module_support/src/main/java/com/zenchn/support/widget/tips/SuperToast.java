@@ -92,11 +92,11 @@ public class SuperToast {
      * @param msg
      */
     public static void showCustomMessage(Context context, String msg) {
-        if (mCustomToastView != null) {
-            showCustomToast(context.getApplicationContext(), msg, mCustomToastView);
-        } else {
-            showDefaultMessage(context.getApplicationContext(), msg);
-        }
+//        if (mCustomToastView != null) {
+//            showCustomToast(context.getApplicationContext(), msg, mCustomToastView);
+//        } else {
+//        }
+        showDefaultMessage(context.getApplicationContext(), msg);
     }
 
     /**

@@ -1,54 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_splash"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/color_title_bg"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
 
-    <Button
-        android:id="@+id/bt"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        app:layout_constraintEnd_toStartOf="@+id/sw_btn"
-        app:layout_constraintHorizontal_weight="1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="点我开始倒计时"/>
 
-    <Button
-        android:id="@+id/bt_main"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bt"
-        android:text="跳转主页"/>
+    <ImageView
+        android:id="@+id/iv_web_icon"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="120dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/web_hi_res_512"/>
 
-    <Switch
-        android:id="@+id/sw_btn"
+    <TextView
+        android:id="@+id/tv_app_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:textColor="@color/colorPrimary"
-        android:textOff="关"
-        android:textOn="开"
-        android:textSize="13sp"
-        app:layout_constraintBottom_toBottomOf="@+id/bt"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/bt"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/list"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
         android:layout_marginTop="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bt_main"/>
+        android:text="@string/app_name"
+        android:textColor="@color/color_black"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
 
-</android.support.constraint.ConstraintLayout>
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <TextView
+        android:id="@+id/tv_splash_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="@string/splash_text"
+        android:textColor="@color/color_black"
+        android:textSize="14sp"/>
+
+    <TextView
+        android:id="@+id/tv_version_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="60dp"
+        android:textColor="@color/color_9a9a9a"
+        android:textSize="12sp"
+        tools:text="v1.0"/>
+
+</LinearLayout>

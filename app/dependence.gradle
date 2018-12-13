@@ -4,8 +4,8 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:${rootProject.ext.kotlin.kotlin_version}"
-    implementation "org.jetbrains.anko:anko-common:${rootProject.ext.kotlin.anko_version}"
+    implementation rootProject.ext.dependencies["anko"]
+    implementation rootProject.ext.dependencies["kotlin_reflect"]
 
     implementation rootProject.ext.dependencies["constraint_layout"]
     implementation rootProject.ext.dependencies["recyclerview"]
@@ -31,10 +31,12 @@ dependencies {
     implementation rootProject.ext.dependencies["pictureSelector"]
     implementation rootProject.ext.dependencies["range_time_picker"]
 
+    implementation rootProject.ext.dependencies["easypermission"]
+
     implementation rootProject.ext.dependencies["banner"]
     implementation rootProject.ext.dependencies["glide"]
     implementation rootProject.ext.dependencies["glide_okhttp_integration"]
-    annotationProcessor rootProject.ext.dependencies["glide_compiler"]
+    kapt rootProject.ext.dependencies["glide_compiler"]
 
     implementation rootProject.ext.dependencies["picasso"]
     implementation rootProject.ext.dependencies["base_rvadapter"]
@@ -53,7 +55,7 @@ dependencies {
     implementation rootProject.ext.dependencies["gson"]
 
     implementation rootProject.ext.dependencies["dagger2"]
-    annotationProcessor rootProject.ext.dependencies["dagger2_compiler"]
+    kapt rootProject.ext.dependencies["dagger2_compiler"]
 
     //use greendao
 //    implementation rootProject.ext.dependencies["greendao"]

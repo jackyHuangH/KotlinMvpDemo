@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
@@ -36,7 +37,7 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    api fileTree(dir: 'libs', include: ['*.jar'])
     androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
@@ -51,7 +52,9 @@ dependencies {
     api rootProject.ext.dependencies["rxandroid2"]
     api rootProject.ext.dependencies["retrofit"]
     api rootProject.ext.dependencies["retrofit_converter_scalars"]
+    api rootProject.ext.dependencies["retrofitConverterGson"]
     api rootProject.ext.dependencies["retrofit_rxjava2_adapter"]
     api rootProject.ext.dependencies["fastjson"]
+    api rootProject.ext.dependencies["gson"]
     testImplementation 'junit:junit:4.12'
 }

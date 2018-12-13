@@ -27,13 +27,20 @@
         android:supportsRtl="true"
         android:theme="@style/KotlinDemoAppTheme.NoActionBar"
         tools:replace="android:theme">
-        <activity android:name=".ui.activity.SplashActivity">
+
+        android:networkSecurityConfig="@xml/network_security_config">
+        <!--9.0加的，哦哦-->
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+
+        <activity android:name=".mvp.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activity.MainActivity"/>
+        <activity android:name=".mvp.main.MainActivity"/>
 
     </application>
 

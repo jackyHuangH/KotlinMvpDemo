@@ -1,6 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'//扩展插件，无需findviewbyid
+apply plugin: 'kotlin-android-extensions'//扩展插件，无需findViewById,直接引用布局文件的id即可
 apply plugin: 'kotlin-kapt'  //kapt3插件
 apply from: 'dependence.gradle'
 
@@ -17,11 +17,55 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         multiDexEnabled true
+        //无需多版本控制，gradle3.0+需要配置这句话
+        flavorDimensions "zenchn"
+        ndk {
+            // 设置支持的SO库架构
+            abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a'//, 'x86', 'x86_64'
+        }
     }
+
+    // gradle签名配置
+    signingConfigs {
+        release {
+            storeFile file(RELEASE_KEYSTORE_FILE)
+            storePassword RELEASE_KEYSTORE_PASSWORD
+            keyAlias RELEASE_KEY_ALIAS
+            keyPassword RELEASE_KEY_PASSWORD
+        }
+
+        debug {
+            storeFile file(DEBUG_KEYSTORE_FILE)
+        }
+    }
+
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            shrinkResources true
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            minifyEnabled false
+            shrinkResources false
+            signingConfig signingConfigs.debug
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDir 'libs'
+        }
+        debug.setRoot('build-types/debug')
+        release.setRoot('build-types/release')
+    }
+
+    repositories {
+        flatDir {
+            dirs 'libs' //this way we can find the .aar file in libs folder
         }
     }
 
@@ -29,6 +73,27 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    lintOptions {
+        abortOnError false
+        checkReleaseBuilds false
+    }
+
+    //加快gradle编译配置
+    dexOptions {
+        //是否支持大工程模式
+        jumboMode = true
+        //进程内执行dex分包
+        dexInProcess true
+        //使用增量模式构建
+//        incremental true
+        //最大堆内存
+        javaMaxHeapSize "2g"
+        //预编译
+        preDexLibraries = true
+        //线程数
+        threadCount = 8
     }
 
     //解决pictureSelector rxjava版本冲突

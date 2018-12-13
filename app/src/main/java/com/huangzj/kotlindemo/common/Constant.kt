@@ -9,5 +9,5 @@ package com.huangzj.kotlindemo.common
  */
 object Constant {
     const val LOGGERKIT_TAG = "HZJ_DEBUG"//loggerkit tag
-    const val BASE_REQUEST_HTTP_HOST = "http://192.168.1.121:5566/test/"
+    const val BASE_REQUEST_HTTP_HOST = "http://baobab.kaiyanapp.com/api/"
 }

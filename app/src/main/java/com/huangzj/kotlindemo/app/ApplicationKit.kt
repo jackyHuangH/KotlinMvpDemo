@@ -5,7 +5,7 @@ import android.app.NotificationManager
 import android.content.Intent
 import com.huangzj.kotlindemo.R
 import com.huangzj.kotlindemo.common.Constant
-import com.huangzj.kotlindemo.ui.activity.MainActivity
+import com.huangzj.kotlindemo.mvp.main.MainActivity
 import com.zenchn.apilib.base.ApiManager
 import com.zenchn.apilib.util.LoggerKit
 import com.zenchn.support.base.AbstractApplicationKit
