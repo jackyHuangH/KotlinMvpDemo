@@ -10,7 +10,7 @@
         android:id="@+id/iv_cover_feed"
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        android:scaleType="fitXY"
+        android:scaleType="centerCrop"
         android:src="@drawable/placeholder_banner"/>
 
     <RelativeLayout

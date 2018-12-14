@@ -28,4 +28,8 @@ class DiscoveryFragment : BaseFragment() {
     override fun initWidget() {
 
     }
+
+    override fun lazyLoad() {
+
+    }
 }

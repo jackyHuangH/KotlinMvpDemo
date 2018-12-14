@@ -58,6 +58,9 @@ ext {
             //图片加载Picasso
             "picasso"                   : 'com.squareup.picasso:picasso:2.5.2',
 
+            //blureview 透明效果
+            blurview                    : 'com.github.mmin18:realtimeblurview:1.1.2',
+
             //baseAdapter ForRecyclerView
             "base_rvadapter"            : 'com.zhy:base-rvadapter:3.0.3',
             "brvah"                     : 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.42',

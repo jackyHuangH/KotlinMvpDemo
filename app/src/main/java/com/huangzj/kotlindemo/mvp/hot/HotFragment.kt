@@ -11,7 +11,6 @@ import com.huangzj.kotlindemo.mvp.baseview.BaseFragment
  * record：
  */
 class HotFragment : BaseFragment() {
-
     private var mTitle: String? = null
 
     companion object {
@@ -29,6 +28,10 @@ class HotFragment : BaseFragment() {
     }
 
     override fun initWidget() {
+
+    }
+
+    override fun lazyLoad() {
 
     }
 }

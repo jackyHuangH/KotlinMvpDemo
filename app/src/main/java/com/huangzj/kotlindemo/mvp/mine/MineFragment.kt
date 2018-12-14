@@ -29,4 +29,8 @@ class MineFragment : BaseFragment() {
     override fun initWidget() {
 
     }
+
+    override fun lazyLoad() {
+
+    }
 }

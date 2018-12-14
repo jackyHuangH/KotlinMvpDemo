@@ -9,27 +9,32 @@
     <FrameLayout
         android:id="@+id/fl_container"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/bottom_layout"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_weight="1"/>
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <com.github.mmin18.widget.RealtimeBlurView
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/color_title_bg"
+        app:layout_constraintBottom_toBottomOf="@+id/fl_container"/>
 
     <com.zenchn.support.widget.bottomnavigationbar.BottomBarLayout
         android:id="@+id/bottom_layout"
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fl_container">
+        android:background="@color/transparent"
+        app:layout_constraintBottom_toBottomOf="@+id/fl_container">
 
         <com.zenchn.support.widget.bottomnavigationbar.BottomBarItem
             android:id="@+id/navigation_home"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            app:iconHeight="18dp"
+            app:iconHeight="20dp"
             app:iconNormal="@drawable/ic_home_normal"
             app:iconSelected="@drawable/ic_home_selected"
-            app:iconWidth="18dp"
+            app:iconWidth="20dp"
             app:itemMarginTop="0dp"
             app:itemText="@string/title_home"
             app:itemTextSize="13sp"
@@ -41,10 +46,10 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            app:iconHeight="18dp"
+            app:iconHeight="20dp"
             app:iconNormal="@drawable/ic_discovery_normal"
             app:iconSelected="@drawable/ic_discovery_selected"
-            app:iconWidth="18dp"
+            app:iconWidth="20dp"
             app:itemMarginTop="0dp"
             app:itemText="@string/title_discovery"
             app:itemTextSize="13sp"
@@ -56,10 +61,10 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            app:iconHeight="18dp"
+            app:iconHeight="20dp"
             app:iconNormal="@drawable/ic_hot_normal"
             app:iconSelected="@drawable/ic_hot_selected"
-            app:iconWidth="18dp"
+            app:iconWidth="20dp"
             app:itemMarginTop="0dp"
             app:itemText="@string/title_hot"
             app:itemTextSize="13sp"
@@ -71,10 +76,10 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            app:iconHeight="18dp"
+            app:iconHeight="20dp"
             app:iconNormal="@drawable/ic_mine_normal"
             app:iconSelected="@drawable/ic_mine_selected"
-            app:iconWidth="18dp"
+            app:iconWidth="20dp"
             app:itemMarginTop="0dp"
             app:itemText="@string/title_mine"
             app:itemTextSize="13sp"

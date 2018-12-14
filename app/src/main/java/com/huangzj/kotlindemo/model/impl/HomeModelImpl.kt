@@ -23,7 +23,7 @@ class HomeModelImpl : HomeModel {
                 .subscribe(object : RxHttpDataObserver<HomeBean>(callback) {
                     override fun onHttpResponseResult(success: Boolean, data: HomeBean?, msg: String?) {
                         if (success) {
-                            data?.let { callback.onGetHomeListSuccess(it) }
+                            data?.let { callback.onRefreshHomeListSuccess(it) }
                         } else {
                             callback.onApiFailure(msg)
                         }

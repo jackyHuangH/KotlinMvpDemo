@@ -5,6 +5,7 @@ import android.annotation.SuppressLint
 import android.graphics.Typeface
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
+import com.gyf.barlibrary.ImmersionBar
 import com.huangzj.kotlindemo.R
 import com.huangzj.kotlindemo.app.ApplicationKit
 import com.huangzj.kotlindemo.mvp.baseview.BaseActivity
@@ -40,6 +41,12 @@ class SplashActivity : BaseActivity() {
         descTypeFace = Typeface.createFromAsset(ApplicationKit.instance.application.assets, descFontFile)
     }
 
+    override fun initStatusBar() {
+        //不适配状态栏
+        mImmersionBar = ImmersionBar.with(this)
+        mImmersionBar.fullScreen(true)
+                .init()
+    }
 
     override fun getLayoutRes(): Int = R.layout.activity_splash
 

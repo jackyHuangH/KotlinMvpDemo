@@ -23,6 +23,7 @@
     <color name="color_division_line">@color/color_lighter_gray</color>
 
     <color name="color_translucent">#00000000</color>
+    <color name="color_44aaaaaa">#44aaaaaa</color>
 
     <color name="color_aquamarine">#7FFFD4</color>
 

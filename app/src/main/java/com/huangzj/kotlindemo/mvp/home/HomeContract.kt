@@ -17,12 +17,13 @@ interface HomeContract {
         /**
          * 展示banner
          */
-        fun showBannerList(homeBean: HomeBean)
+        fun showBannerList(bannerUrls: ArrayList<String>, bannerTitles: ArrayList<String>)
 
         /**
          * 设置第一次请求的数据
          */
-        fun setHomeData(homeBean: HomeBean, hasNextPage: Boolean)
+        fun setHomeNewData(itemList: ArrayList<HomeBean.Issue.Item>, hasNextPage: Boolean)
+
 
         /**
          * 设置加载更多的数据
@@ -35,7 +36,7 @@ interface HomeContract {
         /**
          * 获取首页精选数据
          */
-        fun requestHomeData(num: Int)
+        fun refreshHomeData(num: Int)
 
         /**
          * 加载更多数据

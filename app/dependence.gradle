@@ -39,6 +39,7 @@ dependencies {
     kapt rootProject.ext.dependencies["glide_compiler"]
 
     implementation rootProject.ext.dependencies["picasso"]
+    implementation rootProject.ext.dependencies["blurview"]
     implementation rootProject.ext.dependencies["base_rvadapter"]
     implementation rootProject.ext.dependencies["brvah"]
     implementation rootProject.ext.dependencies["smart_refresh"]

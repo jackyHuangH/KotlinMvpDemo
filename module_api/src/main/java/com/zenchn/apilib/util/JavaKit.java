@@ -26,9 +26,9 @@ import java.util.Map;
  * 描    述： java常用的封装
  * 修订记录：
  */
-public class Java {
+public class JavaKit {
 
-    private static final String TAG = "Java";
+    private static final String TAG = "JavaKit";
 
     /**
      * 判断非空相关（字符串、数组、集合等）

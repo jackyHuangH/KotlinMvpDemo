@@ -22,7 +22,8 @@ import butterknife.Unbinder;
  */
 
 public abstract class AbstractFragment extends Fragment implements IActivity {
-    protected IUiController mUiController;//基本的ui控制器
+    //基本的ui控制器
+    protected IUiController mUiController;
     protected View rootView;
     private Unbinder mUnbinder;
 
@@ -51,7 +52,6 @@ public abstract class AbstractFragment extends Fragment implements IActivity {
 
     //界面布局的初始化操作
     protected void initInstanceState(Bundle savedInstanceState) {
-
     }
 
     protected IUiController getDefaultUiController(Context context) {

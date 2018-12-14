@@ -3,6 +3,7 @@ package com.huangzj.kotlindemo.mvp.baseview
 import android.os.Bundle
 import android.support.annotation.NonNull
 import android.util.Log
+import android.view.View
 import android.view.WindowManager
 import android.widget.Toast
 import com.gyf.barlibrary.ImmersionBar
@@ -20,6 +21,15 @@ abstract class BaseFragment : AbstractFragment(), IView, EasyPermissions.Permiss
 
     protected lateinit var mImmersionBar: ImmersionBar
 
+    /**
+     * 视图是否加载完毕
+     */
+    private var mIsViewPrepare = false
+    /**
+     * 视图是否第一次展现
+     */
+    private var mFirstTimeVisible = false
+
     override fun initInstanceState(savedInstanceState: Bundle?) {
         super.initInstanceState(savedInstanceState)
         //如果要在Fragment单独使用沉浸式，请在onSupportVisible实现沉浸式
@@ -33,9 +43,9 @@ abstract class BaseFragment : AbstractFragment(), IView, EasyPermissions.Permiss
      *
      * @return the boolean
      */
-    protected fun isStatusBarEnabled(): Boolean = true
+    protected open fun isStatusBarEnabled(): Boolean = true
 
-    protected fun initStatusBar() {
+    protected open fun initStatusBar() {
         mImmersionBar = ImmersionBar.with(this)
         mImmersionBar
                 .fitsSystemWindows(true)
@@ -53,7 +63,7 @@ abstract class BaseFragment : AbstractFragment(), IView, EasyPermissions.Permiss
         mImmersionBar.init()
     }
 
-    protected fun addOnKeyboardListener(): OnKeyboardListener? = null
+    protected open fun addOnKeyboardListener(): OnKeyboardListener? = null
 
     override fun onHiddenChanged(hidden: Boolean) {
         super.onHiddenChanged(hidden)
@@ -61,6 +71,31 @@ abstract class BaseFragment : AbstractFragment(), IView, EasyPermissions.Permiss
             mImmersionBar.init()
         }
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        mIsViewPrepare = true
+        lazyLoadDataIfPrepared()
+    }
+
+    override fun setUserVisibleHint(isVisibleToUser: Boolean) {
+        super.setUserVisibleHint(isVisibleToUser)
+        if (!mFirstTimeVisible && isVisibleToUser) {
+            lazyLoadDataIfPrepared()
+            mFirstTimeVisible = true
+        }
+    }
+
+    private fun lazyLoadDataIfPrepared() {
+        if (userVisibleHint && mIsViewPrepare && !mFirstTimeVisible) {
+            lazyLoad()
+        }
+    }
+
+    /**
+     * 懒加载
+     */
+    abstract fun lazyLoad()
 
     /**
      * 模拟activity的onBackPressed()事件

@@ -15,7 +15,7 @@ interface HomeModel {
     fun loadMoreHomeData(nextPageUrl: String, callback: HomeListCallback)
 
     interface HomeListCallback : RxApiCallback {
-        fun onGetHomeListSuccess(homeBean: HomeBean)
+        fun onRefreshHomeListSuccess(homeBean: HomeBean)
 
         fun onGetHomeMoreListSuccess(homeBean: HomeBean)
     }

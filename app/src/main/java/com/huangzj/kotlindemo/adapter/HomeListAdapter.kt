@@ -80,11 +80,11 @@ class HomeListAdapter(data: List<HomeBean.Issue.Item>?) : BaseQuickAdapter<HomeB
         GlideApp
                 .with(mContext)
                 .load(avator)
-                .error(R.drawable.default_avatar)
                 .placeholder(R.drawable.default_avatar)
+                .circleCrop()
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .into(helper.getView(R.id.iv_avatar))
-        helper.setText(R.id.tv_title, itemData?.title?:"")
+        helper.setText(R.id.tv_title, itemData?.title ?: "")
         //遍历标签
         var tagText: String? = tagStart
         itemData?.tags?.take(4)?.forEach {

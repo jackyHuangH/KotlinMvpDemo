@@ -26,7 +26,7 @@ import pub.devrel.easypermissions.EasyPermissions
  * desc  ：
  * record：
  */
-abstract class BaseActivity : AbstractAppCompatActivity(), IView ,EasyPermissions.PermissionCallbacks{
+abstract class BaseActivity : AbstractAppCompatActivity(), IView, EasyPermissions.PermissionCallbacks {
     protected val PAGE_SIZE = 10
     protected lateinit var mImmersionBar: ImmersionBar
 
@@ -41,7 +41,7 @@ abstract class BaseActivity : AbstractAppCompatActivity(), IView ,EasyPermission
     protected fun initInstanceState(savedInstanceState: Bundle?) {
     }
 
-    protected fun initStatusBar() {
+    protected open fun initStatusBar() {
         mImmersionBar = ImmersionBar.with(this)
         mImmersionBar
                 .fitsSystemWindows(true)
@@ -62,7 +62,7 @@ abstract class BaseActivity : AbstractAppCompatActivity(), IView ,EasyPermission
         mImmersionBar.init()
     }
 
-    protected fun addOnKeyboardListener(): OnKeyboardListener? {
+    protected open fun addOnKeyboardListener(): OnKeyboardListener? {
         return null
     }
 
@@ -103,7 +103,9 @@ abstract class BaseActivity : AbstractAppCompatActivity(), IView ,EasyPermission
     }
 
     override fun onDestroy() {
-        mImmersionBar.destroy()
+        if (mImmersionBar != null) {
+            mImmersionBar.destroy()
+        }
         super.onDestroy()
     }
 

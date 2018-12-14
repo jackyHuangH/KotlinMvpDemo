@@ -35,9 +35,9 @@ import javax.crypto.spec.DESKeySpec;
  * 描    述：加密方法的封装
  * 修订记录：
  */
-public class Codec {
+public class CodecKit {
 
-    private static final String TAG = "Codec";
+    private static final String TAG = "CodecKit";
 
     /**
      * 加密
@@ -92,7 +92,7 @@ public class Codec {
          * @return
          */
         public static String encrypt(String data) {
-            return Codec.encrypt(data, "MD5");
+            return CodecKit.encrypt(data, "MD5");
         }
 
         public static String encrypt(final InputStream is, final int bufLen) {
@@ -118,7 +118,7 @@ public class Codec {
             } catch (Exception e) {
                 return null;
             } finally {
-                Java.close(is);
+                JavaKit.close(is);
             }
         }
 
@@ -167,7 +167,7 @@ public class Codec {
                 return null;
 
             } finally {
-                Java.close(fin);
+                JavaKit.close(fin);
             }
         }
 
@@ -181,7 +181,7 @@ public class Codec {
     public static class SHA1 {
 
         public static String encrypt(String data) {
-            return Codec.encrypt(data, "SHA-1");
+            return CodecKit.encrypt(data, "SHA-1");
         }
 
     }
@@ -194,7 +194,7 @@ public class Codec {
     public static class SHA256 {
 
         public static String encrypt(String data) {
-            return Codec.encrypt(data, "SHA-256");
+            return CodecKit.encrypt(data, "SHA-256");
         }
     }
 
@@ -206,7 +206,7 @@ public class Codec {
     public static class SHA384 {
 
         public static String encrypt(String data) {
-            return Codec.encrypt(data, "SHA-384");
+            return CodecKit.encrypt(data, "SHA-384");
         }
 
     }

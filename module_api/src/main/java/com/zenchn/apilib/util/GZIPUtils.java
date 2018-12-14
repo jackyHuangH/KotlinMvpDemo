@@ -56,7 +56,7 @@ public class GZIPUtils {
             e.printStackTrace();
             Log.e(TAG,e.getMessage());
         } finally {
-            Java.close(in, os);
+            JavaKit.close(in, os);
         }
         return result;
     }
@@ -83,7 +83,7 @@ public class GZIPUtils {
             e.printStackTrace();
             Log.e(TAG,e.getMessage());
         } finally {
-            Java.close(is, os);
+            JavaKit.close(is, os);
         }
         return result;
     }
@@ -115,7 +115,7 @@ public class GZIPUtils {
             e.printStackTrace();
             Log.e(TAG,e.getMessage());
         } finally {
-            Java.close(is, myOutput);
+            JavaKit.close(is, myOutput);
         }
         return result;
     }
@@ -151,7 +151,7 @@ public class GZIPUtils {
             e.printStackTrace();
             Log.e(TAG,e.getMessage());
         } finally {
-            Java.close(in, os);
+            JavaKit.close(in, os);
         }
         return result;
     }
@@ -181,7 +181,7 @@ public class GZIPUtils {
             e.printStackTrace();
             Log.e(TAG,e.getMessage());
         } finally {
-            Java.close(myOutput);
+            JavaKit.close(myOutput);
         }
         return result;
     }
@@ -210,7 +210,7 @@ public class GZIPUtils {
             e.printStackTrace();
             Log.e(TAG,e.getMessage());
         } finally {
-            Java.close(out, in);
+            JavaKit.close(out, in);
         }
         return result;
     }

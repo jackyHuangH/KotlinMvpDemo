@@ -1,7 +1,7 @@
 package com.zenchn.apilib.entity;
 
 
-import com.zenchn.apilib.util.Codec;
+import com.zenchn.apilib.util.CodecKit;
 
 import java.io.Serializable;
 
@@ -59,7 +59,7 @@ public class LoginInfoEntity implements Serializable{
     }
 
     public void setPassword(String password) {
-        this.password = Codec.SHA256.encrypt(password);
+        this.password = CodecKit.SHA256.encrypt(password);
     }
 
     @Override
