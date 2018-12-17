@@ -1,6 +1,8 @@
 package com.huangzj.kotlindemo.mvp.home
 
+import android.content.Intent
 import android.os.Bundle
+import android.support.v4.app.ActivityOptionsCompat
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -11,12 +13,13 @@ import com.gyf.barlibrary.ImmersionBar
 import com.huangzj.kotlindemo.R
 import com.huangzj.kotlindemo.adapter.HomeListAdapter
 import com.huangzj.kotlindemo.mvp.baseview.BaseFragment
+import com.huangzj.kotlindemo.mvp.search.SearchActivity
 import com.huangzj.kotlindemo.util.StatusBarUtil
 import com.huangzj.kotlindemo.wrapper.glide.GlideImageLoader
 import com.youth.banner.BannerConfig
 import com.zenchn.apilib.entity.HomeBean
 import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.recycle_header_home.*
+import kotlinx.android.synthetic.main.recycle_header_banner_home.*
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -57,6 +60,15 @@ class HomeFragment : BaseFragment(), HomeContract.View, BaseQuickAdapter.Request
         initRefreshLayout()
         initRecyclerView()
         initToolBar()
+        initSearchBar()
+    }
+
+    private fun initSearchBar() {
+        ib_search.setOnClickListener {
+            // 跳转搜索
+            var optionsCompat = activity?.let { ActivityOptionsCompat.makeSceneTransitionAnimation(it, ib_search, ib_search.transitionName) }
+            startActivity(Intent(activity, SearchActivity::class.java), optionsCompat?.toBundle())
+        }
     }
 
     private fun initToolBar() {
@@ -96,7 +108,7 @@ class HomeFragment : BaseFragment(), HomeContract.View, BaseQuickAdapter.Request
         val emptyList: ArrayList<HomeBean.Issue.Item> = ArrayList()
         mHomeAdapter = activity?.let { HomeListAdapter(emptyList) }
         mHomeAdapter?.setOnLoadMoreListener(this, rlv)
-        var header = LayoutInflater.from(activity).inflate(R.layout.recycle_header_home, rlv, false)
+        var header = LayoutInflater.from(activity).inflate(R.layout.recycle_header_banner_home, rlv, false)
         mHomeAdapter?.addHeaderView(header)
         mHomeAdapter?.onItemClickListener = this
         rlv.adapter = mHomeAdapter

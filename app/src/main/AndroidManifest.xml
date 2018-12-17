@@ -47,6 +47,10 @@
             android:name=".mvp.main.MainActivity"
             android:screenOrientation="portrait"/>
 
+        <activity
+            android:name=".mvp.search.SearchActivity"
+            android:screenOrientation="portrait"/>
+
     </application>
 
 </manifest>

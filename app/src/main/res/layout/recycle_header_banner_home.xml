@@ -8,5 +8,6 @@
     app:banner_default_image="@drawable/placeholder_banner"
     app:title_background="@color/color_44aaaaaa"
     app:title_height="30dp"
+    app:delay_time="3000"
     app:title_textcolor="@color/color_title_bg"
     app:title_textsize="16sp"/>

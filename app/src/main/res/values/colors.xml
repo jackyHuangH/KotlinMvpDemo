@@ -36,7 +36,7 @@
     <!-- InputBox hint color-->
     <color name="color_d5d5d5">#D5D5D5</color>
 
-    <color name="base_title_bg">#FFFFFF</color>
+    <color name="color_ddd">#ddd</color>
     <color name="base_bg_color">#EDEEF0</color>
 
     <color name="transparent">#00000000</color>
