@@ -10,11 +10,13 @@ import android.view.View
 import android.view.animation.AnimationUtils
 import android.view.inputmethod.EditorInfo
 import cn.jacky.kotlindemo.R
+import cn.jacky.kotlindemo.adapter.HotWordFlowAdapter
 import cn.jacky.kotlindemo.adapter.SearchListAdapter
 import cn.jacky.kotlindemo.app.ApplicationKit
 import cn.jacky.kotlindemo.mvp.baseview.BaseActivity
 import cn.jacky.kotlindemo.util.ViewAnimUtil
 import com.chad.library.adapter.base.BaseQuickAdapter
+import com.google.android.flexbox.*
 import com.jakewharton.rxbinding2.widget.RxTextView
 import com.zenchn.apilib.entity.HomeBean
 import com.zenchn.support.kit.AndroidKit
@@ -44,14 +46,16 @@ class SearchActivity : BaseActivity(), SearchContract.View, BaseQuickAdapter.Req
     private var mSearchAdapter: SearchListAdapter? = null
     private var num = 1
 
+    private var mHotWordFlowAdapter: HotWordFlowAdapter? = null
+
     override fun getLayoutRes(): Int = R.layout.activity_search
 
     override fun initWidget() {
         setupEnterAnimation()
         setupExitAnimation()
         initEt()
+        initSearchResultList()
         initHotWordList()
-        initResultList()
         initListener()
     }
 
@@ -101,7 +105,6 @@ class SearchActivity : BaseActivity(), SearchContract.View, BaseQuickAdapter.Req
     }
 
     private fun defaultBackPressed() {
-        AndroidKit.Keyboard.hideSoftInput(this)
         super.onBackPressed()
     }
 
@@ -170,14 +173,29 @@ class SearchActivity : BaseActivity(), SearchContract.View, BaseQuickAdapter.Req
         loadAnimation.duration = 500
         ll_container.startAnimation(loadAnimation)
         ll_container.visibility = View.VISIBLE
-        AndroidKit.Keyboard.showSoftInput(this, et_search)
-    }
-
-    private fun initResultList() {
-        rlv_hot_word.layoutManager = LinearLayoutManager(this)
+        AndroidKit.Keyboard.showSoftInput(this)
+        //获取热门搜索
+        mPresenter.getHotSearchWord()
     }
 
     private fun initHotWordList() {
+        val flexboxLayoutManager = FlexboxLayoutManager(this)
+        flexboxLayoutManager.flexWrap = FlexWrap.WRAP //按正常方向换行
+        flexboxLayoutManager.flexDirection = FlexDirection.ROW //主轴在水平方向，起点在左端
+        flexboxLayoutManager.alignItems = AlignItems.CENTER //定义item在副轴上如何对齐
+        flexboxLayoutManager.justifyContent = JustifyContent.FLEX_START //多个轴的对齐方式
+        rlv_hot_word.layoutManager = flexboxLayoutManager
+        val list = ArrayList<String>()
+        mHotWordFlowAdapter = HotWordFlowAdapter(R.layout.recycle_item_search_hot_word, list)
+        mHotWordFlowAdapter?.setOnItemClickListener { adapter, view, position ->
+            AndroidKit.Keyboard.hideSoftInput(this@SearchActivity)
+            val item = adapter.getItem(position) as String
+            mPresenter.searchRequest(item, num)
+        }
+        rlv_hot_word.adapter = mHotWordFlowAdapter
+    }
+
+    private fun initSearchResultList() {
         rlv_result.layoutManager = LinearLayoutManager(this)
         val emptyList: ArrayList<HomeBean.Issue.Item> = ArrayList()
         mSearchAdapter = SearchListAdapter(R.layout.recycle_item_search, emptyList)
@@ -229,7 +247,7 @@ class SearchActivity : BaseActivity(), SearchContract.View, BaseQuickAdapter.Req
 
     override fun showHotSearchWord(hotWords: ArrayList<String>) {
         showHotWordView()
-
+        mHotWordFlowAdapter?.setNewData(hotWords)
     }
 
     override fun showNoResult() {
@@ -264,7 +282,7 @@ class SearchActivity : BaseActivity(), SearchContract.View, BaseQuickAdapter.Req
     }
 
     override fun onDestroy() {
-        mTextTypeface=null
+        mTextTypeface = null
         super.onDestroy()
     }
 }

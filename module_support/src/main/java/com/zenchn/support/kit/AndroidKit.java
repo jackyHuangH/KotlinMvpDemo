@@ -55,7 +55,7 @@ public class AndroidKit {
                 mPackageInfo = mPackageManager.getPackageInfo(packageName, PackageManager.GET_CONFIGURATIONS);
             } catch (Exception e) {
                 e.printStackTrace();
-                Log.e(TAG,e.getMessage());
+                Log.e(TAG, e.getMessage());
             }
             return mPackageInfo;
         }
@@ -199,7 +199,7 @@ public class AndroidKit {
                 return (mApplicationInfo != null && (mApplicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) > 0);
             } catch (Exception e) {
                 e.printStackTrace();
-                Log.e(TAG,e.getMessage());
+                Log.e(TAG, e.getMessage());
             }
             return false;
         }
@@ -225,7 +225,7 @@ public class AndroidKit {
                 return packageName.equals(tasksInfo.get(0).topActivity.getPackageName());
             } catch (Exception e) {
                 e.printStackTrace();
-                Log.e(TAG,e.getMessage());
+                Log.e(TAG, e.getMessage());
                 return false;
             }
         }
@@ -612,10 +612,11 @@ public class AndroidKit {
          */
         public static void hideSoftInput(@NonNull Activity activity) {
             InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
-            if (imm.isActive()) {
+            if (imm != null && imm.isActive()) {
                 View focusView = activity.getCurrentFocus();
-                if (focusView != null)
+                if (focusView != null) {
                     imm.hideSoftInputFromWindow(focusView.getWindowToken(), 0);
+                }
             }
         }
 

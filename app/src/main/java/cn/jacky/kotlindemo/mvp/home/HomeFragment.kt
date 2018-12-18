@@ -100,7 +100,7 @@ class HomeFragment : BaseFragment(), HomeContract.View, BaseQuickAdapter.Request
             override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
                 //监听列表滑动，改变toobar透明度
-                var firstVisibleItemPosition = mLinearLayoutManager.findFirstVisibleItemPosition()
+                val firstVisibleItemPosition = mLinearLayoutManager.findFirstVisibleItemPosition()
                 autoChangeToolbar(firstVisibleItemPosition)
             }
         })
@@ -108,7 +108,7 @@ class HomeFragment : BaseFragment(), HomeContract.View, BaseQuickAdapter.Request
         val emptyList: ArrayList<HomeBean.Issue.Item> = ArrayList()
         mHomeAdapter = activity?.let { HomeListAdapter(emptyList) }
         mHomeAdapter?.setOnLoadMoreListener(this, rlv)
-        var header = LayoutInflater.from(activity).inflate(R.layout.recycle_header_banner_home, rlv, false)
+        val header = LayoutInflater.from(activity).inflate(R.layout.recycle_header_banner_home, rlv, false)
         mHomeAdapter?.addHeaderView(header)
         mHomeAdapter?.onItemClickListener = this
         rlv.adapter = mHomeAdapter

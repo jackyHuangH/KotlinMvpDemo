@@ -55,6 +55,7 @@ dependencies {
     implementation rootProject.ext.dependencies["progressmanager"]
 
     implementation rootProject.ext.dependencies["gson"]
+    implementation rootProject.ext.dependencies["flexbox"]
 
     implementation rootProject.ext.dependencies["dagger2"]
     kapt rootProject.ext.dependencies["dagger2_compiler"]

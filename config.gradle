@@ -102,6 +102,7 @@ ext {
             "fastjson"                  : 'com.alibaba:fastjson:1.2.54',
             //gson
             "gson"                      : 'com.google.code.gson:gson:2.8.5',
+            flexbox                     : 'com.google.android:flexbox:1.0.0',
 
             "Android_Pickerview"        : 'com.contrarywind:Android-PickerView:4.1.6',
 
