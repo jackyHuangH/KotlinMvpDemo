@@ -46,7 +46,7 @@ abstract class BaseActivity : AbstractAppCompatActivity(), IView, EasyPermission
         mImmersionBar
                 .fitsSystemWindows(true)
                 //状态栏颜色，不写默认透明色
-                .statusBarColor(android.R.color.white)
+                .statusBarColor(R.color.backgroundColor)
                 //状态栏字体是深色，不写默认为亮色
                 .statusBarDarkFont(true, 0.2f)
 

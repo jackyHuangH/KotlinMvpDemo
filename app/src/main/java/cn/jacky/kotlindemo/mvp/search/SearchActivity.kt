@@ -1,10 +1,26 @@
 package cn.jacky.kotlindemo.mvp.search
 
+import android.annotation.SuppressLint
+import android.graphics.Typeface
+import android.support.v7.widget.LinearLayoutManager
 import android.transition.Fade
 import android.transition.Transition
 import android.transition.TransitionInflater
+import android.view.View
+import android.view.animation.AnimationUtils
+import android.view.inputmethod.EditorInfo
 import cn.jacky.kotlindemo.R
+import cn.jacky.kotlindemo.adapter.SearchListAdapter
+import cn.jacky.kotlindemo.app.ApplicationKit
 import cn.jacky.kotlindemo.mvp.baseview.BaseActivity
+import cn.jacky.kotlindemo.util.ViewAnimUtil
+import com.chad.library.adapter.base.BaseQuickAdapter
+import com.jakewharton.rxbinding2.widget.RxTextView
+import com.zenchn.apilib.entity.HomeBean
+import com.zenchn.support.kit.AndroidKit
+import com.zenchn.support.utils.StringUtils
+import io.reactivex.android.schedulers.AndroidSchedulers
+import kotlinx.android.synthetic.main.activity_search.*
 
 /**
  * @author:Hzj
@@ -12,13 +28,81 @@ import cn.jacky.kotlindemo.mvp.baseview.BaseActivity
  * desc  ：
  * record：
  */
-class SearchActivity : BaseActivity() {
+class SearchActivity : BaseActivity(), SearchContract.View, BaseQuickAdapter.RequestLoadMoreListener, BaseQuickAdapter.OnItemClickListener {
+
+    private val mPresenter by lazy {
+        SearchPresenterImpl(this)
+    }
+
+    private var mTextTypeface: Typeface? = null
+
+    init {
+        //细黑简体字体
+        mTextTypeface = Typeface.createFromAsset(ApplicationKit.instance.application.assets, "fonts/FZLanTingHeiS-L-GB-Regular.TTF")
+    }
+
+    private var mSearchAdapter: SearchListAdapter? = null
+    private var num = 1
 
     override fun getLayoutRes(): Int = R.layout.activity_search
 
     override fun initWidget() {
         setupEnterAnimation()
         setupExitAnimation()
+        initEt()
+        initHotWordList()
+        initResultList()
+        initListener()
+    }
+
+    @SuppressLint("CheckResult")
+    private fun initEt() {
+        tv_title_tip.typeface = mTextTypeface
+        tv_hot_search_words.typeface = mTextTypeface
+        RxTextView
+                .textChanges(et_search)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe {
+                    ib_cancel.visibility = if (StringUtils.isEmpty(it)) View.GONE else View.VISIBLE
+                }
+        RxTextView
+                .editorActions(et_search)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe {
+                    if (it == EditorInfo.IME_ACTION_SEARCH) {
+                        doInitQuery()
+                    }
+                }
+    }
+
+    private fun initListener() {
+        ib_cancel.setOnClickListener {
+            et_search.text.clear()
+        }
+        tv_cancel.setOnClickListener {
+            onBackPressed()
+        }
+    }
+
+    override fun onBackPressed() {
+        ll_container.visibility = View.GONE
+        ViewAnimUtil.animateRevealHide(this,
+                constraint_layout,
+                float_bt.width / 2,
+                R.color.backgroundColor,
+                object : ViewAnimUtil.OnRevealAnimationListener {
+                    override fun onRevealShow() {
+                    }
+
+                    override fun onRevealHide() {
+                        defaultBackPressed()
+                    }
+                })
+    }
+
+    private fun defaultBackPressed() {
+        AndroidKit.Keyboard.hideSoftInput(this)
+        super.onBackPressed()
     }
 
     /**
@@ -52,20 +136,135 @@ class SearchActivity : BaseActivity() {
 
             override fun onTransitionEnd(transition: Transition) {
                 transition.removeListener(this)
-                //z展示揭露动画
+                //展示揭露动画
                 animateRevealShow()
             }
         })
     }
 
     /**
-     * //z展示揭露动画
+     * 展示揭露动画
      */
     private fun animateRevealShow() {
+        ViewAnimUtil.animateRevealShow(this,
+                constraint_layout,
+                (float_bt.width / 2).toFloat(),
+                R.color.backgroundColor,
+                object : ViewAnimUtil.OnRevealAnimationListener {
+                    override fun onRevealShow() {
+                        initView()
+                    }
+
+                    override fun onRevealHide() {
+
+                    }
+                })
+    }
+
+    /**
+     * 初始化控件，
+     */
+    private fun initView() {
+        //添加渐变动画
+        val loadAnimation = AnimationUtils.loadAnimation(this, R.anim.fade_in)
+        loadAnimation.duration = 500
+        ll_container.startAnimation(loadAnimation)
+        ll_container.visibility = View.VISIBLE
+        AndroidKit.Keyboard.showSoftInput(this, et_search)
+    }
+
+    private fun initResultList() {
+        rlv_hot_word.layoutManager = LinearLayoutManager(this)
+    }
+
+    private fun initHotWordList() {
+        rlv_result.layoutManager = LinearLayoutManager(this)
+        val emptyList: ArrayList<HomeBean.Issue.Item> = ArrayList()
+        mSearchAdapter = SearchListAdapter(R.layout.recycle_item_search, emptyList)
+        mSearchAdapter?.setOnLoadMoreListener(this, rlv_result)
+        mSearchAdapter?.onItemClickListener = this
+        rlv_result.adapter = mSearchAdapter
+    }
+
+    override fun onItemClick(adapter: BaseQuickAdapter<*, *>?, view: View?, position: Int) {
+        //TODO 跳转视频详情
 
     }
 
-    companion object {
+    /**
+     * 初始化搜索
+     */
+    private fun doInitQuery() {
+        val word = et_search.text.toString()
+        if (StringUtils.isEmpty(word)) {
+            showMessage("请输入你感兴趣的关键字")
+            return
+        }
+        mPresenter.searchRequest(word, num)
+        AndroidKit.Keyboard.hideSoftInput(this)
+    }
 
+    /**
+     * 加载更多
+     */
+    override fun onLoadMoreRequested() {
+        mPresenter.searchLoadMore()
+    }
+
+    /**
+     * 隐藏热门关键字的 View
+     */
+    private fun showResultListView() {
+        ll_hot_word.visibility = View.GONE
+        ll_result_list.visibility = View.VISIBLE
+    }
+
+    /**
+     * 显示热门关键字的 流式布局
+     */
+    private fun showHotWordView() {
+        ll_hot_word.visibility = View.VISIBLE
+        ll_result_list.visibility = View.GONE
+    }
+
+    override fun showHotSearchWord(hotWords: ArrayList<String>) {
+        showHotWordView()
+
+    }
+
+    override fun showNoResult() {
+        showMessage("抱歉！未搜到相关内容，换个关键字试试？")
+        showHotWordView()
+        tv_search_count.visibility = View.GONE
+    }
+
+    override fun showResultTotalNum(keyword: String, total: Int) {
+        tv_search_count.visibility = View.VISIBLE
+        tv_search_count.text = String.format(resources.getString(R.string.search_result_count), keyword, total)
+    }
+
+    override fun showNewSearchList(itemList: ArrayList<HomeBean.Issue.Item>, hasNextPage: Boolean) {
+        showResultListView()
+        mSearchAdapter?.setNewData(itemList)
+        setLoadStatus(hasNextPage)
+    }
+
+    override fun showLoadMoreList(itemList: ArrayList<HomeBean.Issue.Item>, hasNextPage: Boolean) {
+        mSearchAdapter?.addData(itemList)
+        setLoadStatus(hasNextPage)
+    }
+
+    private fun setLoadStatus(hasNextPage: Boolean) {
+        if (hasNextPage) {
+            mSearchAdapter?.loadMoreComplete()
+        } else {
+            mSearchAdapter?.loadMoreEnd()
+        }
+        mSearchAdapter?.notifyDataSetChanged()
+    }
+
+    override fun onDestroy() {
+        mTextTypeface=null
+        super.onDestroy()
     }
 }

@@ -19,7 +19,9 @@ data class HomeBean(var dialog: Any,
                      var itemList: ArrayList<Item>,
                      var publishTime: Long,
                      var releaseTime: Long,
-                     var type: String) : Serializable {
+                     val total: Int,
+                     var type: String,
+                     var nextPageUrl: String) : Serializable {
 
         data class Item(var adIndex: Int,
                         var data: Data?,

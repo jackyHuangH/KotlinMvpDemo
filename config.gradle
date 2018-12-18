@@ -95,6 +95,8 @@ ext {
             "rxpermissions"             : "com.github.tbruyelle:rxpermissions:0.10.2",
             //运行时权限
             easypermission              : "pub.devrel:easypermissions:2.0.0",
+            //rxbinding3
+            Rxbinding2                  : 'com.jakewharton.rxbinding2:rxbinding:2.1.1',
 
             //阿里出品,fastjson
             "fastjson"                  : 'com.alibaba:fastjson:1.2.54',

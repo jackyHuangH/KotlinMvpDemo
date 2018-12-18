@@ -102,4 +102,10 @@ class SplashActivity : BaseActivity() {
             }
         }
     }
+
+    override fun onDestroy() {
+        textTypeface=null
+        descTypeFace=null
+        super.onDestroy()
+    }
 }

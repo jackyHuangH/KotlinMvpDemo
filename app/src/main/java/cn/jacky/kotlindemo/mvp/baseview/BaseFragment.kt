@@ -49,7 +49,7 @@ abstract class BaseFragment : AbstractFragment(), IView, EasyPermissions.Permiss
         mImmersionBar = ImmersionBar.with(this)
         mImmersionBar
                 .fitsSystemWindows(true)
-                .statusBarColor(android.R.color.white)
+                .statusBarColor(R.color.backgroundColor)
                 .statusBarDarkFont(true, 0.2f)
 
         //是否需要监听键盘
@@ -103,6 +103,11 @@ abstract class BaseFragment : AbstractFragment(), IView, EasyPermissions.Permiss
      */
     protected fun onFragmentBackPressed() {
         activity?.onBackPressed()
+    }
+
+    override fun onPause() {
+        activity?.let { AndroidKit.Keyboard.hideSoftInput(it) }
+        super.onPause()
     }
 
     override fun onApiGrantRefuse() {

@@ -66,7 +66,7 @@ class HomeFragment : BaseFragment(), HomeContract.View, BaseQuickAdapter.Request
     private fun initSearchBar() {
         ib_search.setOnClickListener {
             // 跳转搜索
-            var optionsCompat = activity?.let { ActivityOptionsCompat.makeSceneTransitionAnimation(it, ib_search, ib_search.transitionName) }
+            val optionsCompat = activity?.let { ActivityOptionsCompat.makeSceneTransitionAnimation(it, ib_search, ib_search.transitionName) }
             startActivity(Intent(activity, SearchActivity::class.java), optionsCompat?.toBundle())
         }
     }
