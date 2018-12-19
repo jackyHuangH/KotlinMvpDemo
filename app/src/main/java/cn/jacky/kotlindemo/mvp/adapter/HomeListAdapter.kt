@@ -1,4 +1,4 @@
-package cn.jacky.kotlindemo.adapter
+package cn.jacky.kotlindemo.mvp.adapter
 
 import cn.jacky.kotlindemo.R
 import cn.jacky.kotlindemo.util.durationFormat
@@ -31,9 +31,9 @@ class HomeListAdapter(data: List<HomeBean.Issue.Item>?) : BaseQuickAdapter<HomeB
         multiTypeDelegate = object : MultiTypeDelegate<HomeBean.Issue.Item>() {
             override fun getItemType(item: HomeBean.Issue.Item?): Int {
                 return if (item?.type == "textHeader")
-                    HomeListAdapter.ITEM_TYPE_TEXT_HEADER
+                    ITEM_TYPE_TEXT_HEADER
                 else
-                    HomeListAdapter.ITEM_TYPE_CONTENT
+                    ITEM_TYPE_CONTENT
             }
         }
 
@@ -48,10 +48,13 @@ class HomeListAdapter(data: List<HomeBean.Issue.Item>?) : BaseQuickAdapter<HomeB
                 //text header
                 helper.setText(R.id.tv_text_header, item?.data?.text ?: "")
             }
-            else -> {
+            ITEM_TYPE_CONTENT -> {
                 //item
                 val data = item?.data
                 setVideoContent(helper, data)
+            }
+            else -> {
+                throw IllegalAccessException("api解析错误，未知类型")
             }
         }
     }

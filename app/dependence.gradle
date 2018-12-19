@@ -49,6 +49,8 @@ dependencies {
 
     implementation rootProject.ext.dependencies["logger"]
 
+    implementation rootProject.ext.dependencies["GSYVideoPlayer"]
+
     implementation rootProject.ext.dependencies["butterknife"]
     kapt rootProject.ext.dependencies["butterknife_compiler"]
 

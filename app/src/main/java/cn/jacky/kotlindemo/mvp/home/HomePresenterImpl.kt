@@ -47,10 +47,10 @@ class HomePresenterImpl(mView: HomeContract.View?) : BasePresenterImpl<HomeContr
             filterUselessData(bannerItemList)
 
             //取出banner image 和 title
-            var bannerImgs = ArrayList<String>()
-            var bannerTitles = ArrayList<String>()
-            var bannerCount = it.issueList[0].count
-            var bannerList = it.issueList[0].itemList.take(bannerCount)
+            val bannerImgs = ArrayList<String>()
+            val bannerTitles = ArrayList<String>()
+            val bannerCount = it.issueList[0].count
+            val bannerList = it.issueList[0].itemList.take(bannerCount)
             bannerList.forEach { item ->
                 bannerImgs.add(item.data?.cover?.feed ?: "")
                 bannerTitles.add(item.data?.title ?: "")

@@ -611,12 +611,21 @@ public class AndroidKit {
          * @param activity
          */
         public static void hideSoftInput(@NonNull Activity activity) {
+            View focusView = activity.getCurrentFocus();
+            if (focusView != null) {
+                hideSoftInput(activity, focusView);
+            }
+        }
+
+        /**
+         * 动态隐藏软键盘
+         *
+         * @param activity
+         */
+        public static void hideSoftInput(@NonNull Activity activity, @NonNull View focusView) {
             InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
             if (imm != null && imm.isActive()) {
-                View focusView = activity.getCurrentFocus();
-                if (focusView != null) {
-                    imm.hideSoftInputFromWindow(focusView.getWindowToken(), 0);
-                }
+                imm.hideSoftInputFromWindow(focusView.getWindowToken(), 0);
             }
         }
 

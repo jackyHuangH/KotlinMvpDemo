@@ -9,9 +9,10 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import cn.jacky.kotlindemo.R
-import cn.jacky.kotlindemo.adapter.HomeListAdapter
+import cn.jacky.kotlindemo.mvp.adapter.HomeListAdapter
 import cn.jacky.kotlindemo.mvp.baseview.BaseFragment
 import cn.jacky.kotlindemo.mvp.search.SearchActivity
+import cn.jacky.kotlindemo.mvp.videodetail.VideoDetailActivity
 import cn.jacky.kotlindemo.util.StatusBarUtil
 import cn.jacky.kotlindemo.wrapper.glide.GlideImageLoader
 import com.chad.library.adapter.base.BaseQuickAdapter
@@ -65,7 +66,7 @@ class HomeFragment : BaseFragment(), HomeContract.View, BaseQuickAdapter.Request
 
     private fun initSearchBar() {
         ib_search.setOnClickListener {
-            // 跳转搜索
+            // 跳转搜索,1定义场景
             val optionsCompat = activity?.let { ActivityOptionsCompat.makeSceneTransitionAnimation(it, ib_search, ib_search.transitionName) }
             startActivity(Intent(activity, SearchActivity::class.java), optionsCompat?.toBundle())
         }
@@ -114,9 +115,10 @@ class HomeFragment : BaseFragment(), HomeContract.View, BaseQuickAdapter.Request
         rlv.adapter = mHomeAdapter
     }
 
-    override fun onItemClick(adapter: BaseQuickAdapter<*, *>?, view: View?, position: Int) {
-        //TODO 跳转视频详情
-
+    override fun onItemClick(adapter: BaseQuickAdapter<*, *>, view: View?, position: Int) {
+        // 跳转视频详情
+        val item = adapter.getItem(position) as HomeBean.Issue.Item
+        activity?.let { VideoDetailActivity.launch(it, view!!, item) }
     }
 
     /**

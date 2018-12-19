@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">KotlinDemo</string>
+    <string name="app_name">OpenEyes</string>
 
     <string name="common_click_double_to_exit_app">再按一次退出应用~</string>
     <string name="common_error_network">网络异常，请检查网络~</string>

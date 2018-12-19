@@ -28,7 +28,7 @@
         android:layout_height="match_parent"
         android:background="@color/backgroundColor"
         android:orientation="vertical"
-        android:visibility="visible">
+        android:visibility="gone">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
@@ -52,8 +52,6 @@
                     android:background="@drawable/shape_search_bg"
                     android:drawableStart="@drawable/ic_action_search_small"
                     android:drawablePadding="5dp"
-                    android:focusable="true"
-                    android:focusableInTouchMode="true"
                     android:hint="@string/search_hint_text"
                     android:imeOptions="actionSearch"
                     android:maxLines="1"

@@ -1,4 +1,4 @@
-package cn.jacky.kotlindemo.adapter
+package cn.jacky.kotlindemo.mvp.adapter
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater

@@ -3,7 +3,7 @@ package cn.jacky.kotlindemo.test
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import cn.jacky.kotlindemo.R
-import cn.jacky.kotlindemo.adapter.MsgListAdapter
+import cn.jacky.kotlindemo.mvp.adapter.MsgListAdapter
 import cn.jacky.kotlindemo.mvp.baseview.BaseActivity
 import cn.jacky.kotlindemo.mvp.main.MainActivity
 import cn.jacky.kotlindemo.test.TestActivity.Constans.NUM_B

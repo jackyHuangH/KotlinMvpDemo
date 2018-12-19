@@ -10,9 +10,9 @@ import android.view.View
 import android.view.animation.AnimationUtils
 import android.view.inputmethod.EditorInfo
 import cn.jacky.kotlindemo.R
-import cn.jacky.kotlindemo.adapter.HotWordFlowAdapter
-import cn.jacky.kotlindemo.adapter.SearchListAdapter
 import cn.jacky.kotlindemo.app.ApplicationKit
+import cn.jacky.kotlindemo.mvp.adapter.HotWordFlowAdapter
+import cn.jacky.kotlindemo.mvp.adapter.SearchListAdapter
 import cn.jacky.kotlindemo.mvp.baseview.BaseActivity
 import cn.jacky.kotlindemo.util.ViewAnimUtil
 import com.chad.library.adapter.base.BaseQuickAdapter
@@ -89,7 +89,7 @@ class SearchActivity : BaseActivity(), SearchContract.View, BaseQuickAdapter.Req
     }
 
     override fun onBackPressed() {
-        ll_container.visibility = View.GONE
+        AndroidKit.Keyboard.hideSoftInput(this, et_search)
         ViewAnimUtil.animateRevealHide(this,
                 constraint_layout,
                 float_bt.width / 2,
@@ -121,6 +121,7 @@ class SearchActivity : BaseActivity(), SearchContract.View, BaseQuickAdapter.Req
      * 设置入场动画
      */
     private fun setupEnterAnimation() {
+        //2页面进入时的转换效果
         val transition = TransitionInflater.from(this)
                 .inflateTransition(R.transition.arc_motion)
         window.sharedElementEnterTransition = transition

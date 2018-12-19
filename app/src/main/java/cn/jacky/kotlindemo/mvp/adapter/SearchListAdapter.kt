@@ -1,4 +1,4 @@
-package cn.jacky.kotlindemo.adapter
+package cn.jacky.kotlindemo.mvp.adapter
 
 import android.support.annotation.LayoutRes
 import cn.jacky.kotlindemo.R
