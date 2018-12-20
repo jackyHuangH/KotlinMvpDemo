@@ -14,6 +14,7 @@ import cn.jacky.kotlindemo.app.ApplicationKit
 import cn.jacky.kotlindemo.mvp.adapter.HotWordFlowAdapter
 import cn.jacky.kotlindemo.mvp.adapter.SearchListAdapter
 import cn.jacky.kotlindemo.mvp.baseview.BaseActivity
+import cn.jacky.kotlindemo.mvp.videodetail.VideoDetailActivity
 import cn.jacky.kotlindemo.util.ViewAnimUtil
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.google.android.flexbox.*
@@ -205,9 +206,10 @@ class SearchActivity : BaseActivity(), SearchContract.View, BaseQuickAdapter.Req
         rlv_result.adapter = mSearchAdapter
     }
 
-    override fun onItemClick(adapter: BaseQuickAdapter<*, *>?, view: View?, position: Int) {
-        //TODO 跳转视频详情
-
+    override fun onItemClick(adapter: BaseQuickAdapter<*, *>, view: View?, position: Int) {
+        //跳转视频详情
+        val item = adapter.getItem(position) as HomeBean.Issue.Item
+        VideoDetailActivity.launch(this, view!!, item)
     }
 
     /**

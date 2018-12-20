@@ -21,6 +21,7 @@ dependencies {
     //工具类
     implementation rootProject.ext.dependencies["module_support"]
     implementation rootProject.ext.dependencies["module_api"]
+    implementation rootProject.ext.dependencies["module_banner"]
 //    implementation rootProject.ext.dependencies["module_picbrowser"]
 
     implementation rootProject.ext.dependencies["multidex"]
@@ -34,7 +35,6 @@ dependencies {
 
     implementation rootProject.ext.dependencies["easypermission"]
 
-    implementation rootProject.ext.dependencies["banner"]
     implementation rootProject.ext.dependencies["glide"]
     implementation rootProject.ext.dependencies["glide_okhttp_integration"]
     kapt rootProject.ext.dependencies["glide_compiler"]

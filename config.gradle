@@ -34,6 +34,7 @@ ext {
 
             "module_support"            : project(':module_support'),
             "module_api"                : project(':module_api'),
+            "module_banner"             : project(':banner'),
 //            "module_picbrowser"         : project(':picbrowserlib'),
 
             //magicIndicator
@@ -42,8 +43,6 @@ ext {
             "calendarview"              : 'com.haibin:calendarview:3.4.0',
             //时间区间选择器
             "range_time_picker"         : 'com.borax12.materialdaterangepicker:library:1.9',
-            //banner轮播图控件
-            "banner"                    : 'com.youth.banner:banner:1.4.10',
 
             //今日头条屏幕适配方案
             "headline_autosize"         : 'me.jessyan:autosize:1.0.0',

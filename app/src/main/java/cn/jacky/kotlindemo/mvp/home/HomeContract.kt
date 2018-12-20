@@ -17,7 +17,7 @@ interface HomeContract {
         /**
          * 展示banner
          */
-        fun showBannerList(bannerUrls: ArrayList<String>, bannerTitles: ArrayList<String>)
+        fun showBannerList(bannerItems: ArrayList<HomeBean.Issue.Item>,bannerUrls: ArrayList<String>, bannerTitles: ArrayList<String>)
 
         /**
          * 设置第一次请求的数据

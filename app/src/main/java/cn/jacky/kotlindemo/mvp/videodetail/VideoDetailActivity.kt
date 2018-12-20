@@ -21,6 +21,7 @@ import cn.jacky.kotlindemo.wrapper.glide.GlideApp
 import com.bumptech.glide.load.DecodeFormat
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.chad.library.adapter.base.BaseQuickAdapter
+import com.gyf.barlibrary.BarHide
 import com.gyf.barlibrary.ImmersionBar
 import com.orhanobut.logger.Logger
 import com.shuyu.gsyvideoplayer.GSYVideoManager
@@ -66,9 +67,8 @@ class VideoDetailActivity : BaseActivity(), VideoDetailContract.View, BaseQuickA
     override fun initStatusBar() {
         mImmersionBar = ImmersionBar.with(this)
         mImmersionBar
-                .fitsSystemWindows(true)
-                .statusBarColor(R.color.color_light_black)
-                .statusBarDarkFont(false)
+                .fitsSystemWindows(false)
+                .hideBar(BarHide.FLAG_HIDE_STATUS_BAR)
         mImmersionBar.init()
     }
 
@@ -101,12 +101,17 @@ class VideoDetailActivity : BaseActivity(), VideoDetailContract.View, BaseQuickA
         mListAdapter = VideoDetailListAdapter(list)
         val header = LayoutInflater.from(this).inflate(R.layout.recycle_header_video_detail, rlv_video_detail, false)
         mListAdapter?.addHeaderView(header)
+        val footer = LayoutInflater.from(this).inflate(R.layout.recycle_footer_no_more, rlv_video_detail, false)
+        mListAdapter?.addFooterView(footer)
         mListAdapter?.onItemClickListener = this
         rlv_video_detail.adapter = mListAdapter
     }
 
-    override fun onItemClick(adapter: BaseQuickAdapter<*, *>?, view: View?, position: Int) {
-        //todo 跳转视频详情
+    override fun onItemClick(adapter: BaseQuickAdapter<*, *>, view: View?, position: Int) {
+        //加载视频详情
+        val item = adapter.getItem(position) as HomeBean.Issue.Item
+        //获取视频
+        mPresenterImpl.getVideoDetail(item)
     }
 
     private fun initVideoPlayer() {
@@ -118,6 +123,7 @@ class VideoDetailActivity : BaseActivity(), VideoDetailContract.View, BaseQuickA
         gsy_player.setIsTouchWiget(true)
         //添加封面
         val thumbCover = ImageView(this)
+        thumbCover.scaleType = ImageView.ScaleType.CENTER_CROP
         GlideApp
                 .with(this)
                 .load(mVideoData.data?.cover?.feed)
@@ -151,9 +157,16 @@ class VideoDetailActivity : BaseActivity(), VideoDetailContract.View, BaseQuickA
 
             override fun onQuitFullscreen(url: String?, vararg objects: Any?) {
                 super.onQuitFullscreen(url, *objects)
+                initStatusBar()
                 Logger.d("***** onQuitFullscreen **** ")
                 //列表返回的样式判断
                 mOrientationUtils.backToProtVideo()
+            }
+
+            override fun onClickBlank(url: String?, vararg objects: Any?) {
+                super.onClickBlank(url, *objects)
+                //点击空白区域
+                initStatusBar()
             }
         })
         //设置返回按钮

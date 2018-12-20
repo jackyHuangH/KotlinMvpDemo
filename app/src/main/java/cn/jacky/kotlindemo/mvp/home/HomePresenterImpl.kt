@@ -55,7 +55,7 @@ class HomePresenterImpl(mView: HomeContract.View?) : BasePresenterImpl<HomeContr
                 bannerImgs.add(item.data?.cover?.feed ?: "")
                 bannerTitles.add(item.data?.title ?: "")
             }
-            mView?.showBannerList(bannerImgs, bannerTitles)
+            mView?.showBannerList(bannerItemList,bannerImgs, bannerTitles)
         }
         mNextPageUrl = homeBean.nextPageUrl
 

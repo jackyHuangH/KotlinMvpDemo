@@ -157,15 +157,16 @@ class HomeFragment : BaseFragment(), HomeContract.View, BaseQuickAdapter.Request
         mPresenter.loadMoreData()
     }
 
-    override fun showBannerList(bannerUrls: ArrayList<String>, bannerTitles: ArrayList<String>) {
+    override fun showBannerList(bannerItems: ArrayList<HomeBean.Issue.Item>, bannerUrls: ArrayList<String>, bannerTitles: ArrayList<String>) {
         //填充banner
         banner_home.setImageLoader(GlideImageLoader())
         banner_home.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE)
         banner_home.setImages(bannerUrls)
         banner_home.setBannerTitles(bannerTitles)
-        banner_home.setOnBannerListener {
-            //todo
-//            activity?.let { VideoDetailActivity.launch(it,) }
+        banner_home.setOnBannerListener { view, position ->
+            //跳转视频详情
+            val item = bannerItems[position]
+            activity?.let { VideoDetailActivity.launch(it, view, item) }
         }
         banner_home.start()
     }
