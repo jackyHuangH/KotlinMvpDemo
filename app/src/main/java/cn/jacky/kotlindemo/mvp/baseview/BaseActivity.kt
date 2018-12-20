@@ -16,6 +16,7 @@ import com.zenchn.support.base.IActivityLifecycle
 import com.zenchn.support.base.IUiController
 import com.zenchn.support.dafault.DefaultActivityLifecycle
 import com.zenchn.support.kit.AndroidKit
+import com.zenchn.support.kit.NetworkUtils
 import com.zenchn.support.utils.StringUtils
 import pub.devrel.easypermissions.AppSettingsDialog
 import pub.devrel.easypermissions.EasyPermissions
@@ -84,7 +85,7 @@ abstract class BaseActivity : AbstractAppCompatActivity(), IView, EasyPermission
     }
 
     override fun onApiFailure() {
-        showResMessage(if (AndroidKit.NetWork.isNetworkAvailable(this)) R.string.common_error_service else R.string.common_error_network)
+        showResMessage(if (NetworkUtils.isConnected(this)) R.string.common_error_service else R.string.common_error_network)
     }
 
     override fun onApiGrantRefuse() {

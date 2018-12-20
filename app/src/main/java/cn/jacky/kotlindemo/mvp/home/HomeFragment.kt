@@ -163,6 +163,10 @@ class HomeFragment : BaseFragment(), HomeContract.View, BaseQuickAdapter.Request
         banner_home.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE)
         banner_home.setImages(bannerUrls)
         banner_home.setBannerTitles(bannerTitles)
+        banner_home.setOnBannerListener {
+            //todo
+//            activity?.let { VideoDetailActivity.launch(it,) }
+        }
         banner_home.start()
     }
 

@@ -11,13 +11,13 @@
     android:orientation="vertical">
 
 
-    <ImageView
+    <android.support.v7.widget.AppCompatImageView
         android:id="@+id/iv_web_icon"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="120dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/web_hi_res_512"/>
+        android:adjustViewBounds="true"
+        app:srcCompat="@drawable/web_hi_res_512"/>
 
     <TextView
         android:id="@+id/tv_app_name"

@@ -12,6 +12,7 @@ import com.gyf.barlibrary.ImmersionBar
 import com.gyf.barlibrary.OnKeyboardListener
 import com.zenchn.support.base.AbstractFragment
 import com.zenchn.support.kit.AndroidKit
+import com.zenchn.support.kit.NetworkUtils
 import com.zenchn.support.utils.StringUtils
 import pub.devrel.easypermissions.AppSettingsDialog
 import pub.devrel.easypermissions.EasyPermissions
@@ -122,7 +123,7 @@ abstract class BaseFragment : AbstractFragment(), IView, EasyPermissions.Permiss
     }
 
     override fun onApiFailure() {
-        showResMessage(if (AndroidKit.NetWork.isNetworkAvailable(activity!!)) R.string.common_error_service else R.string.common_error_network)
+        showResMessage(if (NetworkUtils.isConnected(activity!!)) R.string.common_error_service else R.string.common_error_network)
     }
 
     override fun onDestroyView() {

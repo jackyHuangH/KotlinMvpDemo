@@ -14,7 +14,7 @@
         android:padding="15dp">
 
         <TextView
-            android:id="@+id/tv_title"
+            android:id="@+id/tv_video_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -25,7 +25,7 @@
             tools:text="这家解忧杂货铺，用音乐治愈你！"/>
 
         <TextView
-            android:id="@+id/tv_tag"
+            android:id="@+id/tv_video_tag"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -112,7 +112,7 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/iv_avatar"
+            android:id="@+id/iv_author_avatar"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_centerVertical="true"
@@ -120,7 +120,7 @@
             tools:src="@drawable/default_avatar"/>
 
         <TextView
-            android:id="@+id/tv_attention"
+            android:id="@+id/tv_attention_author"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
@@ -140,8 +140,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toStartOf="@id/tv_attention"
-            android:layout_toEndOf="@+id/iv_avatar"
+            android:layout_toStartOf="@id/tv_attention_author"
+            android:layout_toEndOf="@+id/iv_author_avatar"
             android:orientation="vertical">
 
             <TextView

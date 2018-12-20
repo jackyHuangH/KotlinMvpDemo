@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/banner_home"
     android:layout_width="match_parent"
-    android:layout_height="200dp"
+    android:layout_height="230dp"
     app:banner_default_image="@drawable/placeholder_banner"
     app:title_background="@color/color_44aaaaaa"
     app:title_height="30dp"
