@@ -4,12 +4,11 @@ import org.junit.Test
 
 /**
  * @author:Hzj
- * @date  :2018/12/20/020
+ * @date  :2018/12/21/021
  * desc  ：
  * record：
  */
 class KotlinTest {
-
     @Test
     fun textForeach() {
         (0..20).forEach continuing@{

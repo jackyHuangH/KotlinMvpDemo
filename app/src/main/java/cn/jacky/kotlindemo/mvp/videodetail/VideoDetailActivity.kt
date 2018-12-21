@@ -88,7 +88,6 @@ class VideoDetailActivity : BaseActivity(), VideoDetailContract.View, BaseQuickA
 
     //获取视频信息
     private fun loadVideoData() {
-        //todo 保存观看记录
         //获取视频
         mPresenterImpl.getVideoDetail(mVideoData)
         //获取相关视频列表
@@ -226,6 +225,10 @@ class VideoDetailActivity : BaseActivity(), VideoDetailContract.View, BaseQuickA
         if (swipe_refresh.isRefreshing) {
             swipe_refresh.isRefreshing = false
         }
+
+        //保存观看记录
+        mPresenterImpl.saveWatchHistoryCache(itemInfo)
+
         //视频相关信息
         tv_video_title.text = itemInfo.data?.title
         tv_video_tag.text = "#${itemInfo.data?.category} / ${durationFormat(itemInfo.data?.duration)}"

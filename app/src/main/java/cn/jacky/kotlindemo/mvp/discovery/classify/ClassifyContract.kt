@@ -1,4 +1,4 @@
-package cn.jacky.kotlindemo.mvp.discovery
+package cn.jacky.kotlindemo.mvp.discovery.classify
 
 import cn.jacky.kotlindemo.mvp.basepresenter.IPresenter
 import cn.jacky.kotlindemo.mvp.baseview.IView
@@ -9,7 +9,7 @@ import cn.jacky.kotlindemo.mvp.baseview.IView
  * desc  ：
  * record：
  */
-interface DiscoveryContract {
+interface ClassifyContract {
     interface View : IView {
 
     }

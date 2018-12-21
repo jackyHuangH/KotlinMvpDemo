@@ -50,7 +50,7 @@ abstract class BaseFragment : AbstractFragment(), IView, EasyPermissions.Permiss
         mImmersionBar = ImmersionBar.with(this)
         mImmersionBar
                 .fitsSystemWindows(true)
-                .statusBarColor(R.color.backgroundColor)
+                .statusBarColor(R.color.color_title_bg)
                 .statusBarDarkFont(true, 0.2f)
 
         //是否需要监听键盘

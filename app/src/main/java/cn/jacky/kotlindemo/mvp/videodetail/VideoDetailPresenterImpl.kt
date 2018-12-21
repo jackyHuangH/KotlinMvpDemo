@@ -1,6 +1,7 @@
 package cn.jacky.kotlindemo.mvp.videodetail
 
 import android.app.Activity
+import cn.jacky.kotlindemo.model.ACacheModel
 import cn.jacky.kotlindemo.model.ContextModel
 import cn.jacky.kotlindemo.model.VideoDetailModel
 import cn.jacky.kotlindemo.model.impl.VideoDetailModelImpl
@@ -61,6 +62,12 @@ class VideoDetailPresenterImpl(mView: VideoDetailContract.View?) : BasePresenter
 
     override fun onGetRelatedVideoListSuccess(issue: HomeBean.Issue) {
         mView?.setRecentRelatedVideo(issue.itemList)
+    }
+
+    override fun saveWatchHistoryCache(item: HomeBean.Issue.Item) {
+        //保存观看时的时间，便于后面排序
+        item.watchData = System.currentTimeMillis()
+        ACacheModel.saveWatchHistoryCache(item)
     }
 
 }

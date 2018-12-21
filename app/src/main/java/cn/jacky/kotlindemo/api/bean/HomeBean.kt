@@ -1,6 +1,7 @@
 package com.zenchn.apilib.entity
 
 import java.io.Serializable
+import java.util.*
 
 /**
  * @author:Hzj
@@ -27,7 +28,8 @@ data class HomeBean(var dialog: Any,
                         var data: Data?,
                         var id: Int,
                         var tag: String,
-                        var type: String) : Serializable {
+                        var type: String,
+                        var watchData: Long) : Serializable {
 
             data class Data(val dataType: String,
                             val text: String,

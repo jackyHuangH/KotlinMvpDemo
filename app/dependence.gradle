@@ -4,6 +4,16 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
+    //    implementation(name: 'updatepluginlib-release', ext: 'aar')
+    //    如果aar包有很多，也可以一样象jar包统一添加一个文件夹下的所有包：
+    def dir = new File('app/libs')
+    dir.traverse(
+            nameFilter: ~/.*\.aar/
+    ) { file ->
+        def name = file.getName().replace('.aar', '')
+        implementation(name: name, ext: 'aar')
+    }
+
     implementation rootProject.ext.dependencies["anko"]
     implementation rootProject.ext.dependencies["kotlin_reflect"]
 
@@ -21,7 +31,7 @@ dependencies {
     //工具类
     implementation rootProject.ext.dependencies["module_support"]
     implementation rootProject.ext.dependencies["module_api"]
-    implementation rootProject.ext.dependencies["module_banner"]
+//    implementation rootProject.ext.dependencies["module_banner"]
 //    implementation rootProject.ext.dependencies["module_picbrowser"]
 
     implementation rootProject.ext.dependencies["multidex"]

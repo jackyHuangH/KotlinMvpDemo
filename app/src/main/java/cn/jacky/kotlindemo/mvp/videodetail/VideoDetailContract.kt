@@ -45,5 +45,10 @@ interface VideoDetailContract {
          * 获取相关视频列表
          */
         fun getRelatedVideoList(id: Long)
+
+        /**
+         * 保存观看记录
+         */
+        fun saveWatchHistoryCache(item: HomeBean.Issue.Item)
     }
 }

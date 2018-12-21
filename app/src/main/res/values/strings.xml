@@ -25,7 +25,6 @@
     <string name="search_hot_keywords_tip">- 热门搜索词 -</string>
     <string name="search_result_count">-「%1$s」搜索结果共%2$d个-</string>
 
-
     <string name="cancel">取消</string>
 
     <string name="nickname">Xiho</string>
@@ -39,18 +38,22 @@
     <string name="view_history">观看记录</string>
     <string name="feedback">意见反馈</string>
 
-
-
     <string name="loading_text">加载中&#8230;</string>
     <string name="no_network">请检查网络后点击重新加载</string>
     <string name="data_error">数据获取失败(ㄒoㄒ)~~</string>
     <string name="empty_view_hint">暂时木有内容呀~~</string>
     <string name="splash_text">每日精选视频，让你大开眼界</string>
 
-
     <string name="copy_right_notice">内容部分数据归原公司《开眼Eyepetizer》版权所有</string>
     <string name="not_use_commercial">本APP只供学习交流和研究之用，\n请勿用作商业用途！</string>
     <string name="since">copyright ©2017 Xiho.</string>
     <string name="gitHub">GitHub</string>
     <string name="recycle_footer_no_more_string">-- 我是有底线的 --</string>
+
+    <string name="discover_tab_title_attention">关注</string>
+    <string name="discover_tab_title_classify">分类</string>
+
+    <string name="hot_tab_title_week">周排行</string>
+    <string name="hot_tab_title_month">月排行</string>
+    <string name="hot_tab_title_total">总排行</string>
 </resources>
