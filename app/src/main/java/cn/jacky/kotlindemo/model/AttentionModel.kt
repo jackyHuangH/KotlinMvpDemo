@@ -12,7 +12,7 @@ import com.zenchn.apilib.entity.HomeBean
 interface AttentionModel {
     fun requestAttenionList(callback: AttentionListCallback)
 
-    fun getMoreIssueList(callback: AttentionListCallback)
+    fun getMoreIssueList(nextPageUrl: String, callback: AttentionListCallback)
 
     interface AttentionListCallback : RxApiCallback {
 

@@ -81,15 +81,15 @@ abstract class BaseFragment : AbstractFragment(), IView, EasyPermissions.Permiss
 
     override fun setUserVisibleHint(isVisibleToUser: Boolean) {
         super.setUserVisibleHint(isVisibleToUser)
-        if (!mFirstTimeVisible && isVisibleToUser) {
+        if (isVisibleToUser) {
             lazyLoadDataIfPrepared()
-            mFirstTimeVisible = true
         }
     }
 
     private fun lazyLoadDataIfPrepared() {
         if (userVisibleHint && mIsViewPrepare && !mFirstTimeVisible) {
             lazyLoad()
+            mFirstTimeVisible = true
         }
     }
 
@@ -97,6 +97,13 @@ abstract class BaseFragment : AbstractFragment(), IView, EasyPermissions.Permiss
      * 懒加载
      */
     abstract fun lazyLoad()
+
+    /**
+     * Viewpager+Fragment 每次对用户可见时，可调用此方法，相当于fragment的resume
+     */
+    override fun onSupportVisible() {
+        //do something
+    }
 
     /**
      * 模拟activity的onBackPressed()事件

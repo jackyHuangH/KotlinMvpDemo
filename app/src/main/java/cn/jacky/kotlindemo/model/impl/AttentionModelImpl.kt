@@ -21,15 +21,32 @@ class AttentionModelImpl : AttentionModel {
                 .create(OpenEyeService::class.java)
                 .getFollowInfo()
                 .compose(RxSchedulerController.applySchedulers())
-                .subscribe(object : RxHttpDataObserver<HomeBean.Issue>(callback){
+                .subscribe(object : RxHttpDataObserver<HomeBean.Issue>(callback) {
                     override fun onHttpResponseResult(success: Boolean, data: HomeBean.Issue?, msg: String?) {
-
+                        if (success) {
+                            data?.let { callback.onRefreshAttentionListSuccess(it) }
+                        } else {
+                            callback.onApiFailure(msg)
+                        }
                     }
 
                 })
     }
 
-    override fun getMoreIssueList(callback: AttentionModel.AttentionListCallback) {
-
+    override fun getMoreIssueList(nextPageUrl: String, callback: AttentionModel.AttentionListCallback) {
+        RetrofitManager
+                .getInstance()
+                .create(OpenEyeService::class.java)
+                .getIssueData(nextPageUrl)
+                .compose(RxSchedulerController.applySchedulers())
+                .subscribe(object : RxHttpDataObserver<HomeBean.Issue>(callback) {
+                    override fun onHttpResponseResult(success: Boolean, data: HomeBean.Issue?, msg: String?) {
+                        if (success) {
+                            data?.let { callback.onGetMoreListSuccess(it) }
+                        } else {
+                            callback.onApiFailure(msg)
+                        }
+                    }
+                })
     }
 }

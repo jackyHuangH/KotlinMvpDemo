@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,10 +28,29 @@ public abstract class AbstractFragment extends Fragment implements IActivity {
     protected View rootView;
     private Unbinder mUnbinder;
 
+    /**支持懒加载配置**/
+
+    /**
+     * rootView是否初始化，防止回调在rootView为空时触发
+     */
+    private boolean mHasViewCreated;
+
+    /**
+     * 当前fragment是否可见，防止viewPager缓存机制导致回调函数触发
+     */
+    private boolean mIsFragmentVisible;
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         mUiController = getDefaultUiController(context);
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mHasViewCreated = false;
+        mIsFragmentVisible = false;
     }
 
     @Nullable
@@ -48,11 +68,45 @@ public abstract class AbstractFragment extends Fragment implements IActivity {
         super.onViewCreated(view, savedInstanceState);
         initWidget();
         initInstanceState(savedInstanceState);
+        if (!mHasViewCreated && getUserVisibleHint()) {
+            onFragmentVisibleChange(true);
+            mIsFragmentVisible = true;
+        }
     }
 
     //界面布局的初始化操作
     protected void initInstanceState(Bundle savedInstanceState) {
     }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        Log.d("AbsFragment", "setUserVisibleHint->isVisibleToUser:" + isVisibleToUser);
+        if (rootView == null) {
+            return;
+        }
+        mHasViewCreated = true;
+        if (isVisibleToUser) {
+            onFragmentVisibleChange(true);
+            mIsFragmentVisible = true;
+            return;
+        }
+        if (mIsFragmentVisible) {
+            onFragmentVisibleChange(false);
+            mIsFragmentVisible = false;
+        }
+    }
+
+    protected void onFragmentVisibleChange(boolean isFragmentVisible) {
+        if (isFragmentVisible) {
+            onSupportVisible();
+        }
+    }
+
+    /**
+     * fragment每次对用户可见时
+     */
+    protected abstract void onSupportVisible();
 
     protected IUiController getDefaultUiController(Context context) {
         return new DefaultUiController(context);

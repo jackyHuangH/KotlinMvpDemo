@@ -15,4 +15,5 @@
     <dimen name="textSize_title">18sp</dimen>
 
     <dimen name="division_line">0.5dp</dimen>
+    <dimen name="home_bottom_bar_height">45dp</dimen>
 </resources>

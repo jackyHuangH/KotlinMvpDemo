@@ -22,7 +22,7 @@
     <com.zenchn.support.widget.bottomnavigationbar.BottomBarLayout
         android:id="@+id/bottom_layout"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="@dimen/home_bottom_bar_height"
         android:background="@color/transparent"
         app:layout_constraintBottom_toBottomOf="@+id/fl_container">
 

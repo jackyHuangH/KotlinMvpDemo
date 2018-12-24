@@ -2,6 +2,7 @@ package cn.jacky.kotlindemo.mvp.discovery.classify
 
 import cn.jacky.kotlindemo.mvp.basepresenter.IPresenter
 import cn.jacky.kotlindemo.mvp.baseview.IView
+import com.zenchn.apilib.entity.CategoryBean
 
 /**
  * @author:Hzj
@@ -11,10 +12,10 @@ import cn.jacky.kotlindemo.mvp.baseview.IView
  */
 interface ClassifyContract {
     interface View : IView {
-
+        fun showClassifyList(categoryList: List<CategoryBean>)
     }
 
     interface Presenter : IPresenter {
-
+        fun getClassifyList()
     }
 }
