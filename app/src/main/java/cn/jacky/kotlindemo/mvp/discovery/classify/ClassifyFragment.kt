@@ -8,7 +8,7 @@ import cn.jacky.kotlindemo.mvp.adapter.ClassifyGridAdapter
 import cn.jacky.kotlindemo.mvp.baseview.BaseFragment
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.zenchn.apilib.entity.CategoryBean
-import com.zenchn.support.widget.itemdecoration.GridSpaceItemDecoration
+import com.zenchn.support.widget.itemdecoration.GridDividerItemDecoration
 import kotlinx.android.synthetic.main.fragment_classify.*
 
 /**
@@ -41,7 +41,7 @@ class ClassifyFragment : BaseFragment(), ClassifyContract.View, BaseQuickAdapter
     }
 
     override fun showClassifyList(categoryList: List<CategoryBean>) {
-        rlv.addItemDecoration(GridSpaceItemDecoration(2, categoryList.size, 10))
+        rlv.addItemDecoration(GridDividerItemDecoration(activity))
         val classifyGridAdapter = ClassifyGridAdapter(R.layout.recycle_item_grid_classify, categoryList)
         classifyGridAdapter.onItemClickListener = this
         rlv.adapter = classifyGridAdapter

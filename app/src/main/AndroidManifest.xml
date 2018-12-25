@@ -23,7 +23,6 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/KotlinDemoAppTheme"
@@ -55,6 +54,10 @@
         <activity
             android:name=".mvp.videodetail.VideoDetailActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"/>
+
+        <activity
+            android:name=".mvp.classifydetail.ClassifyDetailActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
