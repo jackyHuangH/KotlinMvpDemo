@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 
 import com.zenchn.apilib.BuildConfig;
 import com.zenchn.apilib.retrofit.IRetrofitProvider;
+import com.zenchn.apilib.retrofit.interceptor.AddParamsInterceptor;
 import com.zenchn.apilib.retrofit.interceptor.TokenHeaderInterceptor;
 
 import java.util.concurrent.TimeUnit;
@@ -60,7 +61,8 @@ public class CustomRetrofitProvider implements IRetrofitProvider {
             }
 
             builder.addInterceptor(loggingInterceptor)
-                    .addNetworkInterceptor(new TokenHeaderInterceptor());
+                    .addNetworkInterceptor(new TokenHeaderInterceptor())
+                    .addNetworkInterceptor(new AddParamsInterceptor());
 
             OkHttpClient okHttpClient = builder.build();
             return (new Retrofit.Builder())

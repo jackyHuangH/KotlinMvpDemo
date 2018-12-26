@@ -14,14 +14,16 @@ import com.zenchn.support.kit.AndroidKit;
 
 public class VerticalItemDecoration extends RecyclerView.ItemDecoration {
 
-    private float space;
+    private int mSpace;
 
     private Context context;
+    /**
+     * 是顶部间距还是底部间距
+     **/
+    private boolean isTopDecoration;
 
-    private boolean isTopDecoration;//是顶部间距还是底部间距
-
-    public VerticalItemDecoration(Context context, float space, boolean isTopDecoration) {
-        this.space = space;
+    public VerticalItemDecoration(Context context, int spaceInDp, boolean isTopDecoration) {
+        this.mSpace = AndroidKit.Dimens.dp2px(spaceInDp);
         this.isTopDecoration = isTopDecoration;
         this.context = context;
     }
@@ -29,9 +31,9 @@ public class VerticalItemDecoration extends RecyclerView.ItemDecoration {
     @Override
     public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
         if (isTopDecoration) {
-            outRect.top = (int) (space * AndroidKit.Dimens.DENSITY);
+            outRect.top = mSpace;
         } else {
-            outRect.bottom = (int) (space * AndroidKit.Dimens.DENSITY);
+            outRect.bottom = mSpace;
         }
     }
 

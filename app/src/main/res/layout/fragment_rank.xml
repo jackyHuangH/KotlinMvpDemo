@@ -2,9 +2,10 @@
 <android.support.v7.widget.RecyclerView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/rlv"
+    android:id="@+id/rlv_rank"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/overlap_white"
     android:clipToPadding="false"
     android:paddingBottom="@dimen/home_bottom_bar_height"
-    tools:listitem="@layout/recycle_item_grid_classify"/>
+    tools:listitem="@layout/recycle_item_classify_detail"/>

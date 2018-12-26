@@ -21,6 +21,7 @@ import com.zenchn.support.R;
 public class GridDividerItemDecoration extends RecyclerView.ItemDecoration {
     private Context mContext;
     private Drawable mDivider;
+    private static final int PADDING_IN_DP=10;
 
     /**
      * 默认透明分隔线，宽度3dp
@@ -61,7 +62,7 @@ public class GridDividerItemDecoration extends RecyclerView.ItemDecoration {
 
             if (isFirstColum(parent, i, getSpanCount(parent), childCount)) {
                 //如果是第一列
-                final int left = child.getLeft() + dip2px(15);
+                final int left = child.getLeft() + dip2px(PADDING_IN_DP);
                 final int right = child.getRight() + params.rightMargin
                         + mDivider.getIntrinsicWidth();
                 final int top = child.getBottom() + params.bottomMargin;
@@ -71,7 +72,7 @@ public class GridDividerItemDecoration extends RecyclerView.ItemDecoration {
             } else if (isLastColum(parent, i, getSpanCount(parent), childCount)) {
                 //如果是最后一列
                 final int left = child.getLeft();
-                final int right = child.getRight() - dip2px(15);
+                final int right = child.getRight() - dip2px(PADDING_IN_DP);
                 final int top = child.getBottom() + params.bottomMargin;
                 final int bottom = top + mDivider.getIntrinsicHeight();
                 mDivider.setBounds(left, top, right, bottom);

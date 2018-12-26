@@ -18,12 +18,12 @@ public class TokenHeaderInterceptor implements Interceptor {
 
     @Override
     public Response intercept(Chain chain) throws IOException {
-        //TODO get token
+        // get token
         String token = "";
         Request originRequest = chain.request();
         //get new request,add header
         Request newRequest = originRequest.newBuilder()
-                .addHeader("access-token", token)
+                .addHeader("token", token)
                 .build();
         return chain.proceed(newRequest);
     }

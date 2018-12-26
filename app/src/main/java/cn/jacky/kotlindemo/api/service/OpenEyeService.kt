@@ -23,7 +23,7 @@ interface OpenEyeService {
     fun getFirstHomeData(@Query("num") num: Int): Observable<HomeBean>
 
     /**
-     * 根据 nextPageUrl 请求数据下一页数据
+     * 首页更多 nextPageUrl 请求数据下一页数据
      */
     @GET
     fun getMoreHomeData(@Url url: String): Observable<HomeBean>
@@ -47,7 +47,7 @@ interface OpenEyeService {
     fun getCategoryDetailList(@Query("id") id: Long): Observable<HomeBean.Issue>
 
     /**
-     * 获取更多的 Issue
+     * 通用 获取更多的 Issue
      */
     @GET
     fun getIssueData(@Url url: String): Observable<HomeBean.Issue>

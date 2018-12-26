@@ -6,6 +6,7 @@ import android.view.View
 import cn.jacky.kotlindemo.R
 import cn.jacky.kotlindemo.mvp.adapter.ClassifyGridAdapter
 import cn.jacky.kotlindemo.mvp.baseview.BaseFragment
+import cn.jacky.kotlindemo.mvp.classifydetail.ClassifyDetailActivity
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.zenchn.apilib.entity.CategoryBean
 import com.zenchn.support.widget.itemdecoration.GridDividerItemDecoration
@@ -47,8 +48,10 @@ class ClassifyFragment : BaseFragment(), ClassifyContract.View, BaseQuickAdapter
         rlv.adapter = classifyGridAdapter
     }
 
-    override fun onItemClick(adapter: BaseQuickAdapter<*, *>?, view: View?, position: Int) {
-        //todo 跳转分类详情
+    override fun onItemClick(adapter: BaseQuickAdapter<*, *>, view: View?, position: Int) {
+        // 跳转分类详情
+        val categoryBean = adapter.getItem(position) as CategoryBean
+        activity?.let { ClassifyDetailActivity.launch(it, categoryBean) }
     }
 
 }

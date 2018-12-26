@@ -65,8 +65,8 @@ class VideoDetailActivity : BaseActivity(), VideoDetailContract.View, BaseQuickA
     override fun getLayoutRes(): Int = R.layout.activity_video_detail
 
     override fun initStatusBar() {
-        mImmersionBar = ImmersionBar.with(this)
-        mImmersionBar
+        mImmersionBar = ImmersionBar
+                .with(this)
                 .fitsSystemWindows(false)
                 .hideBar(BarHide.FLAG_HIDE_STATUS_BAR)
         mImmersionBar.init()

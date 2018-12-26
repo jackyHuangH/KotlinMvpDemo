@@ -2,7 +2,7 @@ package cn.jacky.kotlindemo.mvp.classifydetail
 
 import cn.jacky.kotlindemo.mvp.basepresenter.IPresenter
 import cn.jacky.kotlindemo.mvp.baseview.IView
-import com.zenchn.apilib.entity.CategoryBean
+import com.zenchn.apilib.entity.HomeBean
 
 /**
  * @author:Hzj
@@ -12,10 +12,20 @@ import com.zenchn.apilib.entity.CategoryBean
  */
 interface ClassifyDetailContract {
     interface View : IView {
-        fun showClassifyList(categoryList: List<CategoryBean>)
+        /**
+         *  设置列表数据
+         */
+        fun setCateDetailList(itemList: ArrayList<HomeBean.Issue.Item>, hasNextPage: Boolean)
+
+        /**
+         *  添加列表数据
+         */
+        fun addMoreDetailList(itemList: ArrayList<HomeBean.Issue.Item>, hasNextPage: Boolean)
     }
 
     interface Presenter : IPresenter {
-        fun getClassifyList()
+        fun getCategoryDetailList(id: Long)
+
+        fun loadMoreData()
     }
 }

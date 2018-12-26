@@ -1,11 +1,13 @@
 package cn.jacky.kotlindemo.mvp.adapter
 
+import android.view.ViewGroup
 import cn.jacky.kotlindemo.R
 import cn.jacky.kotlindemo.wrapper.glide.GlideApp
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.zenchn.apilib.entity.CategoryBean
+import com.zenchn.support.kit.AndroidKit
 
 /**
  * @author:Hzj
@@ -25,6 +27,12 @@ class ClassifyGridAdapter(layoutRes: Int, data: List<CategoryBean>) :
                 .into(helper.getView(R.id.iv_classify))
 
         helper.setText(R.id.tv_classify_name, "#${item?.name}")
+
+        //重新计算item宽高
+        val screenWidth = AndroidKit.Dimens.getScreenWidth()
+        val defaultPadding = AndroidKit.Dimens.dp2px(3)
+        val newSize = (screenWidth - defaultPadding) / 2
+        helper.itemView.layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, newSize)
     }
 
 }
