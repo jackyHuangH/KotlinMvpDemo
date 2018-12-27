@@ -35,7 +35,7 @@
     <string name="mine_message">我的消息</string>
     <string name="mine_attention">我的关注</string>
     <string name="mine_cache">我的缓存</string>
-    <string name="view_history">观看记录</string>
+    <string name="view_history">观看记录 ></string>
     <string name="feedback">意见反馈</string>
 
     <string name="loading_text">加载中&#8230;</string>

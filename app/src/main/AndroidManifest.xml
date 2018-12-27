@@ -58,6 +58,10 @@
         <activity
             android:name=".mvp.classifydetail.ClassifyDetailActivity"
             android:screenOrientation="portrait"/>
+
+        <activity
+            android:name=".mvp.about.AboutActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

@@ -61,6 +61,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:layout_marginTop="15dp"
         android:paddingTop="@dimen/padding_common_d"
         android:paddingBottom="@dimen/padding_common_d"
         android:text="@string/view_homepage"
@@ -69,5 +70,21 @@
         app:layout_constraintEnd_toEndOf="@+id/tv_nickname"
         app:layout_constraintStart_toStartOf="@+id/tv_nickname"
         app:layout_constraintTop_toBottomOf="@+id/tv_nickname"/>
+
+    <TextView
+        android:id="@+id/tv_watch_history"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="15dp"
+        android:paddingTop="@dimen/padding_common_d"
+        android:paddingBottom="@dimen/padding_common_d"
+        android:text="@string/view_history"
+        android:textColor="@color/color_light_black"
+        android:textSize="@dimen/textSize_small"
+        app:layout_constraintEnd_toEndOf="@+id/tv_view_homepage"
+        app:layout_constraintStart_toStartOf="@+id/tv_view_homepage"
+        app:layout_constraintTop_toBottomOf="@+id/tv_view_homepage"/>
+
 
 </android.support.constraint.ConstraintLayout>

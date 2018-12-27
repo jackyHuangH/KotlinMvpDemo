@@ -45,10 +45,9 @@ dependencies {
 
     implementation rootProject.ext.dependencies["easypermission"]
 
-//    implementation 'com.jacky:AndroidWatermarkCamera:0.0.1'
-
     implementation rootProject.ext.dependencies["glide"]
     implementation rootProject.ext.dependencies["glide_okhttp_integration"]
+    implementation rootProject.ext.dependencies["glide_transformations"]
     kapt rootProject.ext.dependencies["glide_compiler"]
 
     implementation rootProject.ext.dependencies["picasso"]
