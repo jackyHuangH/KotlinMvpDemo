@@ -1,11 +1,10 @@
 package cn.jacky.kotlindemo.mvp.adapter
 
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.LinearSnapHelper
 import android.support.v7.widget.RecyclerView
-import android.view.Gravity
 import cn.jacky.kotlindemo.R
 import cn.jacky.kotlindemo.wrapper.glide.GlideApp
-import cn.jacky.kotlindemo.wrapper.snaphelper.GravitySnapHelper
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
@@ -36,7 +35,7 @@ class AttentionListAdapter(layoutRes: Int, data: ArrayList<HomeBean.Issue.Item>)
         //设置水平滑动recyclerView
         rlvAttentionWorks.layoutManager = LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false)
         val horizontalAdapter = AttentionHorizontalAdapter(R.layout.recycle_item_attention_horizontal, item?.data?.itemList!!)
-        GravitySnapHelper(Gravity.START).attachToRecyclerView(rlvAttentionWorks)
+        LinearSnapHelper().attachToRecyclerView(rlvAttentionWorks)
         rlvAttentionWorks.adapter = horizontalAdapter
     }
 }

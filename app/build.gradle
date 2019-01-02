@@ -21,7 +21,7 @@ android {
         flavorDimensions "zenchn"
         ndk {
             // 设置支持的SO库架构
-            abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
+            abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a'//, 'x86', 'x86_64'
         }
 
         //开启blurview支持
@@ -100,9 +100,11 @@ android {
         threadCount = 8
     }
 
-    //解决pictureSelector rxjava版本冲突
     packagingOptions {
+        //解决pictureSelector rxjava版本冲突
         exclude 'META-INF/rxjava.properties'
+        //解决lib重复报错
+        pickFirst 'lib/mips/*'
     }
 
     configurations.all {

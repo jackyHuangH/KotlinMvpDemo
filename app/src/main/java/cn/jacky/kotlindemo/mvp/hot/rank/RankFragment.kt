@@ -55,7 +55,9 @@ class RankFragment : BaseFragment(), RankContract.View, BaseQuickAdapter.OnItemC
     override fun setRankList(itemList: ArrayList<HomeBean.Issue.Item>) {
         mListAdapter = ClassifyDetailListAdapter(R.layout.recycle_item_classify_detail, itemList)
         mListAdapter.onItemClickListener = this
-        val footer = LayoutInflater.from(activity).inflate(R.layout.recycle_footer_no_more, rlv_rank, false)
+        val footer = LayoutInflater.from(activity).inflate(R.layout.recycle_footer_no_more, rlv_rank, false).apply {
+            //do something 可以做初始化
+        }
         mListAdapter.addFooterView(footer)
         rlv_rank.adapter = mListAdapter
     }

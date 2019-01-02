@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/home_bottom_bar_height">
 
     <ImageView
         android:id="@+id/iv_avatar_bg"
@@ -21,19 +22,11 @@
         app:layout_constraintBottom_toBottomOf="@+id/iv_avatar_bg"
         app:layout_constraintTop_toBottomOf="@+id/iv_avatar_bg"/>
 
-    <android.support.v7.widget.AppCompatImageButton
-        android:id="@+id/ibt_about"
-        android:layout_width="50dp"
-        android:layout_height="?attr/actionBarSize"
-        android:layout_alignParentEnd="true"
-        android:background="@null"
-        android:src="@drawable/ic_about"
-        app:layout_constraintEnd_toEndOf="parent"/>
 
     <com.zenchn.support.widget.CircleTextImageView
         android:id="@+id/iv_avatar"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:src="@drawable/img_avatar"
         app:citv_border_color="@color/white"
         app:citv_border_width="2dp"
@@ -61,12 +54,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="20dp"
         android:paddingTop="@dimen/padding_common_d"
         android:paddingBottom="@dimen/padding_common_d"
         android:text="@string/view_homepage"
         android:textColor="@color/color_light_black"
-        android:textSize="@dimen/textSize_small"
+        android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="@+id/tv_nickname"
         app:layout_constraintStart_toStartOf="@+id/tv_nickname"
         app:layout_constraintTop_toBottomOf="@+id/tv_nickname"/>
@@ -76,15 +69,38 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="20dp"
         android:paddingTop="@dimen/padding_common_d"
         android:paddingBottom="@dimen/padding_common_d"
         android:text="@string/view_history"
         android:textColor="@color/color_light_black"
-        android:textSize="@dimen/textSize_small"
+        android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="@+id/tv_view_homepage"
         app:layout_constraintStart_toStartOf="@+id/tv_view_homepage"
         app:layout_constraintTop_toBottomOf="@+id/tv_view_homepage"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="---此广告位长期招租哟---"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_about"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_watch_history"/>
+
+    <TextView
+        android:id="@+id/tv_about"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="20dp"
+        android:drawableEnd="@drawable/ic_about"
+        android:drawablePadding="5dp"
+        android:gravity="center"
+        android:text="@string/about"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
 
 </android.support.constraint.ConstraintLayout>

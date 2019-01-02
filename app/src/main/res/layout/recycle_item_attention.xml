@@ -70,8 +70,7 @@
         android:id="@+id/rlv_attention_works"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:clipToPadding="false"
-        android:layout_marginStart="@dimen/padding_common_h"/>
+        android:clipToPadding="false"/>
 
 
 </LinearLayout>
