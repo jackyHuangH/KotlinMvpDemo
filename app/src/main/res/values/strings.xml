@@ -54,4 +54,6 @@
     <string name="hot_tab_title_week">周排行</string>
     <string name="hot_tab_title_month">月排行</string>
     <string name="hot_tab_title_total">总排行</string>
+
+    <string name="watch_history_title">观看记录</string>
 </resources>

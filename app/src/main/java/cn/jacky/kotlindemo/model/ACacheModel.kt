@@ -35,9 +35,9 @@ object ACacheModel {
     fun saveWatchHistoryCache(item: HomeBean.Issue.Item) {
         Observable.just(item)
                 .map {
-                    val cachedSet = getWatchHistoryCache() ?: HashSet<HomeBean.Issue.Item>()
-                    cachedSet.add(it)
-                    mACache.put(KEY_WATCH_HISTORY, cachedSet)
+                    val cachedMap = getWatchHistoryCache() ?: HashMap<Int, HomeBean.Issue.Item>()
+                    cachedMap.put(it.id,it)
+                    mACache.put(KEY_WATCH_HISTORY, cachedMap)
                 }
                 .compose(RxSchedulerController.applySchedulers())
                 .subscribe({
@@ -48,14 +48,21 @@ object ACacheModel {
     }
 
     /**
-     * 取出观看记录
+     * 取出观看记录,这里是同步方式，调用时务必放在子线程
      */
-    fun getWatchHistoryCache(): HashSet<HomeBean.Issue.Item>? {
+    fun getWatchHistoryCache(): HashMap<Int, HomeBean.Issue.Item>? {
         val obj = mACache.getAsObject(KEY_WATCH_HISTORY)
         return if (obj == null) {
-            HashSet<HomeBean.Issue.Item>()
+            HashMap<Int, HomeBean.Issue.Item>()
         } else {
-            obj as HashSet<HomeBean.Issue.Item>
+            obj as HashMap<Int, HomeBean.Issue.Item>
         }
+    }
+
+    /**
+     * 取出观看记录，被观察者
+     */
+    fun getWatchHistoryCacheObservable(): Observable<HashMap<Int, HomeBean.Issue.Item>> {
+        return Observable.just(getWatchHistoryCache())
     }
 }

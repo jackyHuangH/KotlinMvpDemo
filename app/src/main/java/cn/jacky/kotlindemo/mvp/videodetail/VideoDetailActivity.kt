@@ -156,7 +156,6 @@ class VideoDetailActivity : BaseActivity(), VideoDetailContract.View, BaseQuickA
 
             override fun onQuitFullscreen(url: String?, vararg objects: Any?) {
                 super.onQuitFullscreen(url, *objects)
-                initStatusBar()
                 Logger.d("***** onQuitFullscreen **** ")
                 //列表返回的样式判断
                 mOrientationUtils.backToProtVideo()
@@ -167,6 +166,7 @@ class VideoDetailActivity : BaseActivity(), VideoDetailContract.View, BaseQuickA
                 //点击空白区域
                 initStatusBar()
             }
+
         })
         //设置返回按钮
         gsy_player.backButton.setOnClickListener { onBackPressed() }

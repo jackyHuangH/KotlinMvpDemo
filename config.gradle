@@ -39,6 +39,9 @@ ext {
 
             //magicIndicator
             "magic_indicator"           : "com.github.hackware1993:MagicIndicator:1.5.0",
+            //smart refreshLayout
+            "smart_refreshlayout"       : 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-18',
+            "smart_refreshlayout_header": 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-18',
             //深度自定义的 calendarview
             "calendarview"              : 'com.haibin:calendarview:3.4.0',
             //时间区间选择器

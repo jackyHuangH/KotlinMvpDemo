@@ -58,6 +58,9 @@ dependencies {
 
     implementation rootProject.ext.dependencies["barlibrary"]
 
+    implementation rootProject.ext.dependencies["smart_refreshlayout"]
+    implementation rootProject.ext.dependencies["smart_refreshlayout_header"]
+
     implementation rootProject.ext.dependencies["logger"]
 
     implementation rootProject.ext.dependencies["GSYVideoPlayer"]

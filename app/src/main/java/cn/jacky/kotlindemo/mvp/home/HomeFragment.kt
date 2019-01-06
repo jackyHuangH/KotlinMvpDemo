@@ -73,8 +73,6 @@ class HomeFragment : BaseFragment(), HomeContract.View, BaseQuickAdapter.Request
     }
 
     private fun initToolBar() {
-        //处理toolbar 与状态栏的间距
-        activity?.let { StatusBarUtil.setPaddingSmart(it, toolbar) }
         toolbar.setOnClickListener {
             rlv.smoothScrollToPosition(0)
         }
@@ -87,6 +85,9 @@ class HomeFragment : BaseFragment(), HomeContract.View, BaseQuickAdapter.Request
                 .transparentStatusBar()
                 .statusBarDarkFont(true)
         mImmersionBar.init()
+
+        //处理toolbar 与状态栏的间距
+        activity?.let { StatusBarUtil.setPaddingSmart(it, toolbar) }
     }
 
     override fun lazyLoad() {
