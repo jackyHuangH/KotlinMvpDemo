@@ -146,5 +146,10 @@ ext {
             "amap-navi"                 : "com.amap.api:navi-3dmap:latest.integration",//  导航
             "amap-search"               : "com.amap.api:search:latest.integration",// 搜索
             "amap-location"             : "com.amap.api:location:latest.integration",// 定位
+
+            //友盟统计，三方登录分享
+            'umeng_analytic'            : 'com.umeng.umsdk:analytics:7.5.4',
+            'umeng_common'              : 'com.umeng.umsdk:common:1.5.4',
+            "umeng_utdid"               : 'com.umeng.umsdk:utdid:1.1.5.3',
     ]
 }

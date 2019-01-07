@@ -76,6 +76,10 @@ dependencies {
     implementation rootProject.ext.dependencies["dagger2"]
     kapt rootProject.ext.dependencies["dagger2_compiler"]
 
+    implementation rootProject.ext.dependencies["umeng_analytic"]
+    implementation rootProject.ext.dependencies["umeng_common"]
+    implementation rootProject.ext.dependencies["umeng_utdid"]
+
     //use greendao
 //    implementation rootProject.ext.dependencies["greendao"]
 //    implementation rootProject.ext.dependencies["greendao-generator"]

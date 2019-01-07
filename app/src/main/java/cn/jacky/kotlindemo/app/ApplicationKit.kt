@@ -3,9 +3,11 @@ package cn.jacky.kotlindemo.app
 import android.app.Activity
 import android.app.NotificationManager
 import android.content.Intent
+import cn.jacky.kotlindemo.BuildConfig
 import cn.jacky.kotlindemo.R
 import cn.jacky.kotlindemo.common.Constant
 import cn.jacky.kotlindemo.mvp.main.MainActivity
+import com.umeng.commonsdk.UMConfigure
 import com.zenchn.apilib.base.ApiManager
 import com.zenchn.apilib.util.LoggerKit
 import com.zenchn.support.base.AbstractApplicationKit
@@ -21,6 +23,10 @@ import com.zenchn.support.widget.tips.SuperToast
  * record：
  */
 class ApplicationKit private constructor() : AbstractApplicationKit(), ActivityLifecycleCallback {
+
+    object Const {
+        const val UMENG_APP_KEY = "5c32f9a7f1f5568bf5000eeb"
+    }
 
     private val mLazyActivityLifecycle: DefaultActivityLifecycle by lazy {
         DefaultActivityLifecycle.getInstance()
@@ -47,8 +53,8 @@ class ApplicationKit private constructor() : AbstractApplicationKit(), ActivityL
 
     override fun initSetting() {
         super.initSetting()
-        //初始化缓存
-        initACache()
+        //初始化友盟
+        initUMeng()
         initApiManager()
         LoggerKit.init(Constant.LOGGERKIT_TAG)
         initActivityLifecycle()
@@ -60,16 +66,22 @@ class ApplicationKit private constructor() : AbstractApplicationKit(), ActivityL
     }
 
     /**
-     * 初始化本地缓存
+     * 初始化友盟
      */
-    private fun initACache() {
-//        try {
-//            val aCache = ACache.get(application)
-//            ACacheModelImpl.init(aCache)
-//        } catch (e: Exception) {
-//            e.printStackTrace()
-//        }
+    private fun initUMeng() {
+        /**
+         * 初始化common库
+         * 参数1:上下文，不能为空
+         * 参数2:设备类型，UMConfigure.DEVICE_TYPE_PHONE为手机、UMConfigure.DEVICE_TYPE_BOX为盒子，默认为手机
+         * 参数3:Push推送业务的secret
+         */
+        UMConfigure.init(application, UMConfigure.DEVICE_TYPE_PHONE, Const.UMENG_APP_KEY)
 
+        /**
+         * 设置组件化的Log开关
+         * 参数: boolean 默认为false，如需查看LOG设置为true
+         */
+        UMConfigure.setLogEnabled(BuildConfig.DEBUG)
     }
 
     private fun initActivityLifecycle() {

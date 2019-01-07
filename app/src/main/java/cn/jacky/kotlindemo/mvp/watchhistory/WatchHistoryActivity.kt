@@ -4,7 +4,6 @@ import android.app.Activity
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import cn.jacky.kotlindemo.R
-import cn.jacky.kotlindemo.R.id.rlv_history
 import cn.jacky.kotlindemo.mvp.adapter.SearchListAdapter
 import cn.jacky.kotlindemo.mvp.baseview.BaseActivity
 import cn.jacky.kotlindemo.mvp.videodetail.VideoDetailActivity

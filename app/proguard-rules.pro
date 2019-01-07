@@ -275,6 +275,9 @@ rx.internal.util.atomic.LinkedQueueNode consumerNode;
 #blurView
 -keep class android.support.v8.renderscript.** { *; }
 
+#友盟
+-keep class com.umeng.** {*;}
+
 #GSYPlayer
 -keep class com.shuyu.gsyvideoplayer.video.** { *; }
 -dontwarn com.shuyu.gsyvideoplayer.video.**

@@ -3,8 +3,11 @@ apply from: 'config.gradle'
 buildscript {
     ext.kotlin_version = '1.2.71'
     repositories {
+        //阿里镜像仓库
         maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
         maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter' }
+        //友盟
+        maven { url 'https://dl.bintray.com/umsdk/release' }
         jcenter()
         mavenCentral() // add repository
         google()
@@ -19,8 +22,11 @@ buildscript {
 
 allprojects {
     repositories {
+        //阿里镜像仓库
         maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
         maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter' }
+        //友盟
+        maven { url 'https://dl.bintray.com/umsdk/release' }
         jcenter()
         mavenCentral() // add repository
         google()
