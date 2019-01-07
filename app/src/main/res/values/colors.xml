@@ -41,36 +41,10 @@
 
     <color name="transparent">#00000000</color>
 
-    <color name="half_white">#7FFFFFFF</color>
-    <color name="third_white">#55FFFFFF</color>
-    <color name="quarter_white">#3FFFFFFF</color>
     <color name="overlap_white">#33000000</color>
-    <color name="transparent_gray">#90000000</color>
 
-    <color name="three_quarter_black">#B2000000</color>
-    <color name="half_black">#7F000000</color>
-    <color name="third_black">#55000000</color>
-    <color name="quarter_black">#30000000</color>
     <color name="color_44000000">#44000000</color>
-    <color name="color_ccffffff">#ccffffff</color>
-    <color name="color_ccff6600">#ccFF6600</color>
 
-    <color name="color_ececec">#ececec</color>
-    <color name="color_ababab">#ababab</color>
-    <color name="color_dfdfdf">#DFDFDF</color>
-    <color name="color_f2f2f2">#F2F2F2</color>
-    <color name="color_cc02c1e1">#CC02C1E1</color>
-    <color name="color_7f02c1e1">#7F02C1E1</color>
-    <color name="color_0288d1">#0288D1</color>
-    <color name="color_02c1e1">#02C1E1</color>
     <color name="color_9a9a9a">#9a9a9a</color>
-    <color name="color_32caba">#32caba</color>
-    <color name="color_ccf3f9">#ccf3f9</color>
-    <color name="color_ff6600">#FF6600</color>
     <color name="color_5000">#5000</color>
-    <color name="color_bbbbbb">#bbbbbb</color>
-    <color name="color_EDEEF0">#EDEEF0</color>
-    <color name="color_CCF3F9">#CCF3F9</color>
-    <color name="color_777777">#777777</color>
-    <color name="color_edeef0">#edeef0</color>
 </resources>
