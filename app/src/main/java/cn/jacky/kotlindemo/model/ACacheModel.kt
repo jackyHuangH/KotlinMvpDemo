@@ -32,12 +32,22 @@ object ACacheModel {
      * map<itemId,item>
      */
     @SuppressLint("CheckResult")
-    fun saveWatchHistoryCache(item: HomeBean.Issue.Item) {
-        Observable.just(item)
+    fun saveWatchHistoryCache(newItem: HomeBean.Issue.Item) {
+        Observable.just(getWatchHistoryCache())
                 .map {
-                    val cachedMap = getWatchHistoryCache() ?: HashMap<Int, HomeBean.Issue.Item>()
-                    cachedMap.put(it.id,it)
-                    mACache.put(KEY_WATCH_HISTORY, cachedMap)
+                    Log.d(TAG, "之前保存的记录：" + it)
+                    val iterator = it.iterator()
+                    while (iterator.hasNext()) {
+                        val oldItem = iterator.next()
+                        //保存过的就先删除原来的，再覆盖保存
+                        if (oldItem.data?.id == newItem.data?.id) {
+                            iterator.remove()
+                            break
+                        }
+                    }
+                    it.add(newItem)
+                    Log.d(TAG, "现在保存的记录：" + it)
+                    mACache.put(KEY_WATCH_HISTORY, it)
                 }
                 .compose(RxSchedulerController.applySchedulers())
                 .subscribe({
@@ -50,19 +60,19 @@ object ACacheModel {
     /**
      * 取出观看记录,这里是同步方式，调用时务必放在子线程
      */
-    fun getWatchHistoryCache(): HashMap<Int, HomeBean.Issue.Item>? {
+    fun getWatchHistoryCache(): ArrayList<HomeBean.Issue.Item> {
         val obj = mACache.getAsObject(KEY_WATCH_HISTORY)
-        return if (obj == null) {
-            HashMap<Int, HomeBean.Issue.Item>()
+        return if (obj is ArrayList<*>) {
+            obj as ArrayList<HomeBean.Issue.Item>
         } else {
-            obj as HashMap<Int, HomeBean.Issue.Item>
+            ArrayList()
         }
     }
 
     /**
      * 取出观看记录，被观察者
      */
-    fun getWatchHistoryCacheObservable(): Observable<HashMap<Int, HomeBean.Issue.Item>> {
+    fun getWatchHistoryCacheObservable(): Observable<ArrayList<HomeBean.Issue.Item>> {
         return Observable.just(getWatchHistoryCache())
     }
 }

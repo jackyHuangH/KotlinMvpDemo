@@ -8,6 +8,7 @@ import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import cn.jacky.kotlindemo.R
+import cn.jacky.kotlindemo.R.id.*
 import cn.jacky.kotlindemo.mvp.baseview.BaseActivity
 import cn.jacky.kotlindemo.util.StatusBarUtil
 import com.gyf.barlibrary.ImmersionBar

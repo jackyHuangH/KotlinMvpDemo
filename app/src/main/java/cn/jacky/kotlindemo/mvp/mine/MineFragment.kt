@@ -2,6 +2,7 @@ package cn.jacky.kotlindemo.mvp.mine
 
 import android.os.Bundle
 import cn.jacky.kotlindemo.R
+import cn.jacky.kotlindemo.R.id.*
 import cn.jacky.kotlindemo.mvp.about.AboutActivity
 import cn.jacky.kotlindemo.mvp.baseview.BaseFragment
 import cn.jacky.kotlindemo.mvp.userinfo.UserInfoActivity

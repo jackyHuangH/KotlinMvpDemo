@@ -6,6 +6,7 @@ import android.graphics.Typeface
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
 import cn.jacky.kotlindemo.R
+import cn.jacky.kotlindemo.R.id.*
 import cn.jacky.kotlindemo.app.ApplicationKit
 import cn.jacky.kotlindemo.mvp.baseview.BaseActivity
 import cn.jacky.kotlindemo.mvp.main.MainActivity

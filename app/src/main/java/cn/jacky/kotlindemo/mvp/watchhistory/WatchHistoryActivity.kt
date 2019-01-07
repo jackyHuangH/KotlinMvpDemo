@@ -4,6 +4,7 @@ import android.app.Activity
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import cn.jacky.kotlindemo.R
+import cn.jacky.kotlindemo.R.id.rlv_history
 import cn.jacky.kotlindemo.mvp.adapter.SearchListAdapter
 import cn.jacky.kotlindemo.mvp.baseview.BaseActivity
 import cn.jacky.kotlindemo.mvp.videodetail.VideoDetailActivity
@@ -36,11 +37,15 @@ class WatchHistoryActivity : BaseActivity(), WatchHistoryContract.View, BaseQuic
         mImmersionBar.init()
     }
 
+    override fun onResume() {
+        super.onResume()
+        //加载本地观看记录
+        mPresenter.getWatchHistory()
+    }
+
     override fun initWidget() {
         toolbar.setNavigationOnClickListener { onBackPressed() }
         initRecyclerView()
-        //加载本地观看记录
-        mPresenter.getWatchHistory()
     }
 
     private fun initRecyclerView() {
@@ -59,6 +64,7 @@ class WatchHistoryActivity : BaseActivity(), WatchHistoryContract.View, BaseQuic
 
     override fun setHomeNewData(itemList: ArrayList<HomeBean.Issue.Item>) {
         mHistoryAdapter.setNewData(itemList)
+        rlv_history.smoothScrollToPosition(0)
     }
 
     companion object {

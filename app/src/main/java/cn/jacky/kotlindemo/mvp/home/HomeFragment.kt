@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import cn.jacky.kotlindemo.R
+import cn.jacky.kotlindemo.R.id.*
 import cn.jacky.kotlindemo.mvp.adapter.HomeListAdapter
 import cn.jacky.kotlindemo.mvp.baseview.BaseFragment
 import cn.jacky.kotlindemo.mvp.search.SearchActivity

@@ -21,14 +21,8 @@ class WatchHistoryPresenterImpl(mView: WatchHistoryContract.View?) : BasePresent
     override fun getWatchHistory() {
         ACacheModel.getWatchHistoryCacheObservable()
                 .flatMap {
-                    val list = ArrayList<HomeBean.Issue.Item>()
-                    val iterator = it.iterator()
-                    while (iterator.hasNext()) {
-                        val next = iterator.next()
-                        list.add(next.value)
-                    }
                     //按照观看时间排序
-                    Collections.sort(list, object : Comparator<HomeBean.Issue.Item> {
+                    Collections.sort(it, object : Comparator<HomeBean.Issue.Item> {
                         override fun compare(o1: HomeBean.Issue.Item, o2: HomeBean.Issue.Item): Int {
                             //按照观看时间先后排序
                             return if (o1.watchData < o2.watchData) {
@@ -38,7 +32,7 @@ class WatchHistoryPresenterImpl(mView: WatchHistoryContract.View?) : BasePresent
                             }
                         }
                     })
-                    Observable.just(list)
+                    Observable.just(it)
                 }
                 .compose(RxSchedulerController.applySchedulers())
                 .subscribe({
