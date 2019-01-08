@@ -72,16 +72,21 @@ class ApplicationKit private constructor() : AbstractApplicationKit(), ActivityL
         /**
          * 初始化common库
          * 参数1:上下文，不能为空
-         * 参数2:设备类型，UMConfigure.DEVICE_TYPE_PHONE为手机、UMConfigure.DEVICE_TYPE_BOX为盒子，默认为手机
-         * 参数3:Push推送业务的secret
+         * 参数2:【友盟+】 AppKey
+         * 参数3:【友盟+】 Channel
+         * 参数4:设备类型，UMConfigure.DEVICE_TYPE_PHONE为手机、UMConfigure.DEVICE_TYPE_BOX为盒子，默认为手机
+         * 参数5:Push推送业务的secret
          */
-        UMConfigure.init(application, UMConfigure.DEVICE_TYPE_PHONE, Const.UMENG_APP_KEY)
+        UMConfigure.init(application, Const.UMENG_APP_KEY, "Umeng", UMConfigure.DEVICE_TYPE_PHONE, "")
 
         /**
          * 设置组件化的Log开关
          * 参数: boolean 默认为false，如需查看LOG设置为true
          */
         UMConfigure.setLogEnabled(BuildConfig.DEBUG)
+
+        //todo 设置各平台对应AppKey，本次集成新浪，QQ，微信
+
     }
 
     private fun initActivityLifecycle() {

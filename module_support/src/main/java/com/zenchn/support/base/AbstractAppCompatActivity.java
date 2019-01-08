@@ -15,15 +15,18 @@ import butterknife.ButterKnife;
 
 
 /**
- * 作   者： by Hzj on 2017/12/13/013.
  * 描   述：
  * 修订记录：
+ *
+ * @author HZJ
  */
 
 public abstract class AbstractAppCompatActivity extends AppCompatActivity implements IActivity {
 
-    protected IActivityLifecycle mActivityLifecycle;//代理activity生命周期管理（使用单例对象）
-    protected IUiController mUiController;//基本的ui控制器
+    /*** 代理activity生命周期管理（使用单例对象) ***/
+    protected IActivityLifecycle mActivityLifecycle;
+    /*** 基本的ui控制器 ***/
+    protected IUiController mUiController;
 
     public AbstractAppCompatActivity() {
         this.mActivityLifecycle = getDefaultActivityLifecycle();

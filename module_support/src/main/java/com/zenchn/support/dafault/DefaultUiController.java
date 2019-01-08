@@ -13,9 +13,10 @@ import com.zenchn.support.widget.tips.SuperToast;
 
 
 /**
- * 作    者：wangr on 2017/4/27 14:56
  * 描    述：
- * 修订记录：
+ * 修订记录:
+ *
+ * @author HZJ
  */
 
 public class DefaultUiController implements IUiController {

@@ -6,7 +6,6 @@ import android.graphics.Typeface
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
 import cn.jacky.kotlindemo.R
-import cn.jacky.kotlindemo.R.id.*
 import cn.jacky.kotlindemo.app.ApplicationKit
 import cn.jacky.kotlindemo.mvp.baseview.BaseActivity
 import cn.jacky.kotlindemo.mvp.main.MainActivity
@@ -87,7 +86,16 @@ class SplashActivity : BaseActivity() {
      * 有些厂商修改了6.0系统申请机制，他们修改成系统自动申请权限了
      */
     private fun checkPermission() {
-        val perms = arrayOf(Manifest.permission.READ_PHONE_STATE, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+        val perms = arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.CALL_PHONE,
+                Manifest.permission.READ_LOGS,
+                Manifest.permission.READ_PHONE_STATE,
+                Manifest.permission.READ_EXTERNAL_STORAGE,
+                Manifest.permission.SET_DEBUG_APP,
+                Manifest.permission.SYSTEM_ALERT_WINDOW,
+                Manifest.permission.GET_ACCOUNTS,
+                Manifest.permission.WRITE_APN_SETTINGS)
         EasyPermissions.requestPermissions(this, "${getString(R.string.app_name)}应用需要以下权限，请允许", 0, *perms)
     }
 
@@ -105,8 +113,8 @@ class SplashActivity : BaseActivity() {
     }
 
     override fun onDestroy() {
-        textTypeface=null
-        descTypeFace=null
+        textTypeface = null
+        descTypeFace = null
         super.onDestroy()
     }
 }
