@@ -9,7 +9,6 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import cn.jacky.kotlindemo.R
-import cn.jacky.kotlindemo.R.id.*
 import cn.jacky.kotlindemo.mvp.adapter.HomeListAdapter
 import cn.jacky.kotlindemo.mvp.baseview.BaseFragment
 import cn.jacky.kotlindemo.mvp.search.SearchActivity
@@ -204,4 +203,10 @@ class HomeFragment : BaseFragment(), HomeContract.View, BaseQuickAdapter.Request
         super.onStop()
         banner_home?.stopAutoPlay()
     }
+
+    override fun onApiFailure(msg: String) {
+        super.onApiFailure(msg)
+        swipe_refresh.isRefreshing=false
+    }
+
 }

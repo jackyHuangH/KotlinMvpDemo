@@ -9,7 +9,7 @@ import com.zenchn.support.base.IActivity
  * record：
  */
 interface IView : IActivity {
-    fun onApiFailure()
+    fun onApiFailure(msg: String)
 
     fun onApiGrantRefuse()
 }

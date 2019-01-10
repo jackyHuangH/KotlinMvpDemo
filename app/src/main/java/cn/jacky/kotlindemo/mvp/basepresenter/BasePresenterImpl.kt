@@ -35,11 +35,17 @@ abstract class BasePresenterImpl<V : IView> : IPresenter, RxApiCallback {
     }
 
     override fun onApiGrantRefuse() {
-        mView?.let { mView!!.onApiGrantRefuse() }
+        mView?.let {
+            it.onApiGrantRefuse()
+            it.hideProgress()
+        }
     }
 
     override fun onApiFailure(err_msg: String?) {
-        err_msg?.let { mView!!.showMessage(err_msg) }
+        err_msg?.let {
+            mView!!.onApiFailure(err_msg)
+            mView!!.hideProgress()
+        }
     }
 
     override fun onRegisterObserver(disposable: Disposable?) {
