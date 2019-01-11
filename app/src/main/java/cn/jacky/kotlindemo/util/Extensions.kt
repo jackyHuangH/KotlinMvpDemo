@@ -1,6 +1,7 @@
 package cn.jacky.kotlindemo.util
 
 import android.content.Context
+import android.os.SystemClock
 import android.support.v4.app.Fragment
 import android.view.View
 import android.widget.Toast
@@ -58,6 +59,21 @@ fun Context.dataFormat(total: Long): String {
     return result
 }
 
-
+/**
+ * 按钮点击防抖
+ */
+fun View?.setOnAntiShakeClickListener(intervalMillis: Long = 1000, listener: (View) -> Unit) {
+    /**
+     * 最近一次点击的时间
+     */
+    var lastClickTime: Long = 0
+    this?.setOnClickListener {
+        val currentTime = SystemClock.elapsedRealtime()
+        if (currentTime - lastClickTime >= intervalMillis) {
+            listener.invoke(it)
+            lastClickTime = currentTime
+        }
+    }
+}
 
 

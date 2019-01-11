@@ -2,11 +2,11 @@ package cn.jacky.kotlindemo.mvp.mine
 
 import android.os.Bundle
 import cn.jacky.kotlindemo.R
-import cn.jacky.kotlindemo.R.id.*
 import cn.jacky.kotlindemo.mvp.about.AboutActivity
 import cn.jacky.kotlindemo.mvp.baseview.BaseFragment
 import cn.jacky.kotlindemo.mvp.userinfo.UserInfoActivity
 import cn.jacky.kotlindemo.mvp.watchhistory.WatchHistoryActivity
+import cn.jacky.kotlindemo.util.setOnAntiShakeClickListener
 import cn.jacky.kotlindemo.wrapper.glide.GlideApp
 import com.gyf.barlibrary.ImmersionBar
 import jp.wasabeef.glide.transformations.BlurTransformation
@@ -50,17 +50,17 @@ class MineFragment : BaseFragment() {
                 .placeholder(R.drawable.default_avatar)
                 .into(iv_avatar_bg)
 
-        tv_about.setOnClickListener {
+        tv_about.setOnAntiShakeClickListener {
             //关于
             activity?.let { AboutActivity.launch(it) }
         }
 
-        tv_view_homepage.setOnClickListener {
+        tv_view_homepage.setOnAntiShakeClickListener {
             //个人主页
             activity?.let { UserInfoActivity.launch(it) }
         }
 
-        tv_watch_history.setOnClickListener {
+        tv_watch_history.setOnAntiShakeClickListener {
             //观看历史
             activity?.let { WatchHistoryActivity.launch(it) }
         }
