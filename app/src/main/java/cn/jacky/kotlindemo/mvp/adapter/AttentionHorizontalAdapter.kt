@@ -3,13 +3,13 @@ package cn.jacky.kotlindemo.mvp.adapter
 import android.app.Activity
 import android.widget.ImageView
 import cn.jacky.kotlindemo.R
+import cn.jacky.kotlindemo.api.bean.HomeBean
 import cn.jacky.kotlindemo.mvp.videodetail.VideoDetailActivity
 import cn.jacky.kotlindemo.util.durationFormat
 import cn.jacky.kotlindemo.wrapper.glide.GlideApp
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
-import com.zenchn.apilib.entity.HomeBean
 import java.util.*
 
 /**

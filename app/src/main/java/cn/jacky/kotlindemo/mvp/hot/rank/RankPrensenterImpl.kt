@@ -3,7 +3,7 @@ package cn.jacky.kotlindemo.mvp.hot.rank
 import cn.jacky.kotlindemo.model.HotModel
 import cn.jacky.kotlindemo.model.impl.HotModelImpl
 import cn.jacky.kotlindemo.mvp.basepresenter.BasePresenterImpl
-import com.zenchn.apilib.entity.HomeBean
+import cn.jacky.kotlindemo.api.bean.HomeBean
 
 /**
  * @author:Hzj

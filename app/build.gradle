@@ -3,6 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'//扩展插件，无需findViewById,直接引用布局文件的id即可
 apply plugin: 'kotlin-kapt'  //kapt3插件
 apply from: 'dependence.gradle'
+apply from: 'product.gradle'
 
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion

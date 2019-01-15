@@ -3,7 +3,7 @@ package cn.jacky.kotlindemo.mvp.search
 import cn.jacky.kotlindemo.model.SearchModel
 import cn.jacky.kotlindemo.model.impl.SearchModelImpl
 import cn.jacky.kotlindemo.mvp.basepresenter.BasePresenterImpl
-import com.zenchn.apilib.entity.HomeBean
+import cn.jacky.kotlindemo.api.bean.HomeBean
 
 /**
  * @author:Hzj

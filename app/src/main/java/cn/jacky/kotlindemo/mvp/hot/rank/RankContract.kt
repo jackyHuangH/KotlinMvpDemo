@@ -1,8 +1,8 @@
 package cn.jacky.kotlindemo.mvp.hot.rank
 
+import cn.jacky.kotlindemo.api.bean.HomeBean
 import cn.jacky.kotlindemo.mvp.basepresenter.IPresenter
 import cn.jacky.kotlindemo.mvp.baseview.IView
-import com.zenchn.apilib.entity.HomeBean
 
 /**
  * @author:Hzj

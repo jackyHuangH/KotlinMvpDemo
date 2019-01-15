@@ -1,4 +1,4 @@
-package com.zenchn.apilib.entity
+package cn.jacky.kotlindemo.api.bean
 
 import java.io.Serializable
 

@@ -298,8 +298,8 @@ rx.internal.util.atomic.LinkedQueueNode consumerNode;
 
 #===============================包名相关-===================================
 # 不混淆实体类
--keep class com.huangzj.kotlindemo.api.bean.**{*;}
--keep class com.huangzj.kotlindemo.api.event.**{*;}
+-keep class cn.jacky.kotlindemo.api.bean.**{*;}
+-keep class cn.jacky.kotlindemo.event.**{*;}
 
 #不要混淆Model的所有属性与方法
 -keep class com.zenchn.apilib.model.** {*;}
@@ -308,4 +308,3 @@ rx.internal.util.atomic.LinkedQueueNode consumerNode;
 #不混淆自定义控件
 -keep class com.zenchn.support.widget.**{*;}
 -dontwarn com.zenchn.support.widget.**
--keep class com.zenchn.houseinspecthelper.widget.**{*;}

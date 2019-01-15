@@ -6,7 +6,7 @@ import cn.jacky.kotlindemo.wrapper.glide.GlideApp
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
-import com.zenchn.apilib.entity.CategoryBean
+import cn.jacky.kotlindemo.api.bean.CategoryBean
 import com.zenchn.support.kit.AndroidKit
 
 /**

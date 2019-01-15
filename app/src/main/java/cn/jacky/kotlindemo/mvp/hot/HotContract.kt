@@ -2,7 +2,7 @@ package cn.jacky.kotlindemo.mvp.hot
 
 import cn.jacky.kotlindemo.mvp.basepresenter.IPresenter
 import cn.jacky.kotlindemo.mvp.baseview.IView
-import com.hazz.kotlinmvp.mvp.model.bean.TabInfoBean
+import cn.jacky.kotlindemo.api.bean.TabInfoBean
 
 /**
  * @author:Hzj

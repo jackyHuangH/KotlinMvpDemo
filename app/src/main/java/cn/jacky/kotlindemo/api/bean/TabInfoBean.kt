@@ -1,4 +1,4 @@
-package com.hazz.kotlinmvp.mvp.model.bean
+package cn.jacky.kotlindemo.api.bean
 
 /**
  * Created by xuhao on 2017/11/30.

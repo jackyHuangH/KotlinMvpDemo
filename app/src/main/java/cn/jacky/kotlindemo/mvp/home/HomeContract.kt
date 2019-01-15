@@ -2,7 +2,7 @@ package cn.jacky.kotlindemo.mvp.home
 
 import cn.jacky.kotlindemo.mvp.basepresenter.IPresenter
 import cn.jacky.kotlindemo.mvp.baseview.IView
-import com.zenchn.apilib.entity.HomeBean
+import cn.jacky.kotlindemo.api.bean.HomeBean
 
 /**
  * @author:Hzj
@@ -17,7 +17,7 @@ interface HomeContract {
         /**
          * 展示banner
          */
-        fun showBannerList(bannerItems: ArrayList<HomeBean.Issue.Item>,bannerUrls: ArrayList<String>, bannerTitles: ArrayList<String>)
+        fun showBannerList(bannerItems: ArrayList<HomeBean.Issue.Item>, bannerUrls: ArrayList<String>, bannerTitles: ArrayList<String>)
 
         /**
          * 设置第一次请求的数据

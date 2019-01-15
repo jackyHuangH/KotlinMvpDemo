@@ -6,6 +6,8 @@ import android.support.v4.content.ContextCompat
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import cn.jacky.kotlindemo.R
+import cn.jacky.kotlindemo.api.bean.CategoryBean
+import cn.jacky.kotlindemo.api.bean.HomeBean
 import cn.jacky.kotlindemo.mvp.adapter.ClassifyDetailListAdapter
 import cn.jacky.kotlindemo.mvp.baseview.BaseActivity
 import cn.jacky.kotlindemo.mvp.videodetail.VideoDetailActivity
@@ -14,8 +16,6 @@ import cn.jacky.kotlindemo.wrapper.glide.GlideApp
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.gyf.barlibrary.ImmersionBar
-import com.zenchn.apilib.entity.CategoryBean
-import com.zenchn.apilib.entity.HomeBean
 import com.zenchn.support.router.Router
 import com.zenchn.support.widget.itemdecoration.VerticalItemDecoration
 import kotlinx.android.synthetic.main.activity_classify_detail.*

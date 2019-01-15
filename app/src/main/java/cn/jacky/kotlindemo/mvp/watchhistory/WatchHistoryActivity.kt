@@ -9,7 +9,7 @@ import cn.jacky.kotlindemo.mvp.baseview.BaseActivity
 import cn.jacky.kotlindemo.mvp.videodetail.VideoDetailActivity
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.gyf.barlibrary.ImmersionBar
-import com.zenchn.apilib.entity.HomeBean
+import cn.jacky.kotlindemo.api.bean.HomeBean
 import com.zenchn.support.router.Router
 import kotlinx.android.synthetic.main.activity_watch_history.*
 

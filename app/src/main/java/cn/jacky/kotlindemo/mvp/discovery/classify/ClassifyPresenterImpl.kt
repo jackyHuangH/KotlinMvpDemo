@@ -3,7 +3,7 @@ package cn.jacky.kotlindemo.mvp.discovery.classify
 import cn.jacky.kotlindemo.model.ClassifyModel
 import cn.jacky.kotlindemo.model.impl.ClassifyModelImpl
 import cn.jacky.kotlindemo.mvp.basepresenter.BasePresenterImpl
-import com.zenchn.apilib.entity.CategoryBean
+import cn.jacky.kotlindemo.api.bean.CategoryBean
 
 /**
  * @author:Hzj

@@ -1,4 +1,4 @@
-package com.zenchn.apilib.entity
+package cn.jacky.kotlindemo.api.bean
 
 import java.io.Serializable
 import java.util.*
@@ -78,7 +78,7 @@ data class HomeBean(var dialog: Any,
                             val lastViewTime: Any,
                             val playlists: Any,
                             val header: Header,
-                            val itemList: ArrayList<HomeBean.Issue.Item>) : Serializable {
+                            val itemList: ArrayList<Item>) : Serializable {
 
                 data class Tag(val id: Int,
                                val name: String,

@@ -5,7 +5,7 @@ import android.util.Log
 import cn.jacky.kotlindemo.model.ACacheModel
 import cn.jacky.kotlindemo.mvp.basepresenter.BasePresenterImpl
 import com.zenchn.apilib.callback.rx.RxSchedulerController
-import com.zenchn.apilib.entity.HomeBean
+import cn.jacky.kotlindemo.api.bean.HomeBean
 import io.reactivex.Observable
 import java.util.*
 

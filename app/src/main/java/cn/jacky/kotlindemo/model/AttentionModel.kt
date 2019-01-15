@@ -1,7 +1,7 @@
 package cn.jacky.kotlindemo.model
 
 import com.zenchn.apilib.callback.rx.RxApiCallback
-import com.zenchn.apilib.entity.HomeBean
+import cn.jacky.kotlindemo.api.bean.HomeBean
 
 /**
  * @author:Hzj

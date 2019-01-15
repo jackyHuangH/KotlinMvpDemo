@@ -9,7 +9,7 @@ import cn.jacky.kotlindemo.mvp.adapter.ClassifyDetailListAdapter
 import cn.jacky.kotlindemo.mvp.baseview.BaseFragment
 import cn.jacky.kotlindemo.mvp.videodetail.VideoDetailActivity
 import com.chad.library.adapter.base.BaseQuickAdapter
-import com.zenchn.apilib.entity.HomeBean
+import cn.jacky.kotlindemo.api.bean.HomeBean
 import com.zenchn.support.widget.itemdecoration.VerticalItemDecoration
 import kotlinx.android.synthetic.main.fragment_rank.*
 

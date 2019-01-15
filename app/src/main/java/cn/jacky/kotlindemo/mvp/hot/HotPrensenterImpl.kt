@@ -3,7 +3,7 @@ package cn.jacky.kotlindemo.mvp.hot
 import cn.jacky.kotlindemo.model.HotModel
 import cn.jacky.kotlindemo.model.impl.HotModelImpl
 import cn.jacky.kotlindemo.mvp.basepresenter.BasePresenterImpl
-import com.hazz.kotlinmvp.mvp.model.bean.TabInfoBean
+import cn.jacky.kotlindemo.api.bean.TabInfoBean
 
 /**
  * @author:Hzj

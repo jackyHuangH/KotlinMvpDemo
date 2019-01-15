@@ -1,9 +1,9 @@
 package cn.jacky.kotlindemo.api.service
 
-import com.hazz.kotlinmvp.mvp.model.bean.AuthorInfoBean
-import com.hazz.kotlinmvp.mvp.model.bean.TabInfoBean
-import com.zenchn.apilib.entity.CategoryBean
-import com.zenchn.apilib.entity.HomeBean
+import cn.jacky.kotlindemo.api.bean.AuthorInfoBean
+import cn.jacky.kotlindemo.api.bean.TabInfoBean
+import cn.jacky.kotlindemo.api.bean.CategoryBean
+import cn.jacky.kotlindemo.api.bean.HomeBean
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Query

@@ -4,11 +4,10 @@ import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import cn.jacky.kotlindemo.R
+import cn.jacky.kotlindemo.api.bean.HomeBean
 import cn.jacky.kotlindemo.mvp.adapter.AttentionListAdapter
 import cn.jacky.kotlindemo.mvp.baseview.BaseFragment
-import cn.jacky.kotlindemo.mvp.videodetail.VideoDetailActivity
 import com.chad.library.adapter.base.BaseQuickAdapter
-import com.zenchn.apilib.entity.HomeBean
 import kotlinx.android.synthetic.main.layout_recycler_view.*
 
 /**
@@ -17,7 +16,7 @@ import kotlinx.android.synthetic.main.layout_recycler_view.*
  * desc  ：关注
  * record：
  */
-class AttentionFragment : BaseFragment(), AttentionContract.View, BaseQuickAdapter.RequestLoadMoreListener, BaseQuickAdapter.OnItemClickListener {
+class AttentionFragment : BaseFragment(), AttentionContract.View, BaseQuickAdapter.RequestLoadMoreListener, BaseQuickAdapter.OnItemChildClickListener {
 
     private val mPresenter by lazy { AttentionPresenterImpl(this) }
 
@@ -43,19 +42,17 @@ class AttentionFragment : BaseFragment(), AttentionContract.View, BaseQuickAdapt
         val emptyList: ArrayList<HomeBean.Issue.Item> = ArrayList()
         mListAdapter = AttentionListAdapter(R.layout.recycle_item_attention, emptyList)
         mListAdapter.setOnLoadMoreListener(this, recyclerView)
-        mListAdapter.onItemClickListener = this
+        mListAdapter.setOnItemChildClickListener(this)
         recyclerView.adapter = mListAdapter
-    }
-
-    override fun onItemClick(adapter: BaseQuickAdapter<*, *>, view: View?, position: Int) {
-        // 跳转视频详情
-        val item = adapter.getItem(position) as HomeBean.Issue.Item
-        activity?.let { VideoDetailActivity.launch(it, view!!, item) }
     }
 
     override fun onLoadMoreRequested() {
         //加载更多
         mPresenter.loadMoreData()
+    }
+
+    override fun onItemChildClick(adapter: BaseQuickAdapter<*, *>?, view: View?, position: Int) {
+        showMessage("暂时无法关注哦~")
     }
 
     override fun setNewFollowList(itemList: ArrayList<HomeBean.Issue.Item>, hasNextPage: Boolean) {

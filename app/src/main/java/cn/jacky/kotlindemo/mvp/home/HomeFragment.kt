@@ -18,7 +18,7 @@ import cn.jacky.kotlindemo.wrapper.glide.GlideImageLoader
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.gyf.barlibrary.ImmersionBar
 import com.youth.banner.BannerConfig
-import com.zenchn.apilib.entity.HomeBean
+import cn.jacky.kotlindemo.api.bean.HomeBean
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.recycle_header_banner_home.*
 import java.text.SimpleDateFormat

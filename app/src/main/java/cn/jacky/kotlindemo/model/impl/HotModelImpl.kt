@@ -2,10 +2,10 @@ package cn.jacky.kotlindemo.model.impl
 
 import cn.jacky.kotlindemo.api.service.OpenEyeService
 import cn.jacky.kotlindemo.model.HotModel
-import com.hazz.kotlinmvp.mvp.model.bean.TabInfoBean
+import cn.jacky.kotlindemo.api.bean.TabInfoBean
 import com.zenchn.apilib.callback.rx.RxHttpDataObserver
 import com.zenchn.apilib.callback.rx.RxSchedulerController
-import com.zenchn.apilib.entity.HomeBean
+import cn.jacky.kotlindemo.api.bean.HomeBean
 import com.zenchn.apilib.retrofit.RetrofitManager
 
 /**

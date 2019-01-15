@@ -7,7 +7,7 @@ import cn.jacky.kotlindemo.model.VideoDetailModel
 import cn.jacky.kotlindemo.model.impl.VideoDetailModelImpl
 import cn.jacky.kotlindemo.mvp.basepresenter.BasePresenterImpl
 import cn.jacky.kotlindemo.util.dataFormat
-import com.zenchn.apilib.entity.HomeBean
+import cn.jacky.kotlindemo.api.bean.HomeBean
 import com.zenchn.support.kit.AndroidKit
 import com.zenchn.support.kit.NetworkUtils
 

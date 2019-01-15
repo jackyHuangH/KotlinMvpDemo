@@ -4,10 +4,10 @@ import android.os.Bundle
 import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
 import cn.jacky.kotlindemo.R
+import cn.jacky.kotlindemo.api.bean.TabInfoBean
 import cn.jacky.kotlindemo.mvp.adapter.BaseFragmentPagerAdapter
 import cn.jacky.kotlindemo.mvp.baseview.BaseFragment
 import cn.jacky.kotlindemo.mvp.hot.rank.RankFragment
-import com.hazz.kotlinmvp.mvp.model.bean.TabInfoBean
 import kotlinx.android.synthetic.main.fragment_discovery_hot.*
 
 /**

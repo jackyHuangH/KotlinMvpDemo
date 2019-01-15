@@ -4,7 +4,7 @@ import cn.jacky.kotlindemo.api.service.OpenEyeService
 import cn.jacky.kotlindemo.model.VideoDetailModel
 import com.zenchn.apilib.callback.rx.RxHttpDataObserver
 import com.zenchn.apilib.callback.rx.RxSchedulerController
-import com.zenchn.apilib.entity.HomeBean
+import cn.jacky.kotlindemo.api.bean.HomeBean
 import com.zenchn.apilib.retrofit.RetrofitManager
 
 /**

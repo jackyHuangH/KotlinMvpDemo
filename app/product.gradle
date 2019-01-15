@@ -1,0 +1,48 @@
+import java.text.SimpleDateFormat
+
+android {
+    productFlavors {
+        jacky {
+            manifestPlaceholders = [CHANNEL_VALUE: 'jacky', CHANNEL_ID: 200]
+        }
+//        wandoujia {
+//            manifestPlaceholders = [CHANNEL_VALUE: 'wandoujia' , CHANNEL_ID:201]
+//        }
+//        qihu360 {
+//            manifestPlaceholders = [CHANNEL_VALUE: '360' , CHANNEL_ID:202]
+//        }
+//        baidu {
+//            manifestPlaceholders = [CHANNEL_VALUE: 'baidu' , CHANNEL_ID:203]
+//        }
+    }
+}
+
+//获取生成的产品名
+def static getProductName() {
+    return "OpenEyes"
+}
+//获取打包的时间
+def static getReleaseTime() {
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmm")
+    String s = sdf.format(new Date())
+    return s
+}
+
+List<String> flavors = new ArrayList<>();
+project.android.productFlavors.each { flavor ->
+    flavors.add(flavor.name)
+}
+boolean hasFlavors = flavors.size() > 0
+
+//修改生成的apk名字
+android.applicationVariants.all { variant ->
+    variant.outputs.all { output ->
+        def outputFile = output.outputFile
+        if (variant.buildType.name.equals('debug')) {
+            outputFileName = getProductName() + "-Debug" + "-V${rootProject.ext.android.versionName}-${getReleaseTime()}" + '.apk'
+            //配置生成apk路劲
+        } else if (variant.buildType.name.equals('release')) {
+            outputFileName = getProductName() + "-Release" + "-V${rootProject.ext.android.versionName}-${getReleaseTime()}" + '.apk'
+        }
+    }
+}

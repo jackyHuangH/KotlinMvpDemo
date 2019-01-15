@@ -3,7 +3,7 @@ package cn.jacky.kotlindemo.mvp.home
 import cn.jacky.kotlindemo.model.HomeModel
 import cn.jacky.kotlindemo.model.impl.HomeModelImpl
 import cn.jacky.kotlindemo.mvp.basepresenter.BasePresenterImpl
-import com.zenchn.apilib.entity.HomeBean
+import cn.jacky.kotlindemo.api.bean.HomeBean
 
 /**
  * @author:Hzj

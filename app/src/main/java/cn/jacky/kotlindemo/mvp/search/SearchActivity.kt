@@ -19,7 +19,7 @@ import cn.jacky.kotlindemo.util.ViewAnimUtil
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.google.android.flexbox.*
 import com.jakewharton.rxbinding2.widget.RxTextView
-import com.zenchn.apilib.entity.HomeBean
+import cn.jacky.kotlindemo.api.bean.HomeBean
 import com.zenchn.support.kit.AndroidKit
 import com.zenchn.support.utils.StringUtils
 import io.reactivex.android.schedulers.AndroidSchedulers

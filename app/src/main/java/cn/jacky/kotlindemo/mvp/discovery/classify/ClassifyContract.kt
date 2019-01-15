@@ -2,7 +2,7 @@ package cn.jacky.kotlindemo.mvp.discovery.classify
 
 import cn.jacky.kotlindemo.mvp.basepresenter.IPresenter
 import cn.jacky.kotlindemo.mvp.baseview.IView
-import com.zenchn.apilib.entity.CategoryBean
+import cn.jacky.kotlindemo.api.bean.CategoryBean
 
 /**
  * @author:Hzj

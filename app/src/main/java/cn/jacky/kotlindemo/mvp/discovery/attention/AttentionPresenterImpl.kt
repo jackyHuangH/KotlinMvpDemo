@@ -3,7 +3,7 @@ package cn.jacky.kotlindemo.mvp.discovery.attention
 import cn.jacky.kotlindemo.model.AttentionModel
 import cn.jacky.kotlindemo.model.impl.AttentionModelImpl
 import cn.jacky.kotlindemo.mvp.basepresenter.BasePresenterImpl
-import com.zenchn.apilib.entity.HomeBean
+import cn.jacky.kotlindemo.api.bean.HomeBean
 
 /**
  * @author:Hzj

@@ -8,7 +8,7 @@ import cn.jacky.kotlindemo.mvp.adapter.ClassifyGridAdapter
 import cn.jacky.kotlindemo.mvp.baseview.BaseFragment
 import cn.jacky.kotlindemo.mvp.classifydetail.ClassifyDetailActivity
 import com.chad.library.adapter.base.BaseQuickAdapter
-import com.zenchn.apilib.entity.CategoryBean
+import cn.jacky.kotlindemo.api.bean.CategoryBean
 import com.zenchn.support.widget.itemdecoration.GridDividerItemDecoration
 import kotlinx.android.synthetic.main.fragment_classify.*
 

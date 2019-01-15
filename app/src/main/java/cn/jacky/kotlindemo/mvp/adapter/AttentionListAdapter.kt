@@ -4,12 +4,12 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.Gravity
 import cn.jacky.kotlindemo.R
+import cn.jacky.kotlindemo.api.bean.HomeBean
 import cn.jacky.kotlindemo.wrapper.glide.GlideApp
 import cn.jacky.kotlindemo.wrapper.snaphelper.GravitySnapHelper
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
-import com.zenchn.apilib.entity.HomeBean
 
 /**
  * @author:Hzj
@@ -31,6 +31,7 @@ class AttentionListAdapter(layoutRes: Int, data: ArrayList<HomeBean.Issue.Item>)
 
         helper.setText(R.id.tv_author_name, header?.title)
         helper.setText(R.id.tv_author_desc, header?.description)
+        helper.addOnClickListener(R.id.tv_follow)
 
         val rlvAttentionWorks = helper.getView<RecyclerView>(R.id.rlv_attention_works)
         //设置水平滑动recyclerView
