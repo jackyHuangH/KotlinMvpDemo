@@ -320,12 +320,13 @@ class VideoDetailActivity : BaseActivity(), VideoDetailContract.View, BaseQuickA
     }
 
     override fun onDestroy() {
-        super.onDestroy()
         //释放资源
         if (mIsPlaying) {
             gsy_player.currentPlayer.release()
         }
         mOrientationUtils.releaseListener()
+        mPresenterImpl.onDestroy()
+        super.onDestroy()
     }
 
     private fun getCurPlay(): GSYVideoPlayer {

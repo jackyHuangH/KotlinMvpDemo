@@ -4,12 +4,12 @@ import android.app.Activity
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import cn.jacky.kotlindemo.R
+import cn.jacky.kotlindemo.api.bean.HomeBean
 import cn.jacky.kotlindemo.mvp.adapter.SearchListAdapter
 import cn.jacky.kotlindemo.mvp.baseview.BaseActivity
 import cn.jacky.kotlindemo.mvp.videodetail.VideoDetailActivity
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.gyf.barlibrary.ImmersionBar
-import cn.jacky.kotlindemo.api.bean.HomeBean
 import com.zenchn.support.router.Router
 import kotlinx.android.synthetic.main.activity_watch_history.*
 
@@ -64,6 +64,11 @@ class WatchHistoryActivity : BaseActivity(), WatchHistoryContract.View, BaseQuic
     override fun setHomeNewData(itemList: ArrayList<HomeBean.Issue.Item>) {
         mHistoryAdapter.setNewData(itemList)
         rlv_history.smoothScrollToPosition(0)
+    }
+
+    override fun onDestroy() {
+        mPresenter.onDestroy()
+        super.onDestroy()
     }
 
     companion object {

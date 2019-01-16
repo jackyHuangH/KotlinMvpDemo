@@ -61,4 +61,9 @@ class HotFragment : BaseFragment(), HotContract.View {
 
     override fun lazyLoad() {
     }
+
+    override fun onDestroyView() {
+        mPresenter.onDestroy()
+        super.onDestroyView()
+    }
 }

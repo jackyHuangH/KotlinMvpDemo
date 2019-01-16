@@ -67,6 +67,5 @@ class MineFragment : BaseFragment() {
     }
 
     override fun lazyLoad() {
-
     }
 }

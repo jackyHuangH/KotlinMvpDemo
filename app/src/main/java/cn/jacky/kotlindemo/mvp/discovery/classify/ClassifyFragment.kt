@@ -4,11 +4,11 @@ import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
 import android.view.View
 import cn.jacky.kotlindemo.R
+import cn.jacky.kotlindemo.api.bean.CategoryBean
 import cn.jacky.kotlindemo.mvp.adapter.ClassifyGridAdapter
 import cn.jacky.kotlindemo.mvp.baseview.BaseFragment
 import cn.jacky.kotlindemo.mvp.classifydetail.ClassifyDetailActivity
 import com.chad.library.adapter.base.BaseQuickAdapter
-import cn.jacky.kotlindemo.api.bean.CategoryBean
 import com.zenchn.support.widget.itemdecoration.GridDividerItemDecoration
 import kotlinx.android.synthetic.main.fragment_classify.*
 
@@ -54,4 +54,8 @@ class ClassifyFragment : BaseFragment(), ClassifyContract.View, BaseQuickAdapter
         activity?.let { ClassifyDetailActivity.launch(it, categoryBean) }
     }
 
+    override fun onDestroyView() {
+        mPresenter.onDestroy()
+        super.onDestroyView()
+    }
 }

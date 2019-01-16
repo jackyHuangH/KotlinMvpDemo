@@ -5,11 +5,11 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import cn.jacky.kotlindemo.R
+import cn.jacky.kotlindemo.api.bean.HomeBean
 import cn.jacky.kotlindemo.mvp.adapter.ClassifyDetailListAdapter
 import cn.jacky.kotlindemo.mvp.baseview.BaseFragment
 import cn.jacky.kotlindemo.mvp.videodetail.VideoDetailActivity
 import com.chad.library.adapter.base.BaseQuickAdapter
-import cn.jacky.kotlindemo.api.bean.HomeBean
 import com.zenchn.support.widget.itemdecoration.VerticalItemDecoration
 import kotlinx.android.synthetic.main.fragment_rank.*
 
@@ -60,5 +60,10 @@ class RankFragment : BaseFragment(), RankContract.View, BaseQuickAdapter.OnItemC
         }
         mListAdapter.addFooterView(footer)
         rlv_rank.adapter = mListAdapter
+    }
+
+    override fun onDestroyView() {
+        mPresenter.onDestroy()
+        super.onDestroyView()
     }
 }

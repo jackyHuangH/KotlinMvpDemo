@@ -178,6 +178,11 @@ class ClassifyDetailActivity : BaseActivity(), ClassifyDetailContract.View, Base
         mDetailListAdapter.notifyDataSetChanged()
     }
 
+    override fun onDestroy() {
+        mPresenter.onDestroy()
+        super.onDestroy()
+    }
+
     companion object {
         private const val EXTRA_CATEGORY_BEAN = "EXTRA_CATEGORY_BEAN"
 

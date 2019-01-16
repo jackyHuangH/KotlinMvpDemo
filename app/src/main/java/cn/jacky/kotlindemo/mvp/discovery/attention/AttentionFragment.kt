@@ -73,4 +73,9 @@ class AttentionFragment : BaseFragment(), AttentionContract.View, BaseQuickAdapt
         }
         mListAdapter.notifyDataSetChanged()
     }
+
+    override fun onDestroyView() {
+        mPresenter.onDestroy()
+        super.onDestroyView()
+    }
 }

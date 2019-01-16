@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import cn.jacky.kotlindemo.R
+import cn.jacky.kotlindemo.api.bean.HomeBean
 import cn.jacky.kotlindemo.mvp.adapter.HomeListAdapter
 import cn.jacky.kotlindemo.mvp.baseview.BaseFragment
 import cn.jacky.kotlindemo.mvp.search.SearchActivity
@@ -18,7 +19,6 @@ import cn.jacky.kotlindemo.wrapper.glide.GlideImageLoader
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.gyf.barlibrary.ImmersionBar
 import com.youth.banner.BannerConfig
-import cn.jacky.kotlindemo.api.bean.HomeBean
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.recycle_header_banner_home.*
 import java.text.SimpleDateFormat
@@ -209,4 +209,8 @@ class HomeFragment : BaseFragment(), HomeContract.View, BaseQuickAdapter.Request
         swipe_refresh.isRefreshing=false
     }
 
+    override fun onDestroyView() {
+        mPresenter.onDestroy()
+        super.onDestroyView()
+    }
 }

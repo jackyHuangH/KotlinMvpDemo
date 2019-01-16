@@ -10,6 +10,7 @@ import android.view.View
 import android.view.animation.AnimationUtils
 import android.view.inputmethod.EditorInfo
 import cn.jacky.kotlindemo.R
+import cn.jacky.kotlindemo.api.bean.HomeBean
 import cn.jacky.kotlindemo.app.ApplicationKit
 import cn.jacky.kotlindemo.mvp.adapter.HotWordFlowAdapter
 import cn.jacky.kotlindemo.mvp.adapter.SearchListAdapter
@@ -19,7 +20,6 @@ import cn.jacky.kotlindemo.util.ViewAnimUtil
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.google.android.flexbox.*
 import com.jakewharton.rxbinding2.widget.RxTextView
-import cn.jacky.kotlindemo.api.bean.HomeBean
 import com.zenchn.support.kit.AndroidKit
 import com.zenchn.support.utils.StringUtils
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -286,6 +286,7 @@ class SearchActivity : BaseActivity(), SearchContract.View, BaseQuickAdapter.Req
 
     override fun onDestroy() {
         mTextTypeface = null
+        mPresenter.onDestroy()
         super.onDestroy()
     }
 }

@@ -89,13 +89,9 @@ class SplashActivity : BaseActivity() {
         val perms = arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE,
                 Manifest.permission.ACCESS_FINE_LOCATION,
                 Manifest.permission.CALL_PHONE,
-                Manifest.permission.READ_LOGS,
                 Manifest.permission.READ_PHONE_STATE,
                 Manifest.permission.READ_EXTERNAL_STORAGE,
-                Manifest.permission.SET_DEBUG_APP,
-                Manifest.permission.SYSTEM_ALERT_WINDOW,
-                Manifest.permission.GET_ACCOUNTS,
-                Manifest.permission.WRITE_APN_SETTINGS)
+                Manifest.permission.GET_ACCOUNTS)
         EasyPermissions.requestPermissions(this, "${getString(R.string.app_name)}应用需要以下权限，请允许", 0, *perms)
     }
 
