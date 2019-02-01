@@ -9,8 +9,8 @@ import cn.jacky.kotlindemo.mvp.home.HomeFragment
 import cn.jacky.kotlindemo.mvp.hot.HotFragment
 import cn.jacky.kotlindemo.mvp.mine.MineFragment
 import com.zenchn.support.managers.HFragmentManager
-import com.zenchn.support.router.Router
 import kotlinx.android.synthetic.main.activity_main.*
+import org.jetbrains.anko.startActivity
 
 class MainActivity : BaseActivity() {
 
@@ -56,11 +56,13 @@ class MainActivity : BaseActivity() {
 
     companion object {
         fun launch(from: Activity) {
-            Router
-                    .newInstance()
-                    .from(from)
-                    .to(MainActivity::class.java)
-                    .launch()
+            from.startActivity<MainActivity>()
+
+            //强大的Anko给我们提供了一种极为方便的写法。
+            // 无论是无参还是有参，还是需要RequestCode，都非常简洁易懂，是不是一看就特别心动？
+            //startActivity<MainActivity>()
+            //startActivity<MainActivity>("userid" to 10001, "username" to "ricky")
+            //startActivityForResult<MainActivity>(101, "userid" to 10001, "username" to "ricky")
         }
     }
 }
