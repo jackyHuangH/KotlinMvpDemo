@@ -3,7 +3,6 @@ version = "1.4.10"
 
 android {
     compileSdkVersion 26
-    buildToolsVersion '26.0.3'
 
     defaultConfig {
         minSdkVersion 21
@@ -23,7 +22,7 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    provided 'com.android.support:support-v4:+'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    compileOnly 'com.android.support:support-v4:+'
 }
 
