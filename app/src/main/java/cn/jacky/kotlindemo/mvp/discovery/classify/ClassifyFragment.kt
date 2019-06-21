@@ -38,6 +38,7 @@ class ClassifyFragment : BaseFragment(), ClassifyContract.View, BaseQuickAdapter
     override fun getLayoutRes(): Int = R.layout.fragment_classify
 
     override fun initWidget() {
+        lifecycle.addObserver(mPresenter)
         rlv.layoutManager = GridLayoutManager(activity, 2)
     }
 
@@ -52,10 +53,5 @@ class ClassifyFragment : BaseFragment(), ClassifyContract.View, BaseQuickAdapter
         // 跳转分类详情
         val categoryBean = adapter.getItem(position) as CategoryBean
         activity?.let { ClassifyDetailActivity.launch(it, categoryBean) }
-    }
-
-    override fun onDestroyView() {
-        mPresenter.onDestroy()
-        super.onDestroyView()
     }
 }

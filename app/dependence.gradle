@@ -41,7 +41,6 @@ dependencies {
 //    implementation rootProject.ext.dependencies["headline_autosize"]
 
     implementation rootProject.ext.dependencies["pictureSelector"]
-    implementation rootProject.ext.dependencies["range_time_picker"]
 
     implementation rootProject.ext.dependencies["easypermission"]
 
@@ -72,9 +71,6 @@ dependencies {
 
     implementation rootProject.ext.dependencies["gson"]
     implementation rootProject.ext.dependencies["flexbox"]
-
-    implementation rootProject.ext.dependencies["dagger2"]
-    kapt rootProject.ext.dependencies["dagger2_compiler"]
 
     implementation rootProject.ext.dependencies["umeng_analytic"]
     implementation rootProject.ext.dependencies["umeng_common"]

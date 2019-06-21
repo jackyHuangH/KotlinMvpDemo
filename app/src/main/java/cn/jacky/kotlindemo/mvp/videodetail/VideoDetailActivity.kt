@@ -50,7 +50,7 @@ class VideoDetailActivity : BaseActivity(), VideoDetailContract.View, BaseQuickA
         const val TRANSITION_NAME = "IMG_VIDEO_TRANSITION"
     }
 
-    private val mPresenterImpl by lazy {
+    private val mPresenter by lazy {
         VideoDetailPresenterImpl(this)
     }
 
@@ -73,6 +73,8 @@ class VideoDetailActivity : BaseActivity(), VideoDetailContract.View, BaseQuickA
     }
 
     override fun initWidget() {
+        lifecycle.addObserver(mPresenter)
+
         mVideoData = intent.getSerializableExtra(EXTRA_VIDEO_DATA) as HomeBean.Issue.Item
         initSwipeRefresh()
         initEnterTransition()
@@ -89,9 +91,9 @@ class VideoDetailActivity : BaseActivity(), VideoDetailContract.View, BaseQuickA
     //获取视频信息
     private fun loadVideoData() {
         //获取视频
-        mPresenterImpl.getVideoDetail(mVideoData)
+        mPresenter.getVideoDetail(mVideoData)
         //获取相关视频列表
-        mPresenterImpl.getRelatedVideoList(mVideoData.data?.id ?: 0)
+        mPresenter.getRelatedVideoList(mVideoData.data?.id ?: 0)
     }
 
     private fun initRecycleView() {
@@ -110,7 +112,7 @@ class VideoDetailActivity : BaseActivity(), VideoDetailContract.View, BaseQuickA
         //加载视频详情
         val item = adapter.getItem(position) as HomeBean.Issue.Item
         //获取视频
-        mPresenterImpl.getVideoDetail(item)
+        mPresenter.getVideoDetail(item)
     }
 
     private fun initVideoPlayer() {
@@ -227,7 +229,7 @@ class VideoDetailActivity : BaseActivity(), VideoDetailContract.View, BaseQuickA
         }
 
         //保存观看记录
-        mPresenterImpl.saveWatchHistoryCache(itemInfo)
+        mPresenter.saveWatchHistoryCache(itemInfo)
 
         //视频相关信息
         tv_video_title.text = itemInfo.data?.title
@@ -325,7 +327,6 @@ class VideoDetailActivity : BaseActivity(), VideoDetailContract.View, BaseQuickA
             gsy_player.currentPlayer.release()
         }
         mOrientationUtils.releaseListener()
-        mPresenterImpl.onDestroy()
         super.onDestroy()
     }
 

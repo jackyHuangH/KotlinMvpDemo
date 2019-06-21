@@ -38,6 +38,8 @@ class RankFragment : BaseFragment(), RankContract.View, BaseQuickAdapter.OnItemC
     override fun getLayoutRes(): Int = R.layout.fragment_rank
 
     override fun initWidget() {
+        lifecycle.addObserver(mPresenter)
+
         rlv_rank.layoutManager = LinearLayoutManager(activity)
         rlv_rank.addItemDecoration(VerticalItemDecoration(activity, 1, false))
     }
@@ -60,10 +62,5 @@ class RankFragment : BaseFragment(), RankContract.View, BaseQuickAdapter.OnItemC
         }
         mListAdapter.addFooterView(footer)
         rlv_rank.adapter = mListAdapter
-    }
-
-    override fun onDestroyView() {
-        mPresenter.onDestroy()
-        super.onDestroyView()
     }
 }

@@ -1,5 +1,9 @@
 package cn.jacky.kotlindemo.mvp.basepresenter
 
+import android.arch.lifecycle.Lifecycle
+import android.arch.lifecycle.LifecycleOwner
+import android.util.Log
+import cn.jacky.kotlindemo.mvp.basepresenter.BasePresenterImpl.Constant.TAG
 import cn.jacky.kotlindemo.mvp.baseview.IView
 import com.zenchn.apilib.callback.rx.RxApiCallback
 import io.reactivex.disposables.CompositeDisposable
@@ -12,6 +16,9 @@ import io.reactivex.disposables.Disposable
  * record：
  */
 abstract class BasePresenterImpl<V : IView> : IPresenter, RxApiCallback {
+    object Constant {
+        const val TAG = "BasePresenter"
+    }
 
     private val mCompositeDisposable: CompositeDisposable by lazy { CompositeDisposable() }
     protected var mView: V? = null
@@ -20,13 +27,19 @@ abstract class BasePresenterImpl<V : IView> : IPresenter, RxApiCallback {
         this.mView = mView
     }
 
-    override fun onStart() {
+    override fun onCreate(owner: LifecycleOwner) {
         //do Something
+        Log.d(TAG, "onCreate")
     }
 
-    override fun onDestroy() {
+    override fun onDestroy(owner: LifecycleOwner) {
+        Log.d(TAG, "onDestroy")
         mView = null
         releaseDisposable()
+    }
+
+    override fun onLifecycleChanged(owner: LifecycleOwner, event: Lifecycle.Event) {
+        Log.d(TAG, "onLifecycleChanged:" + event.name)
     }
 
     override fun getToken(): String {
@@ -36,15 +49,15 @@ abstract class BasePresenterImpl<V : IView> : IPresenter, RxApiCallback {
 
     override fun onApiGrantRefuse() {
         mView?.let {
-            it.onApiGrantRefuse()
             it.hideProgress()
+            it.onApiGrantRefuse()
         }
     }
 
     override fun onApiFailure(err_msg: String?) {
         err_msg?.let {
-            mView!!.onApiFailure(err_msg)
             mView!!.hideProgress()
+            mView!!.onApiFailure(err_msg)
         }
     }
 

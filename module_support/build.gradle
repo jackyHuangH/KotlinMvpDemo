@@ -20,18 +20,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
-    configurations.all {
-        resolutionStrategy.eachDependency { DependencyResolveDetails details ->
-            def requested = details.requested
-            if (requested.group == 'com.android.support') {
-                if (!requested.name.startsWith("multidex")) {
-                    //这里指定需要统一的依赖版本,这里统一
-                    details.useVersion rootProject.ext.android.supportLibVersion
-                }
-            }
-        }
-    }
 }
 
 dependencies {

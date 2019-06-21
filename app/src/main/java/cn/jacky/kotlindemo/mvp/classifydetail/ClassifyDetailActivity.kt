@@ -55,8 +55,8 @@ class ClassifyDetailActivity : BaseActivity(), ClassifyDetailContract.View, Base
 
     @SuppressLint("SetTextI18n")
     override fun initWidget() {
+        lifecycle.addObserver(mPresenter)
         mCategoryBean = intent.getSerializableExtra(EXTRA_CATEGORY_BEAN) as CategoryBean
-
         initToolbar()
         initRecyclerView()
         requestListData()
@@ -179,7 +179,6 @@ class ClassifyDetailActivity : BaseActivity(), ClassifyDetailContract.View, Base
     }
 
     override fun onDestroy() {
-        mPresenter.onDestroy()
         super.onDestroy()
     }
 

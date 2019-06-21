@@ -58,6 +58,8 @@ class HomeFragment : BaseFragment(), HomeContract.View, BaseQuickAdapter.Request
     override fun getLayoutRes(): Int = R.layout.fragment_home
 
     override fun initWidget() {
+        lifecycle.addObserver(mPresenter)
+
         initRefreshLayout()
         initRecyclerView()
         initToolBar()
@@ -210,7 +212,6 @@ class HomeFragment : BaseFragment(), HomeContract.View, BaseQuickAdapter.Request
     }
 
     override fun onDestroyView() {
-        mPresenter.onDestroy()
         super.onDestroyView()
     }
 }

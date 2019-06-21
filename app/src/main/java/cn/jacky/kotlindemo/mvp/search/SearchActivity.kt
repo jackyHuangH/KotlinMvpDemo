@@ -52,6 +52,8 @@ class SearchActivity : BaseActivity(), SearchContract.View, BaseQuickAdapter.Req
     override fun getLayoutRes(): Int = R.layout.activity_search
 
     override fun initWidget() {
+        lifecycle.addObserver(mPresenter)
+
         setupEnterAnimation()
         setupExitAnimation()
         initEt()
@@ -286,7 +288,6 @@ class SearchActivity : BaseActivity(), SearchContract.View, BaseQuickAdapter.Req
 
     override fun onDestroy() {
         mTextTypeface = null
-        mPresenter.onDestroy()
         super.onDestroy()
     }
 }

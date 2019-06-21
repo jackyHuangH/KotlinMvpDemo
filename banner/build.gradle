@@ -23,6 +23,6 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    compileOnly 'com.android.support:support-v4:+'
+    compileOnly rootProject.ext.dependencies["appcompat-v7"]
 }
 

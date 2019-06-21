@@ -1,9 +1,9 @@
 package cn.jacky.kotlindemo.mvp.search
 
+import cn.jacky.kotlindemo.api.bean.HomeBean
 import cn.jacky.kotlindemo.model.SearchModel
 import cn.jacky.kotlindemo.model.impl.SearchModelImpl
 import cn.jacky.kotlindemo.mvp.basepresenter.BasePresenterImpl
-import cn.jacky.kotlindemo.api.bean.HomeBean
 
 /**
  * @author:Hzj
@@ -11,7 +11,8 @@ import cn.jacky.kotlindemo.api.bean.HomeBean
  * desc  ：
  * record：
  */
-class SearchPresenterImpl(mView: SearchContract.View?) : BasePresenterImpl<SearchContract.View>(mView), SearchContract.Presenter, SearchModel.HotWordListCallback, SearchModel.SearchListCallback {
+class SearchPresenterImpl(mView: SearchContract.View?) : BasePresenterImpl<SearchContract.View>(mView),
+        SearchContract.Presenter, SearchModel.HotWordListCallback, SearchModel.SearchListCallback {
 
     private val mSearchModelImpl by lazy { SearchModelImpl() }
     private lateinit var mNextPageUrl: String

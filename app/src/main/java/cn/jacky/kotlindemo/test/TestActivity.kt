@@ -6,7 +6,7 @@ import cn.jacky.kotlindemo.R
 import cn.jacky.kotlindemo.mvp.adapter.MsgListAdapter
 import cn.jacky.kotlindemo.mvp.baseview.BaseActivity
 import cn.jacky.kotlindemo.mvp.main.MainActivity
-import cn.jacky.kotlindemo.test.TestActivity.Constans.NUM_B
+import cn.jacky.kotlindemo.test.TestActivity.Constants.NUM_B
 import kotlinx.android.synthetic.main.activity_test.*
 import org.jetbrains.anko.find
 import java.util.*
@@ -33,7 +33,7 @@ class TestActivity : BaseActivity() {
     /**
      * object对象声明，它相当于Java中一种形式的单例类
      */
-    object Constans {
+    object Constants {
         const val NUM_B = "object修饰的类中声明常量"
     }
 

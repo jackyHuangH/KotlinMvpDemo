@@ -43,6 +43,8 @@ class WatchHistoryActivity : BaseActivity(), WatchHistoryContract.View, BaseQuic
     }
 
     override fun initWidget() {
+        lifecycle.addObserver(mPresenter)
+
         toolbar.setNavigationOnClickListener { onBackPressed() }
         initRecyclerView()
     }
@@ -64,11 +66,6 @@ class WatchHistoryActivity : BaseActivity(), WatchHistoryContract.View, BaseQuic
     override fun setHomeNewData(itemList: ArrayList<HomeBean.Issue.Item>) {
         mHistoryAdapter.setNewData(itemList)
         rlv_history.smoothScrollToPosition(0)
-    }
-
-    override fun onDestroy() {
-        mPresenter.onDestroy()
-        super.onDestroy()
     }
 
     companion object {

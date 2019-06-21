@@ -38,6 +38,8 @@ class AttentionFragment : BaseFragment(), AttentionContract.View, BaseQuickAdapt
     override fun getLayoutRes(): Int = R.layout.layout_recycler_view
 
     override fun initWidget() {
+        lifecycle.addObserver(mPresenter)
+
         recyclerView.layoutManager = LinearLayoutManager(activity)
         val emptyList: ArrayList<HomeBean.Issue.Item> = ArrayList()
         mListAdapter = AttentionListAdapter(R.layout.recycle_item_attention, emptyList)
@@ -72,10 +74,5 @@ class AttentionFragment : BaseFragment(), AttentionContract.View, BaseQuickAdapt
             mListAdapter.loadMoreEnd()
         }
         mListAdapter.notifyDataSetChanged()
-    }
-
-    override fun onDestroyView() {
-        mPresenter.onDestroy()
-        super.onDestroyView()
     }
 }

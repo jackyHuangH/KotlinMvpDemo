@@ -1,7 +1,7 @@
 apply from: 'config.gradle'
 
 buildscript {
-    ext.kotlin_version = '1.2.71'
+    ext.kotlin_version = '1.3.31'
     repositories {
         //阿里镜像仓库
         maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
@@ -13,7 +13,7 @@ buildscript {
         google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.2.1'
+        classpath 'com.android.tools.build:gradle:3.4.1'
 
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "org.jetbrains.kotlin:kotlin-android-extensions:$kotlin_version"
@@ -32,6 +32,18 @@ allprojects {
         google()
         maven { url "https://jitpack.io" }
         maven { url 'https://dl.bintray.com/drummer-aidan/maven' }
+    }
+}
+
+//统一所有module的support依赖版本
+subprojects {
+    project.configurations.all {
+        resolutionStrategy.eachDependency { details ->
+            if (details.requested.group == 'com.android.support'
+                    && !details.requested.name.contains('multidex')) {
+                details.useVersion rootProject.ext.android.supportLibVersion
+            }
+        }
     }
 }
 
