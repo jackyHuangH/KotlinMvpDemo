@@ -3,6 +3,7 @@ package cn.jacky.kotlindemo.model.impl
 import cn.jacky.kotlindemo.api.bean.HomeBean
 import cn.jacky.kotlindemo.api.service.OpenEyeService
 import cn.jacky.kotlindemo.model.AttentionModel
+import com.zenchn.apilib.callback.rx.RxApiCallback
 import com.zenchn.apilib.callback.rx.RxHttpDataObserver
 import com.zenchn.apilib.callback.rx.RxSchedulerController
 import com.zenchn.apilib.retrofit.RetrofitManager
@@ -14,8 +15,7 @@ import com.zenchn.apilib.retrofit.RetrofitManager
  * record：
  */
 class AttentionModelImpl : AttentionModel {
-
-    override fun requestAttenionList(callback: AttentionModel.AttentionListCallback) {
+    override fun requestAttenionList(callback:RxApiCallback,onSuccess: (HomeBean.Issue) -> Unit) {
         RetrofitManager
                 .getInstance()
                 .create(OpenEyeService::class.java)
@@ -24,7 +24,7 @@ class AttentionModelImpl : AttentionModel {
                 .subscribe(object : RxHttpDataObserver<HomeBean.Issue>(callback) {
                     override fun onHttpResponseResult(success: Boolean, data: HomeBean.Issue?, msg: String?) {
                         if (success) {
-                            data?.let { callback.onRefreshAttentionListSuccess(it) }
+                            data?.let { onSuccess(it) }
                         } else {
                             callback.onApiFailure(msg)
                         }
@@ -33,7 +33,7 @@ class AttentionModelImpl : AttentionModel {
                 })
     }
 
-    override fun getMoreIssueList(nextPageUrl: String, callback: AttentionModel.AttentionListCallback) {
+    override fun getMoreIssueList(callback:RxApiCallback,nextPageUrl: String, onSuccess: (HomeBean.Issue) -> Unit) {
         RetrofitManager
                 .getInstance()
                 .create(OpenEyeService::class.java)
@@ -42,7 +42,7 @@ class AttentionModelImpl : AttentionModel {
                 .subscribe(object : RxHttpDataObserver<HomeBean.Issue>(callback) {
                     override fun onHttpResponseResult(success: Boolean, data: HomeBean.Issue?, msg: String?) {
                         if (success) {
-                            data?.let { callback.onGetMoreListSuccess(it) }
+                            data?.let { onSuccess(it) }
                         } else {
                             callback.onApiFailure(msg)
                         }

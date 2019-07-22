@@ -1,11 +1,12 @@
 package cn.jacky.kotlindemo.model.impl
 
-import cn.jacky.kotlindemo.api.service.OpenEyeService
-import cn.jacky.kotlindemo.model.ClassifyModel
-import com.zenchn.apilib.callback.rx.RxHttpDataObserver
-import com.zenchn.apilib.callback.rx.RxSchedulerController
 import cn.jacky.kotlindemo.api.bean.CategoryBean
 import cn.jacky.kotlindemo.api.bean.HomeBean
+import cn.jacky.kotlindemo.api.service.OpenEyeService
+import cn.jacky.kotlindemo.model.ClassifyModel
+import com.zenchn.apilib.callback.rx.RxApiCallback
+import com.zenchn.apilib.callback.rx.RxHttpDataObserver
+import com.zenchn.apilib.callback.rx.RxSchedulerController
 import com.zenchn.apilib.retrofit.RetrofitManager
 
 /**
@@ -15,8 +16,7 @@ import com.zenchn.apilib.retrofit.RetrofitManager
  * record：
  */
 class ClassifyModelImpl : ClassifyModel {
-
-    override fun getClassifyList(callback: ClassifyModel.ClassifyListCallback) {
+    override fun getClassifyList(callback: RxApiCallback, onSuccess: (List<CategoryBean>) -> Unit) {
         RetrofitManager
                 .getInstance()
                 .create(OpenEyeService::class.java)
@@ -25,7 +25,7 @@ class ClassifyModelImpl : ClassifyModel {
                 .subscribe(object : RxHttpDataObserver<List<CategoryBean>>(callback) {
                     override fun onHttpResponseResult(success: Boolean, data: List<CategoryBean>?, msg: String?) {
                         if (success) {
-                            data?.let { callback.onGetClassifyListSuccess(it) }
+                            data?.let { onSuccess(it) }
                         } else {
                             callback.onApiFailure(msg)
                         }
@@ -33,7 +33,7 @@ class ClassifyModelImpl : ClassifyModel {
                 })
     }
 
-    override fun getClassifyDetailList(categoryId: Long, callback: ClassifyModel.ClassifyDetailListCallback) {
+    override fun getClassifyDetailList(categoryId: Long, callback: RxApiCallback, onSuccess: (HomeBean.Issue) -> Unit) {
         RetrofitManager
                 .getInstance()
                 .create(OpenEyeService::class.java)
@@ -42,7 +42,7 @@ class ClassifyModelImpl : ClassifyModel {
                 .subscribe(object : RxHttpDataObserver<HomeBean.Issue>(callback) {
                     override fun onHttpResponseResult(success: Boolean, data: HomeBean.Issue?, msg: String?) {
                         if (success) {
-                            data?.let { callback.onRequestDetailListSuccess(it) }
+                            data?.let { onSuccess(it) }
                         } else {
                             callback.onApiFailure(msg)
                         }
@@ -50,7 +50,7 @@ class ClassifyModelImpl : ClassifyModel {
                 })
     }
 
-    override fun loadMoreClassifyDetailData(nextPageUrl: String, callback: ClassifyModel.ClassifyDetailListCallback) {
+    override fun loadMoreClassifyDetailData(nextPageUrl: String, callback: RxApiCallback, onSuccess: (HomeBean.Issue) -> Unit) {
         RetrofitManager
                 .getInstance()
                 .create(OpenEyeService::class.java)
@@ -59,11 +59,12 @@ class ClassifyModelImpl : ClassifyModel {
                 .subscribe(object : RxHttpDataObserver<HomeBean.Issue>(callback) {
                     override fun onHttpResponseResult(success: Boolean, data: HomeBean.Issue?, msg: String?) {
                         if (success) {
-                            data?.let { callback.onLoadMoreDataSuccess(it) }
+                            data?.let { onSuccess(it) }
                         } else {
                             callback.onApiFailure(msg)
                         }
                     }
                 })
     }
+
 }

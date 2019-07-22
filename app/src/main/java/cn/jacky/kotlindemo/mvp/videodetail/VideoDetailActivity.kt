@@ -311,12 +311,14 @@ class VideoDetailActivity : BaseActivity(), VideoDetailContract.View, BaseQuickA
 
     override fun onResume() {
         getCurPlay().onVideoResume()
+        GSYVideoManager.onResume()
         super.onResume()
         mHasPaused = false
     }
 
     override fun onPause() {
         getCurPlay().onVideoPause()
+        GSYVideoManager.onPause()
         super.onPause()
         mHasPaused = true
     }
@@ -327,6 +329,7 @@ class VideoDetailActivity : BaseActivity(), VideoDetailContract.View, BaseQuickA
             gsy_player.currentPlayer.release()
         }
         mOrientationUtils.releaseListener()
+        GSYVideoManager.releaseAllVideos()
         super.onDestroy()
     }
 

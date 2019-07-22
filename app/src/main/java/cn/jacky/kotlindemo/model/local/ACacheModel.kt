@@ -1,9 +1,9 @@
-package cn.jacky.kotlindemo.model
+package cn.jacky.kotlindemo.model.local
 
 import android.annotation.SuppressLint
 import android.util.Log
 import cn.jacky.kotlindemo.api.bean.HomeBean
-import cn.jacky.kotlindemo.model.CacheKey.KEY_WATCH_HISTORY
+import cn.jacky.kotlindemo.model.local.CacheKey.KEY_WATCH_HISTORY
 import com.zenchn.apilib.callback.rx.RxSchedulerController
 import com.zenchn.support.cache.ACache
 import io.reactivex.Observable

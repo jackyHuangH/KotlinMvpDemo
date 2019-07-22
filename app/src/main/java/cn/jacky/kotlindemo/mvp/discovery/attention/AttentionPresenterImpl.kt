@@ -1,9 +1,7 @@
 package cn.jacky.kotlindemo.mvp.discovery.attention
 
-import cn.jacky.kotlindemo.model.AttentionModel
 import cn.jacky.kotlindemo.model.impl.AttentionModelImpl
 import cn.jacky.kotlindemo.mvp.basepresenter.BasePresenterImpl
-import cn.jacky.kotlindemo.api.bean.HomeBean
 
 /**
  * @author:Hzj
@@ -11,7 +9,7 @@ import cn.jacky.kotlindemo.api.bean.HomeBean
  * desc  ：
  * record：
  */
-class AttentionPresenterImpl(mView: AttentionContract.View?) : BasePresenterImpl<AttentionContract.View>(mView), AttentionContract.Presenter, AttentionModel.AttentionListCallback {
+class AttentionPresenterImpl(mView: AttentionContract.View?) : BasePresenterImpl<AttentionContract.View>(mView), AttentionContract.Presenter {
 
     private val mAttentionModelImpl by lazy {
         AttentionModelImpl()
@@ -21,21 +19,17 @@ class AttentionPresenterImpl(mView: AttentionContract.View?) : BasePresenterImpl
 
     override fun requestFollowList() {
         mView?.showProgress()
-        mAttentionModelImpl.requestAttenionList(this)
+        mAttentionModelImpl.requestAttenionList(this) {
+            mView?.hideProgress()
+            mNextPageUrl = it.nextPageUrl
+            mView?.setNewFollowList(it.itemList, mNextPageUrl.isNotEmpty())
+        }
     }
 
     override fun loadMoreData() {
-        mAttentionModelImpl.getMoreIssueList(mNextPageUrl, this)
-    }
-
-    override fun onRefreshAttentionListSuccess(issue: HomeBean.Issue) {
-        mView?.hideProgress()
-        mNextPageUrl = issue.nextPageUrl
-        mView?.setNewFollowList(issue.itemList, mNextPageUrl.isNotEmpty())
-    }
-
-    override fun onGetMoreListSuccess(issue: HomeBean.Issue) {
-        mNextPageUrl = issue.nextPageUrl
-        mView?.setLoadMoreFollowList(issue.itemList, mNextPageUrl.isNotEmpty())
+        mAttentionModelImpl.getMoreIssueList(this, mNextPageUrl) {
+            mNextPageUrl = it.nextPageUrl
+            mView?.setLoadMoreFollowList(it.itemList, mNextPageUrl.isNotEmpty())
+        }
     }
 }

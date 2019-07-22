@@ -1,7 +1,7 @@
 package cn.jacky.kotlindemo.util
 
 import android.content.Context
-import cn.jacky.kotlindemo.model.ContextModel
+import cn.jacky.kotlindemo.model.local.ContextModel
 import java.io.*
 import kotlin.reflect.KProperty
 

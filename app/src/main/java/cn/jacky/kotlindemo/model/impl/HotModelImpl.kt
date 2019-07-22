@@ -17,7 +17,7 @@ import com.zenchn.apilib.retrofit.RetrofitManager
  */
 class HotModelImpl : HotModel {
 
-    override fun getTabInfo(callback: RxApiCallback, successBlog: (TabInfoBean) -> Unit) {
+    override fun getTabInfo(callback: RxApiCallback, onSuccess: (TabInfoBean) -> Unit) {
         RetrofitManager
                 .getInstance()
                 .create(OpenEyeService::class.java)
@@ -26,7 +26,7 @@ class HotModelImpl : HotModel {
                 .subscribe(object : RxHttpDataObserver<TabInfoBean>(callback) {
                     override fun onHttpResponseResult(success: Boolean, data: TabInfoBean?, msg: String?) {
                         if (success) {
-                            data?.let { successBlog(it) }
+                            data?.let { onSuccess(it) }
                         } else {
                             callback.onApiFailure(msg)
                         }
@@ -34,7 +34,7 @@ class HotModelImpl : HotModel {
                 })
     }
 
-    override fun requestRankList(apiUrl: String, callback: RxApiCallback, successBlog: (HomeBean.Issue) -> Unit) {
+    override fun requestRankList(apiUrl: String, callback: RxApiCallback, onSuccess: (HomeBean.Issue) -> Unit) {
         RetrofitManager
                 .getInstance()
                 .create(OpenEyeService::class.java)
@@ -43,7 +43,7 @@ class HotModelImpl : HotModel {
                 .subscribe(object : RxHttpDataObserver<HomeBean.Issue>(callback) {
                     override fun onHttpResponseResult(success: Boolean, data: HomeBean.Issue?, msg: String?) {
                         if (success) {
-                            data?.let { successBlog(it) }
+                            data?.let { onSuccess(it) }
                         } else {
                             callback.onApiFailure(msg)
                         }

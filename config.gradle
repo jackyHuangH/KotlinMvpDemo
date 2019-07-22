@@ -139,7 +139,7 @@ ext {
             "mpchart"                   : 'com.github.PhilJay:MPAndroidChart:v3.0.3',
             //gsy player
             //完整版引入
-            "GSYVideoPlayer"            : 'com.shuyu:GSYVideoPlayer:6.0.1',
+            "GSYVideoPlayer"            : 'com.shuyu:GSYVideoPlayer:6.0.3',
 
             "amap-3dmap"                : "com.amap.api:3dmap:latest.integration", //3D地图
             "amap-2dmap"                : "com.amap.api:map2d:latest.integration",//  2D地图

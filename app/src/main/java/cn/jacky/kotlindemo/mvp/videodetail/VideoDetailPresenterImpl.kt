@@ -1,13 +1,12 @@
 package cn.jacky.kotlindemo.mvp.videodetail
 
 import android.app.Activity
-import cn.jacky.kotlindemo.model.ACacheModel
-import cn.jacky.kotlindemo.model.ContextModel
-import cn.jacky.kotlindemo.model.VideoDetailModel
+import cn.jacky.kotlindemo.api.bean.HomeBean
 import cn.jacky.kotlindemo.model.impl.VideoDetailModelImpl
+import cn.jacky.kotlindemo.model.local.ACacheModel
+import cn.jacky.kotlindemo.model.local.ContextModel
 import cn.jacky.kotlindemo.mvp.basepresenter.BasePresenterImpl
 import cn.jacky.kotlindemo.util.dataFormat
-import cn.jacky.kotlindemo.api.bean.HomeBean
 import com.zenchn.support.kit.AndroidKit
 import com.zenchn.support.kit.NetworkUtils
 
@@ -17,7 +16,7 @@ import com.zenchn.support.kit.NetworkUtils
  * desc  ：
  * record：
  */
-class VideoDetailPresenterImpl(mView: VideoDetailContract.View?) : BasePresenterImpl<VideoDetailContract.View>(mView), VideoDetailContract.Presenter, VideoDetailModel.RelatedVideoListCallback {
+class VideoDetailPresenterImpl(mView: VideoDetailContract.View?) : BasePresenterImpl<VideoDetailContract.View>(mView), VideoDetailContract.Presenter{
 
     private val mVideoDetailModelImpl by lazy { VideoDetailModelImpl() }
 
@@ -57,11 +56,9 @@ class VideoDetailPresenterImpl(mView: VideoDetailContract.View?) : BasePresenter
     }
 
     override fun getRelatedVideoList(id: Long) {
-        mVideoDetailModelImpl.getRelatedVideoList(id, this)
-    }
-
-    override fun onGetRelatedVideoListSuccess(issue: HomeBean.Issue) {
-        mView?.setRecentRelatedVideo(issue.itemList)
+        mVideoDetailModelImpl.getRelatedVideoList(id, this){
+            mView?.setRecentRelatedVideo(it.itemList)
+        }
     }
 
     override fun saveWatchHistoryCache(item: HomeBean.Issue.Item) {

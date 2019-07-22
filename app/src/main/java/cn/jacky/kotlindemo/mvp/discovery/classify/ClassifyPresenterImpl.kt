@@ -1,9 +1,7 @@
 package cn.jacky.kotlindemo.mvp.discovery.classify
 
-import cn.jacky.kotlindemo.model.ClassifyModel
 import cn.jacky.kotlindemo.model.impl.ClassifyModelImpl
 import cn.jacky.kotlindemo.mvp.basepresenter.BasePresenterImpl
-import cn.jacky.kotlindemo.api.bean.CategoryBean
 
 /**
  * @author:Hzj
@@ -11,17 +9,15 @@ import cn.jacky.kotlindemo.api.bean.CategoryBean
  * desc  ：
  * record：
  */
-class ClassifyPresenterImpl(mView: ClassifyContract.View?) : BasePresenterImpl<ClassifyContract.View>(mView), ClassifyContract.Presenter, ClassifyModel.ClassifyListCallback {
+class ClassifyPresenterImpl(mView: ClassifyContract.View?) : BasePresenterImpl<ClassifyContract.View>(mView), ClassifyContract.Presenter{
 
     private val mClassifyModelImpl by lazy { ClassifyModelImpl() }
 
     override fun getClassifyList() {
         mView?.showProgress()
-        mClassifyModelImpl.getClassifyList(this)
-    }
-
-    override fun onGetClassifyListSuccess(classifyList: List<CategoryBean>) {
-        mView?.hideProgress()
-        mView?.showClassifyList(classifyList)
+        mClassifyModelImpl.getClassifyList(this){
+            mView?.hideProgress()
+            mView?.showClassifyList(it)
+        }
     }
 }

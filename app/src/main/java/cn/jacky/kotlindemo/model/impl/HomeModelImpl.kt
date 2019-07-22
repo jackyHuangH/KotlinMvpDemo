@@ -1,10 +1,11 @@
 package cn.jacky.kotlindemo.model.impl
 
+import cn.jacky.kotlindemo.api.bean.HomeBean
 import cn.jacky.kotlindemo.api.service.OpenEyeService
 import cn.jacky.kotlindemo.model.HomeModel
+import com.zenchn.apilib.callback.rx.RxApiCallback
 import com.zenchn.apilib.callback.rx.RxHttpDataObserver
 import com.zenchn.apilib.callback.rx.RxSchedulerController
-import cn.jacky.kotlindemo.api.bean.HomeBean
 import com.zenchn.apilib.retrofit.RetrofitManager
 
 /**
@@ -15,7 +16,7 @@ import com.zenchn.apilib.retrofit.RetrofitManager
  */
 class HomeModelImpl : HomeModel {
 
-    override fun refreshHomeData(num: Int, callback: HomeModel.HomeListCallback) {
+    override fun refreshHomeData(num: Int, callback: RxApiCallback, onSuccess: (HomeBean) -> Unit) {
         RetrofitManager.getInstance()
                 .create(OpenEyeService::class.java)
                 .getFirstHomeData(num)
@@ -23,7 +24,7 @@ class HomeModelImpl : HomeModel {
                 .subscribe(object : RxHttpDataObserver<HomeBean>(callback) {
                     override fun onHttpResponseResult(success: Boolean, data: HomeBean?, msg: String?) {
                         if (success) {
-                            data?.let { callback.onRefreshHomeListSuccess(it) }
+                            data?.let { onSuccess(it) }
                         } else {
                             callback.onApiFailure(msg)
                         }
@@ -31,7 +32,7 @@ class HomeModelImpl : HomeModel {
                 })
     }
 
-    override fun loadMoreHomeData(nextPageUrl: String, callback: HomeModel.HomeListCallback) {
+    override fun loadMoreHomeData(nextPageUrl: String, callback: RxApiCallback, onSuccess: (HomeBean) -> Unit) {
         RetrofitManager.getInstance()
                 .create(OpenEyeService::class.java)
                 .getMoreHomeData(nextPageUrl)
@@ -39,7 +40,7 @@ class HomeModelImpl : HomeModel {
                 .subscribe(object : RxHttpDataObserver<HomeBean>(callback) {
                     override fun onHttpResponseResult(success: Boolean, data: HomeBean?, msg: String?) {
                         if (success) {
-                            data?.let { callback.onGetHomeMoreListSuccess(it) }
+                            data?.let { onSuccess(it) }
                         } else {
                             callback.onApiFailure(msg)
                         }

@@ -1,9 +1,8 @@
 package cn.jacky.kotlindemo.mvp.home
 
-import cn.jacky.kotlindemo.model.HomeModel
+import cn.jacky.kotlindemo.api.bean.HomeBean
 import cn.jacky.kotlindemo.model.impl.HomeModelImpl
 import cn.jacky.kotlindemo.mvp.basepresenter.BasePresenterImpl
-import cn.jacky.kotlindemo.api.bean.HomeBean
 
 /**
  * @author:Hzj
@@ -11,7 +10,7 @@ import cn.jacky.kotlindemo.api.bean.HomeBean
  * desc  ：
  * record：
  */
-class HomePresenterImpl(mView: HomeContract.View?) : BasePresenterImpl<HomeContract.View>(mView), HomeContract.Presenter, HomeModel.HomeListCallback {
+class HomePresenterImpl(mView: HomeContract.View?) : BasePresenterImpl<HomeContract.View>(mView), HomeContract.Presenter {
 
     private val mHomeModelImpl: HomeModelImpl by lazy {
         HomeModelImpl()
@@ -26,21 +25,23 @@ class HomePresenterImpl(mView: HomeContract.View?) : BasePresenterImpl<HomeContr
 
     override fun refreshHomeData(num: Int) {
         mIsRefresh = true
-        mHomeModelImpl.refreshHomeData(num, this)
-    }
-
-    override fun onRefreshHomeListSuccess(homeBean: HomeBean) {
-        //记录第一页作为banner数据，请求下一页数据
-        mHomeBannerBean = homeBean
-        mHomeModelImpl.loadMoreHomeData(homeBean.nextPageUrl, this)
+        mHomeModelImpl.refreshHomeData(num, this) {
+            //记录第一页作为banner数据，请求下一页数据
+            mHomeBannerBean = it
+            mHomeModelImpl.loadMoreHomeData(it.nextPageUrl, this) { homeBean ->
+                onGetHomeMoreListSuccess(homeBean)
+            }
+        }
     }
 
     override fun loadMoreData() {
         mIsRefresh = false
-        mHomeModelImpl.loadMoreHomeData(mNextPageUrl, this)
+        mHomeModelImpl.loadMoreHomeData(mNextPageUrl, this) { homeBean ->
+            onGetHomeMoreListSuccess(homeBean)
+        }
     }
 
-    override fun onGetHomeMoreListSuccess(homeBean: HomeBean) {
+    private fun onGetHomeMoreListSuccess(homeBean: HomeBean) {
         mHomeBannerBean?.let {
             //过滤掉 Banner2(包含广告,等不需要的 Type), 具体查看接口分析
             val bannerItemList = it.issueList[0].itemList
@@ -55,7 +56,7 @@ class HomePresenterImpl(mView: HomeContract.View?) : BasePresenterImpl<HomeContr
                 bannerImgs.add(item.data?.cover?.feed ?: "")
                 bannerTitles.add(item.data?.title ?: "")
             }
-            mView?.showBannerList(bannerItemList,bannerImgs, bannerTitles)
+            mView?.showBannerList(bannerItemList, bannerImgs, bannerTitles)
         }
         mNextPageUrl = homeBean.nextPageUrl
 

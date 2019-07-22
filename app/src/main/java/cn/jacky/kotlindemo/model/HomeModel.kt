@@ -1,7 +1,7 @@
 package cn.jacky.kotlindemo.model
 
-import com.zenchn.apilib.callback.rx.RxApiCallback
 import cn.jacky.kotlindemo.api.bean.HomeBean
+import com.zenchn.apilib.callback.rx.RxApiCallback
 
 /**
  * @author:Hzj
@@ -10,13 +10,7 @@ import cn.jacky.kotlindemo.api.bean.HomeBean
  * record：
  */
 interface HomeModel {
-    fun refreshHomeData(num: Int, callback: HomeListCallback)
+    fun refreshHomeData(num: Int, callback: RxApiCallback, onSuccess: (HomeBean) -> Unit)
 
-    fun loadMoreHomeData(nextPageUrl: String, callback: HomeListCallback)
-
-    interface HomeListCallback : RxApiCallback {
-        fun onRefreshHomeListSuccess(homeBean: HomeBean)
-
-        fun onGetHomeMoreListSuccess(homeBean: HomeBean)
-    }
+    fun loadMoreHomeData(nextPageUrl: String, callback: RxApiCallback, onSuccess: (HomeBean) -> Unit)
 }

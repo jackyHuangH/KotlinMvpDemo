@@ -1,4 +1,4 @@
-package cn.jacky.kotlindemo.model
+package cn.jacky.kotlindemo.model.local
 
 import android.app.Application
 import android.content.Context

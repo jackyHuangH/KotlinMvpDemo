@@ -2,7 +2,7 @@ package cn.jacky.kotlindemo.mvp.watchhistory
 
 import android.annotation.SuppressLint
 import android.util.Log
-import cn.jacky.kotlindemo.model.ACacheModel
+import cn.jacky.kotlindemo.model.local.ACacheModel
 import cn.jacky.kotlindemo.mvp.basepresenter.BasePresenterImpl
 import com.zenchn.apilib.callback.rx.RxSchedulerController
 import cn.jacky.kotlindemo.api.bean.HomeBean

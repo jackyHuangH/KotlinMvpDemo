@@ -14,10 +14,10 @@ interface HotModel {
     /**
      * 获取热门排行tab信息
      */
-    fun getTabInfo(callback: RxApiCallback, successBlog: (TabInfoBean) -> Unit)
+    fun getTabInfo(callback: RxApiCallback, onSuccess: (TabInfoBean) -> Unit)
 
     /**
      * 获取排行列表
      */
-    fun requestRankList(apiUrl: String, callback: RxApiCallback, successBlog: (HomeBean.Issue) -> Unit)
+    fun requestRankList(apiUrl: String, callback: RxApiCallback, onSuccess: (HomeBean.Issue) -> Unit)
 }

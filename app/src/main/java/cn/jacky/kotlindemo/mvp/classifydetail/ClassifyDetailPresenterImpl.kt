@@ -1,9 +1,7 @@
 package cn.jacky.kotlindemo.mvp.classifydetail
 
-import cn.jacky.kotlindemo.model.ClassifyModel
 import cn.jacky.kotlindemo.model.impl.ClassifyModelImpl
 import cn.jacky.kotlindemo.mvp.basepresenter.BasePresenterImpl
-import cn.jacky.kotlindemo.api.bean.HomeBean
 
 /**
  * @author:Hzj
@@ -12,27 +10,23 @@ import cn.jacky.kotlindemo.api.bean.HomeBean
  * record：
  */
 class ClassifyDetailPresenterImpl(mView: ClassifyDetailContract.View) :
-        BasePresenterImpl<ClassifyDetailContract.View>(mView), ClassifyDetailContract.Presenter, ClassifyModel.ClassifyDetailListCallback {
+        BasePresenterImpl<ClassifyDetailContract.View>(mView), ClassifyDetailContract.Presenter {
 
     private val mClassifyModelImpl by lazy { ClassifyModelImpl() }
 
     private lateinit var mNextPageUrl: String
 
     override fun getCategoryDetailList(id: Long) {
-        mClassifyModelImpl.getClassifyDetailList(id, this)
+        mClassifyModelImpl.getClassifyDetailList(id, this){
+            mNextPageUrl = it.nextPageUrl
+            mView?.setCateDetailList(it.itemList, mNextPageUrl.isNotEmpty())
+        }
     }
 
     override fun loadMoreData() {
-        mClassifyModelImpl.loadMoreClassifyDetailData(mNextPageUrl, this)
-    }
-
-    override fun onRequestDetailListSuccess(issue: HomeBean.Issue) {
-        mNextPageUrl = issue.nextPageUrl
-        mView?.setCateDetailList(issue.itemList, mNextPageUrl.isNotEmpty())
-    }
-
-    override fun onLoadMoreDataSuccess(issue: HomeBean.Issue) {
-        mNextPageUrl = issue.nextPageUrl
-        mView?.addMoreDetailList(issue.itemList, mNextPageUrl.isNotEmpty())
+        mClassifyModelImpl.loadMoreClassifyDetailData(mNextPageUrl, this){
+            mNextPageUrl = it.nextPageUrl
+            mView?.addMoreDetailList(it.itemList, mNextPageUrl.isNotEmpty())
+        }
     }
 }

@@ -1,10 +1,11 @@
 package cn.jacky.kotlindemo.model.impl
 
+import cn.jacky.kotlindemo.api.bean.HomeBean
 import cn.jacky.kotlindemo.api.service.OpenEyeService
 import cn.jacky.kotlindemo.model.SearchModel
+import com.zenchn.apilib.callback.rx.RxApiCallback
 import com.zenchn.apilib.callback.rx.RxHttpDataObserver
 import com.zenchn.apilib.callback.rx.RxSchedulerController
-import cn.jacky.kotlindemo.api.bean.HomeBean
 import com.zenchn.apilib.retrofit.RetrofitManager
 
 /**
@@ -15,7 +16,7 @@ import com.zenchn.apilib.retrofit.RetrofitManager
  */
 class SearchModelImpl : SearchModel {
 
-    override fun getHotWordList(callback: SearchModel.HotWordListCallback) {
+    override fun getHotWordList(callback: RxApiCallback, onSuccess: (ArrayList<String>) -> Unit) {
         RetrofitManager
                 .getInstance()
                 .create(OpenEyeService::class.java)
@@ -24,7 +25,7 @@ class SearchModelImpl : SearchModel {
                 .subscribe(object : RxHttpDataObserver<ArrayList<String>>(callback) {
                     override fun onHttpResponseResult(success: Boolean, data: ArrayList<String>?, msg: String?) {
                         if (success) {
-                            data?.let { callback.onGetHotWordListSuccess(it) }
+                            data?.let { onSuccess(it) }
                         } else {
                             callback.onApiFailure(msg)
                         }
@@ -32,7 +33,7 @@ class SearchModelImpl : SearchModel {
                 })
     }
 
-    override fun refreshSearchData(keyword: String, num: Int, callback: SearchModel.SearchListCallback) {
+    override fun refreshSearchData(keyword: String, num: Int, callback: RxApiCallback, onSuccess: (HomeBean.Issue) -> Unit) {
         RetrofitManager
                 .getInstance()
                 .create(OpenEyeService::class.java)
@@ -41,7 +42,7 @@ class SearchModelImpl : SearchModel {
                 .subscribe(object : RxHttpDataObserver<HomeBean.Issue>(callback) {
                     override fun onHttpResponseResult(success: Boolean, data: HomeBean.Issue?, msg: String?) {
                         if (success) {
-                            data?.let { callback.onSearchListSuccess(it) }
+                            data?.let { onSuccess(it) }
                         } else {
                             callback.onApiFailure(msg)
                         }
@@ -49,7 +50,7 @@ class SearchModelImpl : SearchModel {
                 })
     }
 
-    override fun loadMoreSearchData(nextPageUrl: String, callback: SearchModel.SearchListCallback) {
+    override fun loadMoreSearchData(nextPageUrl: String, callback: RxApiCallback, onSuccess: (HomeBean.Issue) -> Unit) {
         RetrofitManager
                 .getInstance()
                 .create(OpenEyeService::class.java)
@@ -58,7 +59,7 @@ class SearchModelImpl : SearchModel {
                 .subscribe(object : RxHttpDataObserver<HomeBean.Issue>(callback) {
                     override fun onHttpResponseResult(success: Boolean, data: HomeBean.Issue?, msg: String?) {
                         if (success) {
-                            data?.let { callback.onSearchMoreListSuccess(it) }
+                            data?.let { onSuccess(it) }
                         } else {
                             callback.onApiFailure(msg)
                         }

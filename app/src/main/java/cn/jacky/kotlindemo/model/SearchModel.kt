@@ -1,7 +1,7 @@
 package cn.jacky.kotlindemo.model
 
-import com.zenchn.apilib.callback.rx.RxApiCallback
 import cn.jacky.kotlindemo.api.bean.HomeBean
+import com.zenchn.apilib.callback.rx.RxApiCallback
 
 /**
  * @author:Hzj
@@ -10,20 +10,10 @@ import cn.jacky.kotlindemo.api.bean.HomeBean
  * record：
  */
 interface SearchModel {
-    fun getHotWordList(callback: HotWordListCallback)
+    fun getHotWordList(callback: RxApiCallback, onSuccess: (ArrayList<String>) -> Unit)
 
-    fun refreshSearchData(keyword: String, num: Int, callback: SearchListCallback)
+    fun refreshSearchData(keyword: String, num: Int, callback: RxApiCallback, onSuccess: (HomeBean.Issue) -> Unit)
 
-    fun loadMoreSearchData(nextPageUrl: String, callback: SearchListCallback)
+    fun loadMoreSearchData(nextPageUrl: String, callback: RxApiCallback, onSuccess: (HomeBean.Issue) -> Unit)
 
-    interface SearchListCallback : RxApiCallback {
-        fun onSearchListSuccess(issue: HomeBean.Issue)
-
-        fun onSearchMoreListSuccess(issue: HomeBean.Issue)
-    }
-
-    interface HotWordListCallback : RxApiCallback {
-
-        fun onGetHotWordListSuccess(hotWords: ArrayList<String>)
-    }
 }

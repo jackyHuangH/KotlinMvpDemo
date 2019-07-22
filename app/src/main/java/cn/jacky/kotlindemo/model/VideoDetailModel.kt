@@ -1,7 +1,7 @@
 package cn.jacky.kotlindemo.model
 
-import com.zenchn.apilib.callback.rx.RxApiCallback
 import cn.jacky.kotlindemo.api.bean.HomeBean
+import com.zenchn.apilib.callback.rx.RxApiCallback
 
 /**
  * @author:Hzj
@@ -10,10 +10,5 @@ import cn.jacky.kotlindemo.api.bean.HomeBean
  * record：
  */
 interface VideoDetailModel {
-    fun getRelatedVideoList(id: Long, callback: RelatedVideoListCallback)
-
-    interface RelatedVideoListCallback : RxApiCallback {
-
-        fun onGetRelatedVideoListSuccess(issue: HomeBean.Issue)
-    }
+    fun getRelatedVideoList(id: Long, callback: RxApiCallback, onSuccess: (HomeBean.Issue) -> Unit)
 }

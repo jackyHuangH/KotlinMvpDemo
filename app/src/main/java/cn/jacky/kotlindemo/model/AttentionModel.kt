@@ -1,7 +1,7 @@
 package cn.jacky.kotlindemo.model
 
-import com.zenchn.apilib.callback.rx.RxApiCallback
 import cn.jacky.kotlindemo.api.bean.HomeBean
+import com.zenchn.apilib.callback.rx.RxApiCallback
 
 /**
  * @author:Hzj
@@ -10,14 +10,7 @@ import cn.jacky.kotlindemo.api.bean.HomeBean
  * record：
  */
 interface AttentionModel {
-    fun requestAttenionList(callback: AttentionListCallback)
+    fun requestAttenionList(callback:RxApiCallback, onSuccess: (HomeBean.Issue) -> Unit)
 
-    fun getMoreIssueList(nextPageUrl: String, callback: AttentionListCallback)
-
-    interface AttentionListCallback : RxApiCallback {
-
-        fun onRefreshAttentionListSuccess(issue: HomeBean.Issue)
-
-        fun onGetMoreListSuccess(issue: HomeBean.Issue)
-    }
+    fun getMoreIssueList(callback: RxApiCallback, nextPageUrl: String, onSuccess: (HomeBean.Issue) -> Unit)
 }
