@@ -1,8 +1,8 @@
 package cn.jacky.kotlindemo.model
 
+import cn.jacky.kotlindemo.api.bean.HomeBean
 import cn.jacky.kotlindemo.api.bean.TabInfoBean
 import com.zenchn.apilib.callback.rx.RxApiCallback
-import cn.jacky.kotlindemo.api.bean.HomeBean
 
 /**
  * @author:Hzj
@@ -14,20 +14,10 @@ interface HotModel {
     /**
      * 获取热门排行tab信息
      */
-    fun getTabInfo(callback: TabInfoCallback)
+    fun getTabInfo(callback: RxApiCallback, successBlog: (TabInfoBean) -> Unit)
 
     /**
      * 获取排行列表
      */
-    fun requestRankList(apiUrl: String, callback: RankListCallback)
-
-    interface TabInfoCallback : RxApiCallback {
-
-        fun onGetTabInfoSuccess(tabInfo: TabInfoBean)
-    }
-
-    interface RankListCallback : RxApiCallback {
-
-        fun onGetRankListSuccess(issue: HomeBean.Issue)
-    }
+    fun requestRankList(apiUrl: String, callback: RxApiCallback, successBlog: (HomeBean.Issue) -> Unit)
 }

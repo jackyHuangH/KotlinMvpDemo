@@ -1,9 +1,7 @@
 package cn.jacky.kotlindemo.mvp.hot
 
-import cn.jacky.kotlindemo.model.HotModel
 import cn.jacky.kotlindemo.model.impl.HotModelImpl
 import cn.jacky.kotlindemo.mvp.basepresenter.BasePresenterImpl
-import cn.jacky.kotlindemo.api.bean.TabInfoBean
 
 /**
  * @author:Hzj
@@ -11,16 +9,15 @@ import cn.jacky.kotlindemo.api.bean.TabInfoBean
  * desc  ：
  * record：
  */
-class HotPrensenterImpl(mView: HotContract.View) : BasePresenterImpl<HotContract.View>(mView), HotContract.Presenter, HotModel.TabInfoCallback {
+class HotPrensenterImpl(mView: HotContract.View) : BasePresenterImpl<HotContract.View>(mView), HotContract.Presenter {
+
     private val mHotModelImpl by lazy { HotModelImpl() }
 
     override fun getTabInfo() {
         mView?.showProgress()
-        mHotModelImpl.getTabInfo(this)
-    }
-
-    override fun onGetTabInfoSuccess(tabInfo: TabInfoBean) {
-        mView?.hideProgress()
-        mView?.setTabInfo(tabInfo)
+        mHotModelImpl.getTabInfo(this) {
+            mView?.hideProgress()
+            mView?.setTabInfo(it)
+        }
     }
 }
