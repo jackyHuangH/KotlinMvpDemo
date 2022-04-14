@@ -1,8 +1,8 @@
 package cn.jacky.kotlindemo.mvp.watchhistory
 
 import android.app.Activity
-import android.support.v7.widget.LinearLayoutManager
 import android.view.View
+import androidx.recyclerview.widget.LinearLayoutManager
 import cn.jacky.kotlindemo.R
 import cn.jacky.kotlindemo.api.bean.HomeBean
 import cn.jacky.kotlindemo.mvp.adapter.SearchListAdapter

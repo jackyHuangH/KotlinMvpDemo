@@ -1,7 +1,7 @@
 package cn.jacky.kotlindemo.mvp.hot.rank
 
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import cn.jacky.kotlindemo.R

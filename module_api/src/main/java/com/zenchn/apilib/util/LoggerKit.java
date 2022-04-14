@@ -1,12 +1,13 @@
 package com.zenchn.apilib.util;
 
-import android.support.annotation.Nullable;
 
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.FormatStrategy;
 import com.orhanobut.logger.Logger;
 import com.orhanobut.logger.PrettyFormatStrategy;
 import com.zenchn.apilib.BuildConfig;
+
+import androidx.annotation.Nullable;
 
 /**
  * 作    者：hzj on 2018/9/12 10:00

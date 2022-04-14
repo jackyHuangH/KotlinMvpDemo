@@ -9,6 +9,8 @@ import android.util.AttributeSet;
 
 import com.zenchn.support.R;
 
+import androidx.appcompat.widget.AppCompatTextView;
+
 
 /**
  * @author:Hzj
@@ -16,7 +18,7 @@ import com.zenchn.support.R;
  * desc  ：解决TextView 宽度为Matchparent 时 drawablepadding 无效
  * record：
  */
-public class IconTextView extends android.support.v7.widget.AppCompatTextView {
+public class IconTextView extends AppCompatTextView {
 
     private int drawableWidth;
     private int iconPadding;

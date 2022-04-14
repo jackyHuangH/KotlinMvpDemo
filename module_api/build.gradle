@@ -24,10 +24,10 @@ android {
 
 dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    api rootProject.ext.dependencies["annotations"]
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:3.0.2')
+    testImplementation rootProject.ext.dependencies["junit"]
+
+    api rootProject.ext.dependencies["androidx_annotations"]
     api rootProject.ext.dependencies["logger"]
 
     api rootProject.ext.dependencies["okhttp"]
@@ -42,5 +42,4 @@ dependencies {
     api rootProject.ext.dependencies["retrofit_rxjava2_adapter"]
     api rootProject.ext.dependencies["fastjson"]
     api rootProject.ext.dependencies["gson"]
-    testImplementation 'junit:junit:4.12'
 }

@@ -1,13 +1,14 @@
 package com.zenchn.support.widget.enteringlayout;
 
-import android.support.annotation.ColorInt;
-import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import androidx.annotation.ColorInt;
+import androidx.annotation.NonNull;
 
 /**
  * 作    者：wangr on 2017/9/6 14:47

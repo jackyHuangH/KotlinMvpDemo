@@ -2,8 +2,6 @@ package com.zenchn.support.widget.dropdownmenu;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.support.annotation.NonNull;
-import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
@@ -20,6 +18,9 @@ import com.zenchn.support.R;
 import com.zenchn.support.kit.AndroidKit;
 
 import java.util.List;
+
+import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 
 
 /**

@@ -11,7 +11,6 @@ import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.net.Uri;
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -21,6 +20,8 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
 import java.util.List;
+
+import androidx.annotation.NonNull;
 
 /**
  * 作    者：wangr on 2017/5/23 13:49

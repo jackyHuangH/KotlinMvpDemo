@@ -1,7 +1,7 @@
 package cn.jacky.kotlindemo.test
 
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import cn.jacky.kotlindemo.R
 import cn.jacky.kotlindemo.mvp.adapter.MsgListAdapter
 import cn.jacky.kotlindemo.mvp.baseview.BaseActivity

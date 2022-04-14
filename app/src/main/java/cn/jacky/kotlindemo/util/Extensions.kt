@@ -2,9 +2,9 @@ package cn.jacky.kotlindemo.util
 
 import android.content.Context
 import android.os.SystemClock
-import android.support.v4.app.Fragment
 import android.view.View
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 
 /**
  * Created by xuhao on 2017/11/14.

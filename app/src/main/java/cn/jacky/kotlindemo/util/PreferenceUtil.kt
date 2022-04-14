@@ -51,11 +51,11 @@ class PreferenceUtil<T>(val keyName: String, private val defaultValue: T) {
     private fun getPreference(key: String, default: T): T = with(mPreference) {
         val res: Any = when (default) {
             is Long -> getLong(key, default)
-            is String -> getString(key, default)
+            is String -> getString(key, default).orEmpty()
             is Int -> getInt(key, default)
             is Boolean -> getBoolean(key, default)
             is Float -> getFloat(key, default)
-            else -> deSerialization(getString(key, serialize(default)))
+            else -> deSerialization(getString(key, serialize(default)).orEmpty())
         }
         return res as T
     }

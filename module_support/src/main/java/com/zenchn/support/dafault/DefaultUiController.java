@@ -1,15 +1,16 @@
 package com.zenchn.support.dafault;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.StringRes;
 
 import com.afollestad.materialdialogs.GravityEnum;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.zenchn.support.R;
 import com.zenchn.support.base.IUiController;
 import com.zenchn.support.widget.tips.SuperToast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.StringRes;
 
 
 /**

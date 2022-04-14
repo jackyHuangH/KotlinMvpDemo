@@ -2,10 +2,11 @@ package com.zenchn.support.widget.itemdecoration;
 
 import android.content.Context;
 import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.zenchn.support.kit.AndroidKit;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Created by Administrator on 2016/11/2.

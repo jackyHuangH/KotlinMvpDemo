@@ -4,15 +4,15 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.content.res.Configuration
-import android.support.v4.app.ActivityCompat
-import android.support.v4.app.ActivityOptionsCompat
-import android.support.v4.util.Pair
-import android.support.v4.view.ViewCompat
-import android.support.v7.widget.LinearLayoutManager
+import androidx.core.view.ViewCompat
 import android.transition.Transition
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageView
+import androidx.core.app.ActivityCompat
+import androidx.core.app.ActivityOptionsCompat
+import androidx.core.util.Pair
+import androidx.recyclerview.widget.LinearLayoutManager
 import cn.jacky.kotlindemo.R
 import cn.jacky.kotlindemo.api.bean.HomeBean
 import cn.jacky.kotlindemo.mvp.adapter.VideoDetailListAdapter
@@ -292,7 +292,7 @@ class VideoDetailActivity : BaseActivity(), VideoDetailContract.View, BaseQuickA
 
     //------------------------------------gsy player 生命周期绑定-----------------------------------------------
 
-    override fun onConfigurationChanged(newConfig: Configuration?) {
+    override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
         if (mIsPlaying && !mHasPaused) {
             gsy_player.onConfigurationChanged(this, newConfig, mOrientationUtils)

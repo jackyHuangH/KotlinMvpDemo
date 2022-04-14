@@ -1,6 +1,6 @@
 package cn.jacky.kotlindemo.mvp.adapter
 
-import android.support.annotation.LayoutRes
+import androidx.annotation.LayoutRes
 import android.widget.TextView
 import cn.jacky.kotlindemo.R
 import com.chad.library.adapter.base.BaseQuickAdapter

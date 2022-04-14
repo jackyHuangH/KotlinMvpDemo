@@ -1,6 +1,5 @@
 package com.zenchn.apilib.util;
 
-import android.support.annotation.Nullable;
 import android.util.Base64;
 import android.util.Log;
 
@@ -29,6 +28,8 @@ import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.DESKeySpec;
+
+import androidx.annotation.Nullable;
 
 /**
  * 作    者：wangr on 2017/5/26 13:54

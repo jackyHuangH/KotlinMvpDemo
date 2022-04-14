@@ -1,7 +1,5 @@
 package com.youth.banner;
 
-import android.support.v4.view.ViewPager.PageTransformer;
-
 import com.youth.banner.transformer.AccordionTransformer;
 import com.youth.banner.transformer.BackgroundToForegroundTransformer;
 import com.youth.banner.transformer.CubeInTransformer;
@@ -19,6 +17,8 @@ import com.youth.banner.transformer.TabletTransformer;
 import com.youth.banner.transformer.ZoomInTransformer;
 import com.youth.banner.transformer.ZoomOutSlideTransformer;
 import com.youth.banner.transformer.ZoomOutTranformer;
+
+import androidx.viewpager.widget.ViewPager.PageTransformer;
 
 public class Transformer {
     public static Class<? extends PageTransformer> Default = DefaultTransformer.class;

@@ -1,6 +1,5 @@
 package com.zenchn.apilib.callback.call;
 
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
 import com.alibaba.fastjson.JSONObject;
@@ -10,6 +9,7 @@ import com.zenchn.apilib.util.LoggerKit;
 import java.net.ConnectException;
 import java.net.SocketTimeoutException;
 
+import androidx.annotation.NonNull;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

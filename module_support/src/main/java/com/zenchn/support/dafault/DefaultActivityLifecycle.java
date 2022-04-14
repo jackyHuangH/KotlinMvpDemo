@@ -3,7 +3,7 @@ package com.zenchn.support.dafault;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Process;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.zenchn.support.base.ActivityLifecycleCallback;
 import com.zenchn.support.base.IActivityLifecycle;

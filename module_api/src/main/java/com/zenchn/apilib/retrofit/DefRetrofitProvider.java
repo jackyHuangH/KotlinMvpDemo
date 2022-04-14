@@ -1,13 +1,12 @@
 package com.zenchn.apilib.retrofit;
 
-import android.support.annotation.NonNull;
-
 import com.zenchn.apilib.BuildConfig;
 import com.zenchn.apilib.retrofit.converter.FastJsonConverterFactory;
 import com.zenchn.apilib.retrofit.interceptor.TokenHeaderInterceptor;
 
 import java.util.concurrent.TimeUnit;
 
+import androidx.annotation.NonNull;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;

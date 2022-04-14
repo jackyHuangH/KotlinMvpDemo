@@ -1,13 +1,14 @@
 package com.zenchn.support.base;
 
 import android.app.Application;
-import android.support.annotation.CallSuper;
-import android.support.annotation.NonNull;
 import android.view.View;
 
 import com.zenchn.support.R;
 import com.zenchn.support.dafault.DefaultUncaughtHandler;
 import com.zenchn.support.widget.tips.SuperToast;
+
+import androidx.annotation.CallSuper;
+import androidx.annotation.NonNull;
 
 
 /**

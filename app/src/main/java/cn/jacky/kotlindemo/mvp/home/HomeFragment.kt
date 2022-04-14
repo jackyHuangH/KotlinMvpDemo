@@ -2,12 +2,12 @@ package cn.jacky.kotlindemo.mvp.home
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.app.ActivityOptionsCompat
-import android.support.v4.content.ContextCompat
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
+import androidx.core.app.ActivityOptionsCompat
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import cn.jacky.kotlindemo.R
 import cn.jacky.kotlindemo.api.bean.HomeBean
 import cn.jacky.kotlindemo.mvp.adapter.HomeListAdapter
@@ -30,7 +30,8 @@ import java.util.*
  * desc  ：每日精选
  * record：
  */
-class HomeFragment : BaseFragment(), HomeContract.View, BaseQuickAdapter.RequestLoadMoreListener, BaseQuickAdapter.OnItemClickListener {
+class HomeFragment : BaseFragment(), HomeContract.View, BaseQuickAdapter.RequestLoadMoreListener,
+    BaseQuickAdapter.OnItemClickListener {
     private var mTitle: String? = null
     private var mHomeAdapter: HomeListAdapter? = null
 
@@ -69,7 +70,13 @@ class HomeFragment : BaseFragment(), HomeContract.View, BaseQuickAdapter.Request
     private fun initSearchBar() {
         ib_search.setOnClickListener {
             // 跳转搜索,1定义场景
-            val optionsCompat = activity?.let { ActivityOptionsCompat.makeSceneTransitionAnimation(it, ib_search, ib_search.transitionName) }
+            val optionsCompat = activity?.let {
+                ActivityOptionsCompat.makeSceneTransitionAnimation(
+                    it,
+                    ib_search,
+                    ib_search.transitionName
+                )
+            }
             startActivity(Intent(activity, SearchActivity::class.java), optionsCompat?.toBundle())
         }
     }
@@ -83,9 +90,9 @@ class HomeFragment : BaseFragment(), HomeContract.View, BaseQuickAdapter.Request
     override fun initStatusBar() {
         mImmersionBar = ImmersionBar.with(this)
         mImmersionBar
-                .fitsSystemWindows(false)
-                .transparentStatusBar()
-                .statusBarDarkFont(true)
+            .fitsSystemWindows(false)
+            .transparentStatusBar()
+            .statusBarDarkFont(true)
         mImmersionBar.init()
 
         //处理toolbar 与状态栏的间距
@@ -101,7 +108,7 @@ class HomeFragment : BaseFragment(), HomeContract.View, BaseQuickAdapter.Request
     private fun initRecyclerView() {
         rlv.layoutManager = mLinearLayoutManager
         rlv.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
                 //监听列表滑动，改变toobar透明度
                 val firstVisibleItemPosition = mLinearLayoutManager.findFirstVisibleItemPosition()
@@ -130,12 +137,12 @@ class HomeFragment : BaseFragment(), HomeContract.View, BaseQuickAdapter.Request
     private fun autoChangeToolbar(firstPosition: Int) {
         if (firstPosition == 0) {
             //toolbar全透明
-            toolbar.setBackgroundColor(ContextCompat.getColor(context!!, R.color.transparent))
+            toolbar.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.transparent))
             ib_search.setImageResource(R.drawable.ic_action_search_white)
             tv_header_title.text = ""
         } else {
             if (mHomeAdapter?.data!!.size > 1) {
-                toolbar.setBackgroundColor(ContextCompat.getColor(context!!, R.color.color_title_bg))
+                toolbar.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.color_title_bg))
                 ib_search.setImageResource(R.drawable.ic_action_search_black)
                 val list = mHomeAdapter!!.data
                 val currItem = list[firstPosition - 1]
@@ -160,7 +167,11 @@ class HomeFragment : BaseFragment(), HomeContract.View, BaseQuickAdapter.Request
         mPresenter.loadMoreData()
     }
 
-    override fun showBannerList(bannerItems: ArrayList<HomeBean.Issue.Item>, bannerUrls: ArrayList<String>, bannerTitles: ArrayList<String>) {
+    override fun showBannerList(
+        bannerItems: ArrayList<HomeBean.Issue.Item>,
+        bannerUrls: ArrayList<String>,
+        bannerTitles: ArrayList<String>
+    ) {
         //填充banner
         banner_home.setImageLoader(GlideImageLoader())
         banner_home.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE)
@@ -208,7 +219,7 @@ class HomeFragment : BaseFragment(), HomeContract.View, BaseQuickAdapter.Request
 
     override fun onApiFailure(msg: String) {
         super.onApiFailure(msg)
-        swipe_refresh.isRefreshing=false
+        swipe_refresh.isRefreshing = false
     }
 
     override fun onDestroyView() {

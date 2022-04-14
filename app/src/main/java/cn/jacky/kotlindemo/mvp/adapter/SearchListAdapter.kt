@@ -1,6 +1,6 @@
 package cn.jacky.kotlindemo.mvp.adapter
 
-import android.support.annotation.LayoutRes
+import androidx.annotation.LayoutRes
 import cn.jacky.kotlindemo.R
 import cn.jacky.kotlindemo.util.durationFormat
 import cn.jacky.kotlindemo.wrapper.glide.GlideApp

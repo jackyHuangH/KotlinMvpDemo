@@ -1,8 +1,8 @@
 package cn.jacky.kotlindemo.mvp.discovery.classify
 
 import android.os.Bundle
-import android.support.v7.widget.GridLayoutManager
 import android.view.View
+import androidx.recyclerview.widget.GridLayoutManager
 import cn.jacky.kotlindemo.R
 import cn.jacky.kotlindemo.api.bean.CategoryBean
 import cn.jacky.kotlindemo.mvp.adapter.ClassifyGridAdapter

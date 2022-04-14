@@ -2,18 +2,19 @@ package cn.jacky.kotlindemo.mvp.userinfo
 
 import android.annotation.SuppressLint
 import android.app.Activity
-import android.support.v4.content.ContextCompat
-import android.support.v4.widget.NestedScrollView
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import androidx.core.content.ContextCompat
+import androidx.core.widget.NestedScrollView
 import cn.jacky.kotlindemo.R
 import cn.jacky.kotlindemo.R.id.*
 import cn.jacky.kotlindemo.mvp.baseview.BaseActivity
 import cn.jacky.kotlindemo.util.StatusBarUtil
 import com.gyf.barlibrary.ImmersionBar
-import com.scwang.smartrefresh.layout.api.RefreshHeader
-import com.scwang.smartrefresh.layout.listener.SimpleMultiPurposeListener
+import com.scwang.smart.refresh.layout.api.RefreshHeader
+import com.scwang.smart.refresh.layout.listener.OnMultiListener
+import com.scwang.smart.refresh.layout.simple.SimpleMultiListener
 import com.zenchn.support.kit.AndroidKit
 import com.zenchn.support.router.Router
 import kotlinx.android.synthetic.main.activity_user_info.*
@@ -31,7 +32,7 @@ class UserInfoActivity : BaseActivity() {
     private var mOffsetY = 0
     private var mScrollY = 0
 
-    private val mWebUrl: String = "https://xuhaoblog.com/KotlinMvp"
+    private val mWebUrl: String = "https://github.com/jackyHuangH?tab=repositories"
 
     override fun getLayoutRes(): Int = R.layout.activity_user_info
 
@@ -55,7 +56,6 @@ class UserInfoActivity : BaseActivity() {
         toolbar.setBackgroundColor(0)
         //返回
         toolbar.setNavigationOnClickListener { onBackPressed() }
-
         smart_refresh.setOnRefreshListener { webView.loadUrl(mWebUrl) }
         smart_refresh.autoRefresh()
     }
@@ -98,8 +98,15 @@ class UserInfoActivity : BaseActivity() {
     }
 
     private fun initSwipeRefreshLayout() {
-        smart_refresh.setOnMultiPurposeListener(object : SimpleMultiPurposeListener() {
-            override fun onHeaderMoving(header: RefreshHeader?, isDragging: Boolean, percent: Float, offset: Int, headerHeight: Int, maxDragHeight: Int) {
+        smart_refresh.setOnMultiListener(object :SimpleMultiListener(){
+            override fun onHeaderMoving(
+                header: RefreshHeader?,
+                isDragging: Boolean,
+                percent: Float,
+                offset: Int,
+                headerHeight: Int,
+                maxDragHeight: Int
+            ) {
                 mOffsetY = offset / 2
                 //垂直方向移动背景图片
                 iv_parallax.translationY = (mOffsetY - mScrollY).toFloat()

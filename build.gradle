@@ -1,7 +1,7 @@
 apply from: 'config.gradle'
 
 buildscript {
-    ext.kotlin_version = '1.5.21'
+    ext.kotlin_version = '1.6.20'
     repositories {
         jcenter()
         mavenCentral() // add repository
@@ -9,9 +9,7 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:4.2.2'
-
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath "org.jetbrains.kotlin:kotlin-android-extensions:$kotlin_version"
     }
 }
 
@@ -32,9 +30,17 @@ allprojects {
 subprojects {
     project.configurations.all {
         resolutionStrategy.eachDependency { details ->
-            if (details.requested.group == 'com.android.support'
-                    && !details.requested.name.contains('multidex')) {
-                details.useVersion rootProject.ext.android.supportLibVersion
+            if (details.requested.group == 'androidx.core' && details.requested.name.contains('androidx')) {
+                details.useVersion '1.6.0'
+            }
+            if (details.requested.group == 'androidx.annotation' && details.requested.name.contains('annotation')) {
+                details.useVersion "1.2.0"
+            }
+            if (details.requested.group == 'androidx.recyclerview' && details.requested.name.contains('recyclerview')) {
+                details.useVersion "1.2.1"
+            }
+            if (details.requested.group == 'androidx.constraintlayout') {
+                details.useVersion "2.0.1"
             }
         }
     }

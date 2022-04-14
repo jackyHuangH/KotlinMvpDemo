@@ -1,13 +1,13 @@
 package cn.jacky.kotlindemo.wrapper.snaphelper
 
 
-import android.support.v4.text.TextUtilsCompat
-import android.support.v4.view.ViewCompat
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.OrientationHelper
-import android.support.v7.widget.RecyclerView
+import androidx.core.view.ViewCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import android.view.Gravity
 import android.view.View
+import androidx.core.text.TextUtilsCompat
+import androidx.recyclerview.widget.OrientationHelper
 import java.util.*
 
 /**
@@ -25,7 +25,7 @@ class GravityDelegate(private val gravity: Int, private var snapLastItem: Boolea
     private var lastSnappedPosition: Int = 0
     private var recyclerView: RecyclerView? = null
     private val scrollListener = object : RecyclerView.OnScrollListener() {
-        override fun onScrollStateChanged(recyclerView: RecyclerView?, newState: Int) {
+        override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
             super.onScrollStateChanged(recyclerView, newState)
             if (newState == RecyclerView.SCROLL_STATE_IDLE && snapping && listener != null) {
                 if (lastSnappedPosition != RecyclerView.NO_POSITION) {
@@ -65,11 +65,10 @@ class GravityDelegate(private val gravity: Int, private var snapLastItem: Boolea
     }
 
     private fun scrollTo(position: Int, smooth: Boolean) {
-        if (recyclerView!!.layoutManager != null) {
-            val viewHolder = recyclerView!!.findViewHolderForAdapterPosition(position)
+        recyclerView?.layoutManager?.let { layoutManager ->
+            val viewHolder = recyclerView?.findViewHolderForAdapterPosition(position)
             if (viewHolder != null) {
-                val distances = calculateDistanceToFinalSnap(recyclerView!!.layoutManager,
-                        viewHolder.itemView)
+                val distances = calculateDistanceToFinalSnap(layoutManager, viewHolder.itemView)
                 if (smooth) {
                     recyclerView!!.smoothScrollBy(distances[0], distances[1])
                 } else {

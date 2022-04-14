@@ -1,11 +1,11 @@
 package cn.jacky.kotlindemo.mvp.baseview
 
 import android.os.Bundle
-import android.support.annotation.NonNull
 import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import android.widget.Toast
+import androidx.annotation.NonNull
 import cn.jacky.kotlindemo.R
 import cn.jacky.kotlindemo.app.ApplicationKit
 import com.gyf.barlibrary.ImmersionBar

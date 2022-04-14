@@ -1,8 +1,6 @@
 package cn.jacky.kotlindemo.app
 
-import android.app.Application
-import android.content.Context
-import android.support.multidex.MultiDex
+import androidx.multidex.MultiDexApplication
 
 /**
  * @author:Hzj
@@ -10,12 +8,8 @@ import android.support.multidex.MultiDex
  * desc  ：
  * record：
  */
-class App : Application() {
+class App : MultiDexApplication() {
 
-    override fun attachBaseContext(base: Context?) {
-        super.attachBaseContext(base)
-        MultiDex.install(this)
-    }
 
     override fun onCreate() {
         super.onCreate()

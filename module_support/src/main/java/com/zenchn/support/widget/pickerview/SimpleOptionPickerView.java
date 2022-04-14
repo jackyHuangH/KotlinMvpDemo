@@ -2,7 +2,6 @@ package com.zenchn.support.widget.pickerview;
 
 import android.content.Context;
 import android.graphics.Typeface;
-import android.support.annotation.LayoutRes;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +19,8 @@ import com.contrarywind.view.WheelView;
 import com.zenchn.support.R;
 
 import java.util.List;
+
+import androidx.annotation.LayoutRes;
 
 
 /**

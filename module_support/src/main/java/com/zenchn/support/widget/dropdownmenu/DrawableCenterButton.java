@@ -4,6 +4,8 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 
+import androidx.appcompat.widget.AppCompatButton;
+
 /**
  * @author:Hzj
  * @date :2018/11/5/005
@@ -11,7 +13,7 @@ import android.util.AttributeSet;
  * 同理用于TextView,修改onLayout()即可
  * record：
  */
-public class DrawableCenterButton extends android.support.v7.widget.AppCompatButton {
+public class DrawableCenterButton extends AppCompatButton {
     public DrawableCenterButton(Context context) {
         super(context);
     }

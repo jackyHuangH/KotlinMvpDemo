@@ -1,9 +1,9 @@
 package com.zenchn.apilib.callback.call;
 
-import android.support.annotation.Nullable;
-
 import com.zenchn.apilib.callback.ApiGrantCallback;
 import com.zenchn.apilib.model.HttpResultModel;
+
+import androidx.annotation.Nullable;
 
 
 /**

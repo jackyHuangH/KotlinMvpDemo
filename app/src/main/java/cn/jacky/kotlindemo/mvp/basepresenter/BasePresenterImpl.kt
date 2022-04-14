@@ -1,8 +1,8 @@
 package cn.jacky.kotlindemo.mvp.basepresenter
 
-import android.arch.lifecycle.Lifecycle
-import android.arch.lifecycle.LifecycleOwner
 import android.util.Log
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleOwner
 import cn.jacky.kotlindemo.mvp.basepresenter.BasePresenterImpl.Constant.TAG
 import cn.jacky.kotlindemo.mvp.baseview.IView
 import com.zenchn.apilib.callback.rx.RxApiCallback

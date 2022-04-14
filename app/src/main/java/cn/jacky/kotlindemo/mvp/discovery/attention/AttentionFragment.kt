@@ -1,7 +1,7 @@
 package cn.jacky.kotlindemo.mvp.discovery.attention
 
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.View
 import cn.jacky.kotlindemo.R
 import cn.jacky.kotlindemo.api.bean.HomeBean

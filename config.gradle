@@ -1,155 +1,164 @@
 ext {
     android = [
-            compileSdkVersion: 28,
-            buildToolsVersion: '28.0.3',
+            compileSdkVersion: 31,
+            buildToolsVersion: "29.0.2",
 
-            minSdkVersion    : 21,
-            targetSdkVersion : 28,
+            minSdkVersion    : 23,
+            targetSdkVersion : 29,
 
             versionCode      : 1,
-            versionName      : '1.0',
-
-            supportLibVersion: '27.1.1'
-    ]
-
-    kotlin = [
-            kotlin_version: '1.3.11',
-            anko_version  : '0.8.2'
+            versionName      : '1.0.0'
     ]
 
     dependencies = [
-            //工具类
-            "multidex"                  : "com.android.support:multidex:1.0.2",
-            "anko"                      : "org.jetbrains.anko:anko-common:${kotlin.anko_version}",
-            //解决fastjson解析data class 出错
-            "kotlin_reflect"            : "org.jetbrains.kotlin:kotlin-reflect:$kotlin.kotlin_version",
-            //android support
-            "annotations"               : "com.android.support:support-annotations:${android["supportLibVersion"]}",
-            "appcompat-v7"              : "com.android.support:appcompat-v7:${android["supportLibVersion"]}",
-            "constraint_layout"         : "com.android.support.constraint:constraint-layout:1.1.0",
-            "recyclerview"              : "com.android.support:recyclerview-v7:${android["supportLibVersion"]}",
-            "design"                    : "com.android.support:design:${android.get('supportLibVersion')}",
-            "cardview"                  : "com.android.support:cardview-v7:${android.supportLibVersion}",
-            "junit"                     : 'junit:junit:4.12',
+            "junit"                          : 'junit:junit:4.13',
+            "kotlin_std"                     : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
+            "kotlin_reflect"                 : "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version",
+            // 引入kotlin协程
+            "coroutine_core"                 : 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.1',
+            "coroutine_android"              : 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.1',
 
-            "module_support"            : project(':module_support'),
-            "module_api"                : project(':module_api'),
-            "module_banner"             : project(':banner'),
+            //工具类
+            "androidx_multidex"              : "androidx.multidex:multidex:2.0.1",
+            //android support
+            "androidx_annotations"           : "androidx.annotation:annotation:1.2.0",
+            "androidx_fragment"              : "androidx.fragment:fragment:1.3.6",
+            "andriodx_appcompat"             : "androidx.appcompat:appcompat:1.3.1",
+            "androidx_constraint_layout"     : "androidx.constraintlayout:constraintlayout:2.0.1",
+            "androidx_recyclerview"          : "androidx.recyclerview:recyclerview:1.2.1",
+            "androidx_cardview"              : "androidx.cardview:cardview:1.0.0",
+            "androidx_gridLayout"            : "androidx.gridlayout:gridlayout:1.0.0",
+            "androidx_core"                  : "androidx.core:core:1.6.0",
+            "androidx_arch_core"             : "androidx.arch:core:2.1.0",
+            "androidx_core_ktx"              : "androidx.core:core-ktx:1.6.0",
+            "androidx_collection"            : "androidx.collection:collection:1.1.0",
+            "androidx_viewmodel"             : "androidx.lifecycle:lifecycle-viewmodel:2.3.1",
+            "androidx_viewmodel_ktx"         : "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1",
+            "androidx_lifecycle"             : "androidx.lifecycle:lifecycle-common:2.3.1",
+            "androidx_lifecycle_java8"       : "androidx.lifecycle:lifecycle-common-java8:2.3.1",
+            "androidx_lifecycle_runtime"     : "androidx.lifecycle:lifecycle-runtime:2.3.1",
+            //LifecycleScope
+            "androidx_lifecycle_runtime_ktx" : "androidx.lifecycle:lifecycle-runtime-ktx:2.3.1",
+            "androidx_lifecycle_livedata"    : "androidx.lifecycle:lifecycle-livedata:2.3.1",
+            //liveDataScope
+            "androidx_lifecycle_livedata_ktx": 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1',
+            "androidx_lifecycle_extensions"  : "androidx.lifecycle:lifecycle-extensions:2.2.0",
+            "androidx_material_design"       : "com.google.android.material:material:1.4.0",
+            "androidx_startup"               : "androidx.startup:startup-runtime:1.0.0",
+            "flexbox"                        : "com.google.android:flexbox:1.1.1",
+
+            //deprecated 推荐使用jetpack compose
+            "anko"                           : "org.jetbrains.anko:anko-common:0.8.2",
+
+            //module
+            "module_support"                 : project(':module_support'),
+            "module_api"                     : project(':module_api'),
+            "module_banner"                  : project(':banner'),
 //            "module_picbrowser"         : project(':picbrowserlib'),
 
             //magicIndicator
-            "magic_indicator"           : "com.github.hackware1993:MagicIndicator:1.5.0",
+            "magic_indicator"                : "com.github.hackware1993:MagicIndicator:1.5.0",
             //smart refreshLayout
-            "smart_refreshlayout"       : 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-18',
-            "smart_refreshlayout_header": 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-18',
+            "smartrefresh"                   : 'io.github.scwang90:refresh-layout-kernel:2.0.5',
+            ////谷歌刷新头
+            "smartrefresh_material_header"   : 'io.github.scwang90:refresh-header-material:2.0.5',
+
             //深度自定义的 calendarview
-            "calendarview"              : 'com.haibin:calendarview:3.4.0',
+            "calendarview"                   : 'com.haibin:calendarview:3.4.0',
             //时间区间选择器
-            "range_time_picker"         : 'com.borax12.materialdaterangepicker:library:1.9',
+            "range_time_picker"              : 'com.borax12.materialdaterangepicker:library:1.9',
 
             //今日头条屏幕适配方案
-            "headline_autosize"         : 'me.jessyan:autosize:1.0.0',
+            "headline_autosize"              : 'me.jessyan:autosize:1.0.0',
             //仿微信图片选择库
-            "pictureSelector"           : 'com.github.LuckSiege.PictureSelector:picture_library:v2.2.2',
+            "pictureSelector"                : 'com.github.LuckSiege.PictureSelector:picture_library:v2.2.2',
             //图片加载glide
-            "glide"                     : 'com.github.bumptech.glide:glide:4.8.0',
-            "glide_compiler"            : 'com.github.bumptech.glide:compiler:4.8.0',
-            "glide_okhttp_integration"  : 'com.github.bumptech.glide:okhttp3-integration:4.8.0',
-            "glide_transformations"     : "jp.wasabeef:glide-transformations:3.3.0",
+            "glide"                          : 'com.github.bumptech.glide:glide:4.12.0',
+            "glide_compiler"                 : 'com.github.bumptech.glide:compiler:4.12.0',
+            "glide_okhttp_integration"       : 'com.github.bumptech.glide:okhttp3-integration:4.12.0',
+            "glide_transformations"          : "jp.wasabeef:glide-transformations:4.0.0",
 
             //图片加载Picasso
-            "picasso"                   : 'com.squareup.picasso:picasso:2.5.2',
+            "picasso"                        : 'com.squareup.picasso:picasso:2.5.2',
 
             //blureview 透明效果
-            blurview                    : 'com.github.mmin18:realtimeblurview:1.1.2',
+            blurview                         : 'com.github.mmin18:realtimeblurview:1.1.2',
 
             //baseAdapter ForRecyclerView
-            "base_rvadapter"            : 'com.zhy:base-rvadapter:3.0.3',
-            "brvah"                     : 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.42',
-            //上下刷新
-            "smart_refresh"             : 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.5-alpha-3',
+            "base_rvadapter"                 : 'com.zhy:base-rvadapter:3.0.3',
+            "brvah"                          : 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.42',
+
             //immersionbar
-            "barlibrary"                : 'com.gyf.immersionbar:immersionbar:2.3.2-beta01',
+            "barlibrary"                     : 'com.gyf.immersionbar:immersionbar:2.3.2-beta01',
             //logger
-            "logger"                    : 'com.orhanobut:logger:2.1.1',
+            "logger"                         : 'com.orhanobut:logger:2.1.1',
 
             // 界面绑定框架 butter-knife
-            "butterknife"               : 'com.jakewharton:butterknife:8.8.1',
-            "butterknife_compiler"      : 'com.jakewharton:butterknife-compiler:8.8.1',
-            "rxbinding2"                : 'com.jakewharton.rxbinding2:rxbinding:2.1.1',
+            "butterknife"                    : 'com.jakewharton:butterknife:10.2.3',
+            "butterknife_compiler"           : 'com.jakewharton:butterknife-compiler:10.2.3',
+            "rxbinding2"                     : 'com.jakewharton.rxbinding2:rxbinding:2.1.1',
             //okhttp
-            "okhttp"                    : 'com.squareup.okhttp3:okhttp:3.11.0',
-            "okio"                      : 'com.squareup.okio:okio:2.0.0',
-            "okhttp_interceptor"        : 'com.squareup.okhttp3:logging-interceptor:3.11.0',
+            "okhttp"                         : 'com.squareup.okhttp3:okhttp:3.11.0',
+            "okio"                           : 'com.squareup.okio:okio:2.0.0',
+            "okhttp_interceptor"             : 'com.squareup.okhttp3:logging-interceptor:3.11.0',
 
             //OSS
-            "ali_OSS"                   : 'com.aliyun.dpa:oss-android-sdk:+',
+            "ali_OSS"                        : 'com.aliyun.dpa:oss-android-sdk:+',
 
             // 此处一定要注意使用RxJava2的版本
-            "rxjava2"                   : 'io.reactivex.rxjava2:rxjava:2.1.9',
-            "rxandroid2"                : 'io.reactivex.rxjava2:rxandroid:2.0.2',
+            "rxjava2"                        : 'io.reactivex.rxjava2:rxjava:2.2.4',
+            "rxandroid2"                     : 'io.reactivex.rxjava2:rxandroid:2.1.0',
             // Android 支持 Retrofit
-            "retrofit"                  : 'com.squareup.retrofit2:retrofit:2.3.0',
-            "retrofit_converter_scalars": 'com.squareup.retrofit2:converter-scalars:2.3.0',
-            "retrofit_rxjava2_adapter"  : 'com.squareup.retrofit2:adapter-rxjava2:2.3.0',
-            retrofitConverterGson       : "com.squareup.retrofit2:converter-gson:2.3.0",
+            "retrofit"                       : 'com.squareup.retrofit2:retrofit:2.9.0',
+            "retrofit_converter_scalars"     : 'com.squareup.retrofit2:converter-scalars:2.9.0',
+            "retrofit_rxjava2_adapter"       : 'com.squareup.retrofit2:adapter-rxjava2:2.9.0',
+            retrofitConverterGson            : "com.squareup.retrofit2:converter-gson:2.9.0",
             //结合rxjava2使用
-            "rxpermissions"             : "com.github.tbruyelle:rxpermissions:0.10.2",
+            "rxpermissions"                  : "com.github.tbruyelle:rxpermissions:0.10.2",
             //运行时权限
-            easypermission              : "pub.devrel:easypermissions:2.0.0",
+            easypermission                   : "pub.devrel:easypermissions:2.0.0",
             //rxbinding3
-            Rxbinding2                  : 'com.jakewharton.rxbinding2:rxbinding:2.1.1',
+            Rxbinding2                       : 'com.jakewharton.rxbinding2:rxbinding:2.1.1',
 
             //阿里出品,fastjson
-            "fastjson"                  : 'com.alibaba:fastjson:1.2.54',
+            "fastjson"                       : 'com.alibaba:fastjson:1.2.75',
             //gson
-            "gson"                      : 'com.google.code.gson:gson:2.8.5',
-            flexbox                     : 'com.google.android:flexbox:1.0.0',
+            "gson"                           : 'com.google.code.gson:gson:2.8.5',
 
-            "Android_Pickerview"        : 'com.contrarywind:Android-PickerView:4.1.8',
+            "Android_Pickerview"             : 'com.contrarywind:Android-PickerView:4.1.8',
 
             //glide加载进度监听
-            "progressmanager"           : 'me.jessyan:progressmanager:1.5.0',
-            "material-dialogs"          : "com.afollestad.material-dialogs:commons:0.9.4.5",
+            "progressmanager"                : 'me.jessyan:progressmanager:1.5.0',
+            "material_dialogs"               : "com.afollestad.material-dialogs:commons:0.9.4.5",
 
-            //fragmentation
-            // 如果想使用SwipeBack 滑动边缘退出Fragment/Activity功能，完整的添加规则如下：
-            "fragmentation"             : 'me.yokeyword:fragmentation:1.3.6',
-            // swipeback基于fragmentation, 如果是自定制SupportActivity/Fragment，则参照SwipeBackActivity/Fragment实现即可
-            "fragment_swipeback"        : 'me.yokeyword:fragmentation-swipeback:1.3.6',
             // Activity作用域的EventBus，更安全，可有效避免after onSavenInstanceState()异常
-            "eventbus_activity_scope"   : 'me.yokeyword:eventbus-activity-scope:1.1.0',
+            "eventbus_activity_scope"        : 'me.yokeyword:eventbus-activity-scope:1.1.0',
             // Your EventBus's version
-            "eventbus"                  : 'org.greenrobot:eventbus:3.1.1',
+            "eventbus"                       : 'org.greenrobot:eventbus:3.1.1',
 
-            "photoview-smooth"          : "com.bm.photoview:library:1.4.1",
-            "pickerview"                : "com.contrarywind:Android-PickerView:4.1.6",
+            "photoview-smooth"               : "com.bm.photoview:library:1.4.1",
+            "pickerview"                     : "com.contrarywind:Android-PickerView:4.1.6",
             //bugly升级
-            "bugly_upgrade"             : 'com.tencent.bugly:crashreport_upgrade:latest.release',
-            "bugly_native"              : 'com.tencent.bugly:nativecrashreport:latest.release',
+            "bugly_upgrade"                  : 'com.tencent.bugly:crashreport_upgrade:latest.release',
+            "bugly_native"                   : 'com.tencent.bugly:nativecrashreport:latest.release',
 
-            //dagger2
-            "dagger2"                   : 'com.google.dagger:dagger:2.16',
-            "dagger2_compiler"          : 'com.google.dagger:dagger-compiler:2.16',
+            "greendao"                       : "org.greenrobot:greendao:3.2.2",
+            "greendao-generator"             : "org.greenrobot:greendao-generator:3.2.2",
+            "greendao-sqlcipher"             : "net.zetetic:android-database-sqlcipher:3.5.6",
 
-            "greendao"                  : "org.greenrobot:greendao:3.2.2",
-            "greendao-generator"        : "org.greenrobot:greendao-generator:3.2.2",
-            "greendao-sqlcipher"        : "net.zetetic:android-database-sqlcipher:3.5.6",
-            //mpchart
-            "mpchart"                   : 'com.github.PhilJay:MPAndroidChart:v3.0.3',
             //gsy player
             //完整版引入
-            "GSYVideoPlayer"            : 'com.shuyu:GSYVideoPlayer:6.0.3',
+            "GSYVideoPlayer"                 : 'com.github.CarGuo.GSYVideoPlayer:GSYVideoPlayer:v8.1.9-release-jitpack',
 
-            "amap-3dmap"                : "com.amap.api:3dmap:latest.integration", //3D地图
-            "amap-2dmap"                : "com.amap.api:map2d:latest.integration",//  2D地图
-            "amap-navi"                 : "com.amap.api:navi-3dmap:latest.integration",//  导航
-            "amap-search"               : "com.amap.api:search:latest.integration",// 搜索
-            "amap-location"             : "com.amap.api:location:latest.integration",// 定位
+            "amap-3dmap"                     : "com.amap.api:3dmap:latest.integration", //3D地图
+            "amap-2dmap"                     : "com.amap.api:map2d:latest.integration",//  2D地图
+            "amap-navi"                      : "com.amap.api:navi-3dmap:latest.integration",//  导航
+            "amap-search"                    : "com.amap.api:search:latest.integration",// 搜索
+            "amap-location"                  : "com.amap.api:location:latest.integration",// 定位
 
             //友盟统计，三方登录分享
-            'umeng_analytic'            : 'com.umeng.umsdk:analytics:7.5.4',
-            'umeng_common'              : 'com.umeng.umsdk:common:1.5.4',
-            "umeng_utdid"               : 'com.umeng.umsdk:utdid:1.1.5.3',
+            'umeng_analytic'                 : 'com.umeng.umsdk:analytics:7.5.4',
+            'umeng_common'                   : 'com.umeng.umsdk:common:1.5.4',
+            "umeng_utdid"                    : 'com.umeng.umsdk:utdid:1.1.5.3',
     ]
 }

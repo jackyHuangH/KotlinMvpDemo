@@ -1,7 +1,7 @@
 package com.zenchn.support.widget.dialog.callback;
 
 import android.content.Intent;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 /**
  * 作    者：wangr on 2017/8/30 14:00

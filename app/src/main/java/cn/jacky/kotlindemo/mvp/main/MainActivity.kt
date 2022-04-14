@@ -1,14 +1,14 @@
 package cn.jacky.kotlindemo.mvp.main
 
 import android.app.Activity
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import cn.jacky.kotlindemo.R
 import cn.jacky.kotlindemo.mvp.baseview.BaseActivity
 import cn.jacky.kotlindemo.mvp.discovery.DiscoveryFragment
 import cn.jacky.kotlindemo.mvp.home.HomeFragment
 import cn.jacky.kotlindemo.mvp.hot.HotFragment
 import cn.jacky.kotlindemo.mvp.mine.MineFragment
-import com.zenchn.support.managers.HFragmentManager
+import com.zenchn.support.managers.FragmentSwitchHelper
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.startActivity
 
@@ -18,8 +18,8 @@ class MainActivity : BaseActivity() {
 
     private lateinit var mFragments: Array<Fragment>
 
-    private val mFragmentManagerHelper: HFragmentManager by lazy {
-        HFragmentManager(supportFragmentManager, R.id.fl_container)
+    private val mFragmentSwitchHelper: FragmentSwitchHelper by lazy {
+        FragmentSwitchHelper(supportFragmentManager, R.id.fl_container)
     }
 
     override fun getLayoutRes(): Int {
@@ -38,9 +38,9 @@ class MainActivity : BaseActivity() {
                 MineFragment.getInstance(mTitles[3]))
 
         //默认显示首页
-        mFragmentManagerHelper.add(mFragments[0])
+        mFragmentSwitchHelper.add(mFragments[0])
         bottom_layout.setOnItemSelectedListener { bottomBarItem, previousPosition, currentPosition ->
-            mFragmentManagerHelper.switchFragment(mFragments[currentPosition])
+            mFragmentSwitchHelper.switchFragment(mFragments[currentPosition])
         }
     }
 

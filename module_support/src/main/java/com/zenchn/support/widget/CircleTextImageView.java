@@ -20,13 +20,15 @@ import android.util.AttributeSet;
 
 import com.zenchn.support.R;
 
+import androidx.appcompat.widget.AppCompatImageView;
+
 /**
  * 作    者：wangr on 2017/8/31 15:04
  * 描    述：圆形图片，支持文字
  * 修订记录：
  */
 
-public class CircleTextImageView extends android.support.v7.widget.AppCompatImageView {
+public class CircleTextImageView extends AppCompatImageView {
 
     private static final ScaleType SCALE_TYPE = ScaleType.CENTER_CROP;
 

@@ -1,8 +1,8 @@
 package cn.jacky.kotlindemo.wrapper.snaphelper
 
-import android.support.v7.widget.LinearSnapHelper
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.View
+import androidx.recyclerview.widget.LinearSnapHelper
 
 /**
  * @author:Hzj

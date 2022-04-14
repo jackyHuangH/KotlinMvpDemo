@@ -1,8 +1,7 @@
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:3.0.2')
+    testImplementation rootProject.ext.dependencies["junit"]
 
     //    implementation(name: 'updatepluginlib-release', ext: 'aar')
     //    如果aar包有很多，也可以一样象jar包统一添加一个文件夹下的所有包：
@@ -14,14 +13,13 @@ dependencies {
         implementation(name: name, ext: 'aar')
     }
 
-    implementation rootProject.ext.dependencies["anko"]
     implementation rootProject.ext.dependencies["kotlin_reflect"]
+    implementation rootProject.ext.dependencies["anko"]
 
-    implementation rootProject.ext.dependencies["constraint_layout"]
-    implementation rootProject.ext.dependencies["recyclerview"]
-    implementation rootProject.ext.dependencies["design"]
-    implementation rootProject.ext.dependencies["cardview"]
-    testImplementation rootProject.ext.dependencies["junit"]
+    implementation rootProject.ext.dependencies["androidx_constraint_layout"]
+    implementation rootProject.ext.dependencies["androidx_recyclerview"]
+    implementation rootProject.ext.dependencies["androidx_material_design"]
+    implementation rootProject.ext.dependencies["androidx_cardview"]
 
     implementation rootProject.ext.dependencies["rxjava2"]
     implementation rootProject.ext.dependencies["rxandroid2"]
@@ -34,7 +32,7 @@ dependencies {
 //    implementation rootProject.ext.dependencies["module_banner"]
 //    implementation rootProject.ext.dependencies["module_picbrowser"]
 
-    implementation rootProject.ext.dependencies["multidex"]
+    implementation rootProject.ext.dependencies["androidx_multidex"]
 
     implementation rootProject.ext.dependencies["magic_indicator"]
     implementation rootProject.ext.dependencies["calendarview"]
@@ -49,16 +47,14 @@ dependencies {
     implementation rootProject.ext.dependencies["glide_transformations"]
     kapt rootProject.ext.dependencies["glide_compiler"]
 
-    implementation rootProject.ext.dependencies["picasso"]
     implementation rootProject.ext.dependencies["blurview"]
     implementation rootProject.ext.dependencies["base_rvadapter"]
     implementation rootProject.ext.dependencies["brvah"]
-    implementation rootProject.ext.dependencies["smart_refresh"]
 
     implementation rootProject.ext.dependencies["barlibrary"]
 
-    implementation rootProject.ext.dependencies["smart_refreshlayout"]
-    implementation rootProject.ext.dependencies["smart_refreshlayout_header"]
+    implementation rootProject.ext.dependencies["smartrefresh"]
+    implementation rootProject.ext.dependencies["smartrefresh_material_header"]
 
     implementation rootProject.ext.dependencies["logger"]
 

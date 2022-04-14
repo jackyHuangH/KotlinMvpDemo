@@ -1,8 +1,8 @@
 package cn.jacky.kotlindemo.mvp.discovery
 
 import android.os.Bundle
-import android.support.design.widget.TabLayout
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
+import com.google.android.material.tabs.TabLayout
 import cn.jacky.kotlindemo.R
 import cn.jacky.kotlindemo.mvp.adapter.BaseFragmentPagerAdapter
 import cn.jacky.kotlindemo.mvp.baseview.BaseFragment

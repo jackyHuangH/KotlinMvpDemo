@@ -1,12 +1,12 @@
 package cn.jacky.kotlindemo.mvp.baseview
 
 import android.os.Bundle
-import android.support.annotation.IdRes
-import android.support.annotation.NonNull
 import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import android.widget.Toast
+import androidx.annotation.IdRes
+import androidx.annotation.NonNull
 import cn.jacky.kotlindemo.R
 import cn.jacky.kotlindemo.app.ApplicationKit
 import com.gyf.barlibrary.ImmersionBar
@@ -44,20 +44,20 @@ abstract class BaseActivity : AbstractAppCompatActivity(), IView, EasyPermission
     protected open fun initStatusBar() {
         mImmersionBar = ImmersionBar.with(this)
         mImmersionBar
-                .fitsSystemWindows(true)
-                //状态栏颜色，不写默认透明色
-                .statusBarColor(R.color.backgroundColor)
-                //状态栏字体是深色，不写默认为亮色
-                .statusBarDarkFont(true, 0.2f)
+            .fitsSystemWindows(true)
+            //状态栏颜色，不写默认透明色
+            .statusBarColor(R.color.backgroundColor)
+            //状态栏字体是深色，不写默认为亮色
+            .statusBarDarkFont(true, 0.2f)
 
 
         //是否需要监听键盘
         if (addOnKeyboardListener() != null) {
             mImmersionBar
-                    .keyboardEnable(true)
-                    //单独指定软键盘模式
-                    .keyboardMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
-                    .setOnKeyboardListener(addOnKeyboardListener())
+                .keyboardEnable(true)
+                //单独指定软键盘模式
+                .keyboardMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
+                .setOnKeyboardListener(addOnKeyboardListener())
         }
         mImmersionBar.init()
     }
@@ -118,7 +118,11 @@ abstract class BaseActivity : AbstractAppCompatActivity(), IView, EasyPermission
      * @param permissions  申请的权限
      * @param grantResults 授权结果
      */
-    override fun onRequestPermissionsResult(requestCode: Int, @NonNull permissions: Array<String>, @NonNull grantResults: IntArray) {
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        @NonNull permissions: Array<String>,
+        @NonNull grantResults: IntArray
+    ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this)
     }
@@ -151,11 +155,11 @@ abstract class BaseActivity : AbstractAppCompatActivity(), IView, EasyPermission
         if (EasyPermissions.somePermissionPermanentlyDenied(this, perms)) {
             Toast.makeText(this, "已拒绝权限" + sb + "并不再询问", Toast.LENGTH_SHORT).show()
             AppSettingsDialog.Builder(this)
-                    .setRationale("此功能需要" + sb + "权限，否则无法正常使用，是否打开设置")
-                    .setPositiveButton("好")
-                    .setNegativeButton("不行")
-                    .build()
-                    .show()
+                .setRationale("此功能需要" + sb + "权限，否则无法正常使用，是否打开设置")
+                .setPositiveButton("好")
+                .setNegativeButton("不行")
+                .build()
+                .show()
         }
     }
 }

@@ -1,6 +1,6 @@
 package com.zenchn.support.base;
 
-import android.support.annotation.LayoutRes;
+import androidx.annotation.LayoutRes;
 
 /**
  * 作   者： by Hzj on 2017/12/13/013.

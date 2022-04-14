@@ -10,13 +10,15 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 
+import androidx.appcompat.widget.AppCompatEditText;
+
 /**
  * 作    者：wangr on 2017/9/13 17:12
  * 描    述：
  * 修订记录：
  */
 
-public class FocusEditText extends android.support.v7.widget.AppCompatEditText {
+public class FocusEditText extends AppCompatEditText {
 
     public Handler mHandler = new Handler(Looper.getMainLooper());
 

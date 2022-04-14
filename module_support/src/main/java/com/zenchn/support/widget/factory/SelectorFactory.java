@@ -3,8 +3,8 @@ package com.zenchn.support.widget.factory;
 import android.content.res.ColorStateList;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.StateListDrawable;
-import android.support.annotation.ColorInt;
-import android.support.annotation.NonNull;
+import androidx.annotation.ColorInt;
+import androidx.annotation.NonNull;
 
 /**
  * 作    者：wangr on 2017/6/9 17:14

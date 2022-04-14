@@ -2,7 +2,7 @@ package cn.jacky.kotlindemo.mvp.search
 
 import android.annotation.SuppressLint
 import android.graphics.Typeface
-import android.support.v7.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.transition.Fade
 import android.transition.Transition
 import android.transition.TransitionInflater

@@ -2,9 +2,9 @@ package cn.jacky.kotlindemo.mvp.classifydetail
 
 import android.annotation.SuppressLint
 import android.app.Activity
-import android.support.v4.content.ContextCompat
-import android.support.v7.widget.LinearLayoutManager
 import android.view.View
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.LinearLayoutManager
 import cn.jacky.kotlindemo.R
 import cn.jacky.kotlindemo.api.bean.CategoryBean
 import cn.jacky.kotlindemo.api.bean.HomeBean
@@ -15,10 +15,12 @@ import cn.jacky.kotlindemo.util.StatusBarUtil
 import cn.jacky.kotlindemo.wrapper.glide.GlideApp
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.chad.library.adapter.base.BaseQuickAdapter
+import com.google.android.material.appbar.AppBarLayout
 import com.gyf.barlibrary.ImmersionBar
 import com.zenchn.support.router.Router
 import com.zenchn.support.widget.itemdecoration.VerticalItemDecoration
 import kotlinx.android.synthetic.main.activity_classify_detail.*
+import kotlin.math.abs
 
 /**
  * @author:Hzj
@@ -26,7 +28,8 @@ import kotlinx.android.synthetic.main.activity_classify_detail.*
  * desc  ：分类详情
  * record：
  */
-class ClassifyDetailActivity : BaseActivity(), ClassifyDetailContract.View, BaseQuickAdapter.OnItemClickListener, BaseQuickAdapter.RequestLoadMoreListener {
+class ClassifyDetailActivity : BaseActivity(), ClassifyDetailContract.View, BaseQuickAdapter.OnItemClickListener,
+    BaseQuickAdapter.RequestLoadMoreListener {
     private val mPresenter by lazy { ClassifyDetailPresenterImpl(this) }
 
     private var mCategoryBean: CategoryBean? = null
@@ -46,9 +49,9 @@ class ClassifyDetailActivity : BaseActivity(), ClassifyDetailContract.View, Base
     override fun initStatusBar() {
         mImmersionBar = ImmersionBar.with(this)
         mImmersionBar
-                .fitsSystemWindows(false)
-                .transparentStatusBar()
-                .statusBarDarkFont(false)
+            .fitsSystemWindows(false)
+            .transparentStatusBar()
+            .statusBarDarkFont(false)
         mImmersionBar.init()
         StatusBarUtil.setPaddingSmart(this, toolbar)
     }
@@ -70,10 +73,10 @@ class ClassifyDetailActivity : BaseActivity(), ClassifyDetailContract.View, Base
         toolbar.setNavigationOnClickListener { onBackPressed() }
         mCategoryBean?.let {
             GlideApp.with(this)
-                    .load(it.headerImage)
-                    .placeholder(R.color.color_darker_gray)
-                    .transition(DrawableTransitionOptions.withCrossFade())
-                    .into(iv_cover)
+                .load(it.headerImage)
+                .placeholder(R.color.color_darker_gray)
+                .transition(DrawableTransitionOptions.withCrossFade())
+                .into(iv_cover)
 
             tv_category_desc.text = "#${it.description}#"
             collapse_bar.title = it.name
@@ -87,7 +90,7 @@ class ClassifyDetailActivity : BaseActivity(), ClassifyDetailContract.View, Base
 
     private fun addAppbarListener() {
         //添加appbarlayout收缩状态监听
-        appbar.addOnOffsetChangedListener { appBarLayout, verticalOffset ->
+        appbar.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
             if (verticalOffset == 0) {
                 if (mCurrExpendState != CollapsingToolbarLayoutState.EXPANDED) {
                     //修改状态标记为展开
@@ -96,7 +99,7 @@ class ClassifyDetailActivity : BaseActivity(), ClassifyDetailContract.View, Base
                     toolbar.setNavigationIcon(R.drawable.back_white)
 
                 }
-            } else if (Math.abs(verticalOffset) >= appBarLayout.totalScrollRange) {
+            } else if (abs(verticalOffset) >= appBarLayout.totalScrollRange) {
                 if (mCurrExpendState != CollapsingToolbarLayoutState.COLLAPSED) {
                     //修改状态标记为折叠
                     mCurrExpendState = CollapsingToolbarLayoutState.COLLAPSED
@@ -112,7 +115,7 @@ class ClassifyDetailActivity : BaseActivity(), ClassifyDetailContract.View, Base
                     mCurrExpendState = CollapsingToolbarLayoutState.INTERNEDIATE
                 }
             }
-        }
+        })
     }
 
     /**
@@ -120,9 +123,9 @@ class ClassifyDetailActivity : BaseActivity(), ClassifyDetailContract.View, Base
      */
     private fun setTransparentStausbar() {
         mImmersionBar
-                .transparentStatusBar()
-                .statusBarDarkFont(false)
-                .init()
+            .transparentStatusBar()
+            .statusBarDarkFont(false)
+            .init()
     }
 
     /**
@@ -130,9 +133,9 @@ class ClassifyDetailActivity : BaseActivity(), ClassifyDetailContract.View, Base
      */
     private fun setWhiteStatusbar() {
         mImmersionBar
-                .transparentStatusBar()
-                .statusBarDarkFont(true, 0.2f)
-                .init()
+            .transparentStatusBar()
+            .statusBarDarkFont(true, 0.2f)
+            .init()
     }
 
     private fun initRecyclerView() {
@@ -187,11 +190,11 @@ class ClassifyDetailActivity : BaseActivity(), ClassifyDetailContract.View, Base
 
         fun launch(from: Activity, category: CategoryBean) {
             Router
-                    .newInstance()
-                    .putSerializable(EXTRA_CATEGORY_BEAN, category)
-                    .from(from)
-                    .to(ClassifyDetailActivity::class.java)
-                    .launch()
+                .newInstance()
+                .putSerializable(EXTRA_CATEGORY_BEAN, category)
+                .from(from)
+                .to(ClassifyDetailActivity::class.java)
+                .launch()
         }
     }
 }
