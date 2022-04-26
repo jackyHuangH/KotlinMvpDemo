@@ -9,6 +9,7 @@ import androidx.annotation.IdRes
 import androidx.annotation.NonNull
 import cn.jacky.kotlindemo.R
 import cn.jacky.kotlindemo.app.ApplicationKit
+import cn.jacky.kotlindemo.util.adaptHighRefresh
 import com.gyf.barlibrary.ImmersionBar
 import com.gyf.barlibrary.OnKeyboardListener
 import com.zenchn.support.base.AbstractAppCompatActivity
@@ -31,6 +32,8 @@ abstract class BaseActivity : AbstractAppCompatActivity(), IView, EasyPermission
     protected lateinit var mImmersionBar: ImmersionBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        //适配高刷新率
+        adaptHighRefresh()
         super.onCreate(savedInstanceState)
         initInstanceState(savedInstanceState)
         initWidget()
