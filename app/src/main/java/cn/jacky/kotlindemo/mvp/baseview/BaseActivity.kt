@@ -50,6 +50,7 @@ abstract class BaseActivity : AbstractAppCompatActivity(), IView, EasyPermission
             .fitsSystemWindows(true)
             //状态栏颜色，不写默认透明色
             .statusBarColor(R.color.backgroundColor)
+            .navigationBarColor(R.color.backgroundColor)
             //状态栏字体是深色，不写默认为亮色
             .statusBarDarkFont(true, 0.2f)
 

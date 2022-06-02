@@ -86,7 +86,7 @@ ext {
 
             //baseAdapter ForRecyclerView
             "base_rvadapter"                 : 'com.zhy:base-rvadapter:3.0.3',
-            "brvah"                          : 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.42',
+            "brvah"                          : 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.50',
 
             //immersionbar
             "barlibrary"                     : 'com.gyf.immersionbar:immersionbar:2.3.2-beta01',

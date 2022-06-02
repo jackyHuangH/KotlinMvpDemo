@@ -1,24 +1,25 @@
 package cn.jacky.kotlindemo.mvp.adapter
 
 import cn.jacky.kotlindemo.R
+import cn.jacky.kotlindemo.api.bean.HomeBean
 import cn.jacky.kotlindemo.util.durationFormat
 import cn.jacky.kotlindemo.wrapper.glide.GlideApp
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
-import com.chad.library.adapter.base.BaseQuickAdapter
+import com.chad.library.adapter.base.BaseMultiItemQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
-import com.chad.library.adapter.base.util.MultiTypeDelegate
-import cn.jacky.kotlindemo.api.bean.HomeBean
 
 /**
  * @author:Hzj
  * @date  :2018/12/11/011
- * desc  ：
+ * desc  ：首页列表adapter
  * record：
  */
-class HomeListAdapter(data: List<HomeBean.Issue.Item>?) : BaseQuickAdapter<HomeBean.Issue.Item, BaseViewHolder>(data) {
+class HomeListAdapter(data: List<HomeBean.Issue.Item>?) :
+    BaseMultiItemQuickAdapter<HomeBean.Issue.Item, BaseViewHolder>(data) {
     companion object {
         /***item***/
         const val ITEM_TYPE_CONTENT = 1
+
         /***textHeader***/
         const val ITEM_TYPE_TEXT_HEADER = 2
     }
@@ -28,17 +29,8 @@ class HomeListAdapter(data: List<HomeBean.Issue.Item>?) : BaseQuickAdapter<HomeB
      * 多布局代理模式实现，减小耦合
      */
     init {
-        multiTypeDelegate = object : MultiTypeDelegate<HomeBean.Issue.Item>() {
-            override fun getItemType(item: HomeBean.Issue.Item?): Int {
-                return if (item?.type == "textHeader")
-                    ITEM_TYPE_TEXT_HEADER
-                else
-                    ITEM_TYPE_CONTENT
-            }
-        }
-
-        multiTypeDelegate.registerItemType(ITEM_TYPE_CONTENT, R.layout.recycle_item_home_content)
-                .registerItemType(ITEM_TYPE_TEXT_HEADER, R.layout.recycle_item_home_text)
+        addItemType(ITEM_TYPE_CONTENT, R.layout.recycle_item_home_content)
+        addItemType(ITEM_TYPE_TEXT_HEADER, R.layout.recycle_item_home_text)
     }
 
     override fun convert(helper: BaseViewHolder, item: HomeBean.Issue.Item?) {
@@ -73,20 +65,20 @@ class HomeListAdapter(data: List<HomeBean.Issue.Item>?) : BaseQuickAdapter<HomeB
         }
         //封面
         GlideApp
-                .with(mContext)
-                .load(cover)
-                .placeholder(R.drawable.placeholder_banner)
-                .transition(DrawableTransitionOptions.withCrossFade())
-                .into(helper.getView(R.id.iv_cover_feed))
+            .with(mContext)
+            .load(cover)
+            .placeholder(R.drawable.placeholder_banner)
+            .transition(DrawableTransitionOptions.withCrossFade())
+            .into(helper.getView(R.id.iv_cover_feed))
         //提供者信息
         // 头像
         GlideApp
-                .with(mContext)
-                .load(avator)
-                .placeholder(R.drawable.default_avatar)
-                .circleCrop()
-                .transition(DrawableTransitionOptions.withCrossFade())
-                .into(helper.getView(R.id.iv_avatar))
+            .with(mContext)
+            .load(avator)
+            .placeholder(R.drawable.default_avatar)
+            .circleCrop()
+            .transition(DrawableTransitionOptions.withCrossFade())
+            .into(helper.getView(R.id.iv_avatar))
         helper.setText(R.id.tv_title, itemData?.title ?: "")
         //遍历标签
         var tagText: String? = tagStart

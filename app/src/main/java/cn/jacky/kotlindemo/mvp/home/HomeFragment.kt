@@ -93,6 +93,7 @@ class HomeFragment : BaseFragment(), HomeContract.View, BaseQuickAdapter.Request
             .fitsSystemWindows(false)
             .transparentStatusBar()
             .statusBarDarkFont(true)
+            .navigationBarColor(R.color.color_title_bg)
         mImmersionBar.init()
 
         //处理toolbar 与状态栏的间距
@@ -125,10 +126,10 @@ class HomeFragment : BaseFragment(), HomeContract.View, BaseQuickAdapter.Request
         rlv.adapter = mHomeAdapter
     }
 
-    override fun onItemClick(adapter: BaseQuickAdapter<*, *>, view: View?, position: Int) {
+    override fun onItemClick(adapter: BaseQuickAdapter<*, *>, view: View, position: Int) {
         // 跳转视频详情
         val item = adapter.getItem(position) as HomeBean.Issue.Item
-        activity?.let { VideoDetailActivity.launch(it, view!!, item) }
+        activity?.let { VideoDetailActivity.launch(it, view, item) }
     }
 
     /**

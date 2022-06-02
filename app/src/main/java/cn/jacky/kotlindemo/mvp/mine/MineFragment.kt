@@ -37,18 +37,19 @@ class MineFragment : BaseFragment() {
     override fun initStatusBar() {
         mImmersionBar = ImmersionBar.with(this)
         mImmersionBar
-                .fitsSystemWindows(false)
-                .transparentStatusBar()
-                .statusBarDarkFont(true)
+            .fitsSystemWindows(false)
+            .transparentStatusBar()
+            .statusBarDarkFont(true)
+            .navigationBarColor(R.color.color_title_bg)
         mImmersionBar.init()
     }
 
     override fun initWidget() {
         GlideApp.with(this)
-                .load(R.drawable.img_avatar)
-                .transform(BlurTransformation(10))
-                .placeholder(R.drawable.default_avatar)
-                .into(iv_avatar_bg)
+            .load(R.drawable.img_avatar)
+            .transform(BlurTransformation(10))
+            .placeholder(R.drawable.default_avatar)
+            .into(iv_avatar_bg)
 
         tv_about.setOnAntiShakeClickListener {
             //关于

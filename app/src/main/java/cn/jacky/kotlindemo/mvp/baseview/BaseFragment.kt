@@ -25,6 +25,7 @@ abstract class BaseFragment : AbstractFragment(), IView, EasyPermissions.Permiss
      * 视图是否加载完毕
      */
     private var mIsViewPrepare = false
+
     /**
      * 视图是否第一次展现
      */
@@ -48,17 +49,18 @@ abstract class BaseFragment : AbstractFragment(), IView, EasyPermissions.Permiss
     protected open fun initStatusBar() {
         mImmersionBar = ImmersionBar.with(this)
         mImmersionBar
-                .fitsSystemWindows(true)
-                .statusBarColor(R.color.color_title_bg)
-                .statusBarDarkFont(true, 0.2f)
+            .fitsSystemWindows(true)
+            .statusBarColor(R.color.color_title_bg)
+            .navigationBarColor(R.color.color_title_bg)
+            .statusBarDarkFont(true, 0.2f)
 
         //是否需要监听键盘
         if (addOnKeyboardListener() != null) {
             mImmersionBar
-                    .keyboardEnable(true)
-                    //单独指定软键盘模式
-                    .keyboardMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
-                    .setOnKeyboardListener(addOnKeyboardListener())
+                .keyboardEnable(true)
+                //单独指定软键盘模式
+                .keyboardMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
+                .setOnKeyboardListener(addOnKeyboardListener())
         }
         mImmersionBar.init()
     }
@@ -146,7 +148,11 @@ abstract class BaseFragment : AbstractFragment(), IView, EasyPermissions.Permiss
      * @param permissions  申请的权限
      * @param grantResults 授权结果
      */
-    override fun onRequestPermissionsResult(requestCode: Int, @NonNull permissions: Array<String>, @NonNull grantResults: IntArray) {
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        @NonNull permissions: Array<String>,
+        @NonNull grantResults: IntArray
+    ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this)
     }
@@ -179,11 +185,11 @@ abstract class BaseFragment : AbstractFragment(), IView, EasyPermissions.Permiss
         if (EasyPermissions.somePermissionPermanentlyDenied(this, perms)) {
             Toast.makeText(activity, "已拒绝权限" + sb + "并不再询问", Toast.LENGTH_SHORT).show()
             AppSettingsDialog.Builder(this)
-                    .setRationale("此功能需要" + sb + "权限，否则无法正常使用，是否打开设置")
-                    .setPositiveButton("好")
-                    .setNegativeButton("不行")
-                    .build()
-                    .show()
+                .setRationale("此功能需要" + sb + "权限，否则无法正常使用，是否打开设置")
+                .setPositiveButton("好")
+                .setNegativeButton("不行")
+                .build()
+                .show()
         }
     }
 }

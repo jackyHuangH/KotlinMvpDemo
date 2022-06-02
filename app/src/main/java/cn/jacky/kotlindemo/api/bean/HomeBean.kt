@@ -1,5 +1,7 @@
 package cn.jacky.kotlindemo.api.bean
 
+import cn.jacky.kotlindemo.mvp.adapter.HomeListAdapter
+import com.chad.library.adapter.base.entity.MultiItemEntity
 import java.io.Serializable
 import java.util.*
 
@@ -29,7 +31,15 @@ data class HomeBean(var dialog: Any,
                         var id: Int,
                         var tag: String,
                         var type: String,
-                        var watchData: Long) : Serializable {
+                        var watchData: Long) :MultiItemEntity, Serializable {
+
+            //返回item类型
+            override fun getItemType(): Int {
+                return if (type == "textHeader")
+                    HomeListAdapter.ITEM_TYPE_TEXT_HEADER
+                else
+                    HomeListAdapter.ITEM_TYPE_CONTENT
+            }
 
             data class Data(val dataType: String,
                             val text: String,
@@ -140,7 +150,6 @@ data class HomeBean(var dialog: Any,
                                      val actionUrl: Any) : Serializable
                 }
             }
-
         }
 
     }
