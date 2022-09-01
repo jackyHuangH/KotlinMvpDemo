@@ -16,13 +16,14 @@ import com.zenchn.support.kit.NetworkUtils
  * desc  ：
  * record：
  */
-class VideoDetailPresenterImpl(mView: VideoDetailContract.View?) : BasePresenterImpl<VideoDetailContract.View>(mView), VideoDetailContract.Presenter{
+class VideoDetailPresenterImpl(mView: VideoDetailContract.View?) : BasePresenterImpl<VideoDetailContract.View>(mView),
+    VideoDetailContract.Presenter {
 
     private val mVideoDetailModelImpl by lazy { VideoDetailModelImpl() }
 
     override fun getVideoDetail(itemInfo: HomeBean.Issue.Item) {
         val playInfo = itemInfo.data?.playInfo
-        if (playInfo!!.size > 1) {
+        if (playInfo != null && playInfo.size > 1) {
             //有多个视频源
             if (NetworkUtils.isWifiConnected(ContextModel.getApplicationContext())) {
                 //WiFi状态，播放高清
@@ -44,19 +45,20 @@ class VideoDetailPresenterImpl(mView: VideoDetailContract.View?) : BasePresenter
             }
         } else {
             //单个视频源
-            mView?.setVideo(itemInfo.data!!.playUrl)
+            mView?.setVideo(itemInfo.data?.playUrl.orEmpty())
         }
-
-        //设置背景
-        val backgroundUrl = itemInfo.data!!.cover.blurred +
-                "/thumbnail/${AndroidKit.Dimens.getScreenHeight() - AndroidKit.Dimens.dp2px(250)}x${AndroidKit.Dimens.getScreenWidth()}"
-        mView?.setBackground(backgroundUrl)
-        //设置视频详情
-        mView?.setVideoInfo(itemInfo)
+        if (itemInfo.data?.cover?.blurred?.isNotEmpty() == true) {
+            //设置背景
+            val backgroundUrl = itemInfo.data?.cover?.blurred +
+                    "/thumbnail/${AndroidKit.Dimens.getScreenHeight() - AndroidKit.Dimens.dp2px(250)}x${AndroidKit.Dimens.getScreenWidth()}"
+            mView?.setBackground(backgroundUrl)
+            //设置视频详情
+            mView?.setVideoInfo(itemInfo)
+        }
     }
 
     override fun getRelatedVideoList(id: Long) {
-        mVideoDetailModelImpl.getRelatedVideoList(id, this){
+        mVideoDetailModelImpl.getRelatedVideoList(id, this) {
             mView?.setRecentRelatedVideo(it.itemList)
         }
     }

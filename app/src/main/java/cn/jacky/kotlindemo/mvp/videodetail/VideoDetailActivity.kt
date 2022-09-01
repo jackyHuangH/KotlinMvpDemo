@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.content.res.Configuration
-import androidx.core.view.ViewCompat
 import android.transition.Transition
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +11,7 @@ import android.widget.ImageView
 import androidx.core.app.ActivityCompat
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.util.Pair
+import androidx.core.view.ViewCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import cn.jacky.kotlindemo.R
 import cn.jacky.kotlindemo.api.bean.HomeBean
@@ -66,9 +66,9 @@ class VideoDetailActivity : BaseActivity(), VideoDetailContract.View, BaseQuickA
 
     override fun initStatusBar() {
         mImmersionBar = ImmersionBar
-                .with(this)
-                .fitsSystemWindows(false)
-                .hideBar(BarHide.FLAG_HIDE_STATUS_BAR)
+            .with(this)
+            .fitsSystemWindows(false)
+            .hideBar(BarHide.FLAG_HIDE_STATUS_BAR)
         mImmersionBar.init()
     }
 
@@ -126,10 +126,10 @@ class VideoDetailActivity : BaseActivity(), VideoDetailContract.View, BaseQuickA
         val thumbCover = ImageView(this)
         thumbCover.scaleType = ImageView.ScaleType.CENTER_CROP
         GlideApp
-                .with(this)
-                .load(mVideoData.data?.cover?.feed)
-                .centerCrop()
-                .into(thumbCover)
+            .with(this)
+            .load(mVideoData.data?.cover?.feed)
+            .centerCrop()
+            .into(thumbCover)
         gsy_player.thumbImageView = thumbCover
         //设置回调
         gsy_player.setVideoAllCallBack(object : GSYSampleCallBack() {
@@ -217,6 +217,10 @@ class VideoDetailActivity : BaseActivity(), VideoDetailContract.View, BaseQuickA
 
 
     override fun setVideo(url: String) {
+        if (url.isEmpty()) {
+            showMessage("视频地址为空，播放失败")
+            return
+        }
         //开启自动播放,默认不缓存
         gsy_player.setUp(url, false, "")
         gsy_player.startPlayLogic()
@@ -246,11 +250,11 @@ class VideoDetailActivity : BaseActivity(), VideoDetailContract.View, BaseQuickA
             tv_author_desc.text = author.description
 
             GlideApp
-                    .with(this)
-                    .load(author.icon)
-                    .placeholder(R.drawable.default_avatar)
-                    .circleCrop()
-                    .into(iv_author_avatar)
+                .with(this)
+                .load(author.icon)
+                .placeholder(R.drawable.default_avatar)
+                .circleCrop()
+                .into(iv_author_avatar)
         } else {
             layout_author_view.visibility = View.GONE
         }
@@ -276,11 +280,11 @@ class VideoDetailActivity : BaseActivity(), VideoDetailContract.View, BaseQuickA
     override fun setBackground(url: String) {
         //设置背景图片,模糊效果
         GlideApp.with(this)
-                .load(url)
-                .centerCrop()
-                .format(DecodeFormat.PREFER_ARGB_8888)
-                .transition(DrawableTransitionOptions().crossFade())
-                .into(iv_list_bg)
+            .load(url)
+            .centerCrop()
+            .format(DecodeFormat.PREFER_ARGB_8888)
+            .transition(DrawableTransitionOptions().crossFade())
+            .into(iv_list_bg)
     }
 
     /**
