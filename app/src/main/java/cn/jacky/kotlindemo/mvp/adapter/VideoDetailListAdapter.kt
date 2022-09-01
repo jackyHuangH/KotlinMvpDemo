@@ -44,8 +44,8 @@ class VideoDetailListAdapter(data: List<HomeBean.Issue.Item>) :
             ITEM_TYPE_CONTENT -> {
                 //item
                 with(helper) {
-                    setText(R.id.tv_title, item?.data?.title)
-                    setText(R.id.tv_tag, "#${item?.data?.category} / ${durationFormat(item?.data?.duration)}")
+                    setText(R.id.tv_title, item?.data?.title.orEmpty())
+                    setText(R.id.tv_tag, "#${item?.data?.category.orEmpty()} / ${durationFormat(item?.data?.duration)}")
                     //列表封面
                     GlideApp
                         .with(mContext)

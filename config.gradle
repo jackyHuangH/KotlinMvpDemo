@@ -22,8 +22,8 @@ ext {
             "androidx_multidex"              : "androidx.multidex:multidex:2.0.1",
             //android support
             "androidx_annotations"           : "androidx.annotation:annotation:1.2.0",
-            "androidx_fragment"              : "androidx.fragment:fragment:1.3.6",
-            "andriodx_appcompat"             : "androidx.appcompat:appcompat:1.3.1",
+            "androidx_fragment"              : "androidx.fragment:fragment:1.4.0",
+            "andriodx_appcompat"             : "androidx.appcompat:appcompat:1.4.1",
             "androidx_constraint_layout"     : "androidx.constraintlayout:constraintlayout:2.0.1",
             "androidx_recyclerview"          : "androidx.recyclerview:recyclerview:1.2.1",
             "androidx_cardview"              : "androidx.cardview:cardview:1.0.0",
@@ -98,9 +98,9 @@ ext {
             "butterknife_compiler"           : 'com.jakewharton:butterknife-compiler:10.2.3',
             "rxbinding2"                     : 'com.jakewharton.rxbinding2:rxbinding:2.1.1',
             //okhttp
-            "okhttp"                         : 'com.squareup.okhttp3:okhttp:3.11.0',
-            "okio"                           : 'com.squareup.okio:okio:2.0.0',
-            "okhttp_interceptor"             : 'com.squareup.okhttp3:logging-interceptor:3.11.0',
+            "okhttp"                         : 'com.squareup.okhttp3:okhttp:4.9.0',
+            "okhttp_interceptor"             : 'com.squareup.okhttp3:logging-interceptor:4.9.0',
+            "okio"                           : 'com.squareup.okio:okio:2.9.0',
 
             //OSS
             "ali_OSS"                        : 'com.aliyun.dpa:oss-android-sdk:+',
@@ -131,8 +131,6 @@ ext {
             "progressmanager"                : 'me.jessyan:progressmanager:1.5.0',
             "material_dialogs"               : "com.afollestad.material-dialogs:commons:0.9.4.5",
 
-            // Activity作用域的EventBus，更安全，可有效避免after onSavenInstanceState()异常
-            "eventbus_activity_scope"        : 'me.yokeyword:eventbus-activity-scope:1.1.0',
             // Your EventBus's version
             "eventbus"                       : 'org.greenrobot:eventbus:3.1.1',
 
