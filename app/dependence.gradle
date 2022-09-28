@@ -40,7 +40,7 @@ dependencies {
 
     implementation rootProject.ext.dependencies["pictureSelector"]
 
-    implementation rootProject.ext.dependencies["easypermission"]
+    implementation rootProject.ext.dependencies["xxpermissions"]
 
     implementation rootProject.ext.dependencies["glide"]
     implementation rootProject.ext.dependencies["glide_okhttp_integration"]
@@ -72,8 +72,7 @@ dependencies {
     implementation rootProject.ext.dependencies["umeng_common"]
     implementation rootProject.ext.dependencies["umeng_utdid"]
 
-    //use greendao
-//    implementation rootProject.ext.dependencies["greendao"]
-//    implementation rootProject.ext.dependencies["greendao-generator"]
-//    implementation rootProject.ext.dependencies["greendao-sqlcipher"]
+    //bugly update
+    implementation rootProject.ext.dependencies["bugly_upgrade"]
+    implementation rootProject.ext.dependencies["bugly_native"]
 }

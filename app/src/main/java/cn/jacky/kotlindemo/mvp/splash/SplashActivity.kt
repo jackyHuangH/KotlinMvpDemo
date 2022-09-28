@@ -12,7 +12,6 @@ import cn.jacky.kotlindemo.mvp.main.MainActivity
 import com.gyf.barlibrary.ImmersionBar
 import com.zenchn.support.kit.AndroidKit
 import kotlinx.android.synthetic.main.activity_splash.*
-import pub.devrel.easypermissions.EasyPermissions
 
 
 /**
@@ -45,7 +44,7 @@ class SplashActivity : BaseActivity() {
         //不适配状态栏
         mImmersionBar = ImmersionBar.with(this)
         mImmersionBar.fullScreen(true)
-                .init()
+            .init()
     }
 
     override fun getLayoutRes(): Int = R.layout.activity_splash
@@ -86,28 +85,20 @@ class SplashActivity : BaseActivity() {
      * 有些厂商修改了6.0系统申请机制，他们修改成系统自动申请权限了
      */
     private fun checkPermission() {
-        val perms = arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                Manifest.permission.READ_PHONE_STATE,
-                Manifest.permission.READ_EXTERNAL_STORAGE)
-        EasyPermissions.requestPermissions(this, "${getString(R.string.app_name)}应用需要以下权限，请允许", 0, *perms)
-    }
-
-    override fun onPermissionsGranted(requestCode: Int, perms: List<String>) {
-        if (requestCode == 0) {
-            if (perms.isNotEmpty()) {
-                if (perms.contains(Manifest.permission.READ_PHONE_STATE)
-                        && perms.contains(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-                    if (alphaAnimation != null) {
-                        iv_web_icon.startAnimation(alphaAnimation)
-                    }
-                }
-            }
+        val perms = arrayOf(
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.READ_EXTERNAL_STORAGE
+        )
+        //需要权限的时候再申请
+        if (alphaAnimation != null) {
+            iv_web_icon.startAnimation(alphaAnimation)
         }
     }
 
     override fun onDestroy() {
         textTypeface = null
         descTypeFace = null
+        alphaAnimation?.cancel()
         super.onDestroy()
     }
 }

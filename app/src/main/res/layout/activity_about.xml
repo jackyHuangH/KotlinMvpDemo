@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -24,7 +23,7 @@
             android:text="@string/about"
             android:textColor="@color/color_item_title"
             android:textSize="18sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
     </androidx.appcompat.widget.Toolbar>
 
     <ImageView
@@ -36,7 +35,7 @@
         android:src="@drawable/web_hi_res_512"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"/>
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <TextView
         android:id="@+id/tv_app_name"
@@ -49,7 +48,7 @@
         android:textSize="@dimen/textSize_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_logo"/>
+        app:layout_constraintTop_toBottomOf="@+id/iv_logo" />
 
     <TextView
         android:id="@+id/tv_version_name"
@@ -60,10 +59,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_app_name"
-        tools:text="v1.0.0"/>
+        tools:text="v1.0.0" />
 
     <FrameLayout
-        android:id="@+id/rl_gitHub"
+        android:id="@+id/fl_check_update"
+        style="@style/RippleStyle"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:layout_marginTop="10dp"
@@ -77,14 +77,14 @@
             android:layout_gravity="center_vertical|start"
             android:paddingTop="@dimen/padding_common"
             android:paddingBottom="@dimen/padding_common"
-            android:text="@string/gitHub"
-            android:textColor="@color/color_black"/>
+            android:text="@string/check_update"
+            android:textColor="@color/color_black" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|end"
-            android:src="@drawable/ic_action_more_black"/>
+            android:src="@drawable/ic_action_more_black" />
     </FrameLayout>
 
 
@@ -100,6 +100,6 @@
         android:text="@string/not_use_commercial"
         android:textColor="@color/color_9a9a9a"
         android:textSize="@dimen/textSize_small"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

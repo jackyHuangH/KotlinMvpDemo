@@ -7,6 +7,7 @@ import android.net.Uri
 import cn.jacky.kotlindemo.R
 import cn.jacky.kotlindemo.mvp.baseview.BaseActivity
 import com.gyf.barlibrary.ImmersionBar
+import com.tencent.bugly.beta.Beta
 import com.zenchn.support.kit.AndroidKit
 import com.zenchn.support.router.Router
 import kotlinx.android.synthetic.main.activity_about.*
@@ -35,11 +36,10 @@ class AboutActivity : BaseActivity() {
         tv_version_name.text = "v${AndroidKit.Package.getVersionName(this)}"
         //返回
         toolbar.setNavigationOnClickListener { onBackPressed() }
-        //访问原作者 GitHub
-        rl_gitHub.setOnClickListener {
-            val uri = Uri.parse("https://github.com/git-xuhao/KotlinMvp")
-            val intent = Intent(Intent.ACTION_VIEW, uri)
-            startActivity(intent)
+        //检查更新
+        fl_check_update.setOnClickListener {
+            //bugly检查更新
+            Beta.checkAppUpgrade()
         }
     }
 

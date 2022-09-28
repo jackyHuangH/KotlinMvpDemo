@@ -6,7 +6,10 @@ import android.content.Intent
 import cn.jacky.kotlindemo.BuildConfig
 import cn.jacky.kotlindemo.R
 import cn.jacky.kotlindemo.common.Constant
+import cn.jacky.kotlindemo.mvp.about.AboutActivity
 import cn.jacky.kotlindemo.mvp.main.MainActivity
+import com.tencent.bugly.Bugly
+import com.tencent.bugly.beta.Beta
 import com.umeng.commonsdk.UMConfigure
 import com.zenchn.apilib.base.ApiManager
 import com.zenchn.apilib.util.LoggerKit
@@ -38,7 +41,10 @@ class ApplicationKit private constructor() : AbstractApplicationKit(), ActivityL
 
     fun navigateToLogin(grantRefuse: Boolean) {
         if (grantRefuse) {
-            SuperToast.showDefaultMessage(getApplication(), getApplication().getString(R.string.login_error_grant_refused))
+            SuperToast.showDefaultMessage(
+                getApplication(),
+                getApplication().getString(R.string.login_error_grant_refused)
+            )
         }
         val topActivity = mLazyActivityLifecycle.topActivity
         if (topActivity != null) {
@@ -59,6 +65,15 @@ class ApplicationKit private constructor() : AbstractApplicationKit(), ActivityL
         LoggerKit.init(Constant.LOGGERKIT_TAG)
         initActivityLifecycle()
         clearNotify()
+        //bugly初始化
+        initBugly()
+    }
+
+    private fun initBugly() {
+        Bugly.init(getApplication(), "e6e7c08952", false)
+        //添加可以显示更新弹窗的页面
+        Beta.canShowUpgradeActs.add(MainActivity::class.java)
+        Beta.canShowUpgradeActs.add(AboutActivity::class.java)
     }
 
     private fun initApiManager() {
